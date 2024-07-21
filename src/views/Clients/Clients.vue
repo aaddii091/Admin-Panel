@@ -123,8 +123,8 @@ const userData = ref([
 <style>
 .reportDownload {
   cursor: pointer;
-  border: 1px solid rgb(49 61 74);
+  border: 1px solid rgb(61 76 92);
   border-radius: 50%;
-  background-color: rgb(49 61 74);
+  background-color: rgb(61 76 92);
 }
 </style>
