@@ -330,7 +330,7 @@ const menuGroups = ref([
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-10 py-5.5 lg:py-3.5">
       <router-link to="/">
-        <img src="@/assets/images/logo/ZenGardenDark.png" alt="Logo" />
+        <img src="@/assets/images/logo/ZenGardenDark.png" alt="Logo" class="addLogo" />
       </router-link>
 
       <button class="block lg:hidden" @click="sidebarStore.isSidebarOpen = false">
@@ -373,3 +373,5 @@ const menuGroups = ref([
     </div>
   </aside>
 </template>
+
+<style scoped></style>
