@@ -120,7 +120,7 @@ const userData = ref([
   </DefaultLayout>
 </template>
 
-<style>
+<style scoped>
 .reportDownload {
   cursor: pointer;
   border: 1px solid rgb(61 76 92);
