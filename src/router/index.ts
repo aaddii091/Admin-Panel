@@ -97,6 +97,7 @@ const routes = [
   {
     path: '/:catchAll(.*)',
     name: '404',
+    component: LoginPage,
     meta: {
       title: '404',
       requiresAuth: true
