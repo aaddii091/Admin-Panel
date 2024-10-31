@@ -1,3 +1,4 @@
+/// <reference path="path/types.d.ts" />
 <script setup lang="ts">
 import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
 import ButtonDefault from '@/components/Buttons/ButtonDefault.vue'

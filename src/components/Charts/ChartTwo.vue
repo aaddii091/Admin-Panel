@@ -6,11 +6,11 @@ import VueApexCharts from 'vue3-apexcharts'
 const chartData = {
   series: [
     {
-      name: 'ABC',
+      name: 'Sales',
       data: [44, 55, 41, 67, 22, 43, 65]
     },
     {
-      name: 'XYZ',
+      name: 'Revenue',
       data: [13, 23, 20, 8, 13, 27, 15]
     }
   ],

@@ -6,17 +6,13 @@ import VueApexCharts from 'vue3-apexcharts'
 const chartData = {
   series: [
     {
-      name: ' One',
+      name: 'Product One',
       data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 45]
     },
 
     {
-      name: ' Two',
+      name: 'Product Two',
       data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51]
-    },
-    {
-      name: ' Two',
-      data: [3, 22, 16, 30, 15, 3, 44, 42, 29, 67, 19, 1]
     }
   ],
   labels: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug']
@@ -139,7 +135,7 @@ const apexOptions = {
             <span class="block h-2.5 w-full max-w-2.5 rounded-full bg-primary"></span>
           </span>
           <div class="w-full">
-            <p class="font-semibold text-primary">Total XYZ</p>
+            <p class="font-semibold text-primary">Total Revenue</p>
             <p class="text-sm font-medium">12.04.2022 - 12.05.2022</p>
           </div>
         </div>
@@ -150,7 +146,7 @@ const apexOptions = {
             <span class="block h-2.5 w-full max-w-2.5 rounded-full bg-secondary"></span>
           </span>
           <div class="w-full">
-            <p class="font-semibold text-secondary">Total ABC</p>
+            <p class="font-semibold text-secondary">Total Sales</p>
             <p class="text-sm font-medium">12.04.2022 - 12.05.2022</p>
           </div>
         </div>

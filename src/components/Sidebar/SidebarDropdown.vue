@@ -1,3 +1,4 @@
+/// <reference path="path/types.d.ts" />
 <script setup lang="ts">
 import { useSidebarStore } from '@/stores/sidebar'
 import { ref } from 'vue'

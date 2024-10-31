@@ -291,6 +291,17 @@ export default {
         bottomtop: {
           '0%, 100%': { transform: 'translate3d(0, 0, 0)' },
           '50%': { transform: 'translate3d(0, -100%, 0)' }
+        },
+        shake : {
+          '10%, 90%': {
+            transform: 'translate3d(0px, 0, 0)'
+          },
+          '50%': {
+            transform: 'translate3d(-2px, 0, 0)'
+          },
+          '40%, 60%': {
+            transform: 'translate3d(2px, 0, 0)'
+          }
         }
       },
       animation: {
@@ -304,7 +315,8 @@ export default {
         bottomtop: 'bottomtop 60s infinite alternate linear',
         'spin-1.5': 'spin 1.5s linear infinite',
         'spin-2': 'spin 2s linear infinite',
-        'spin-3': 'spin 3s linear infinite'
+        'spin-3': 'spin 3s linear infinite',
+        shake: 'shake 1s cubic-bezier(.36,.07,.19,.97) both infinite',
       }
     }
   },

@@ -20,8 +20,8 @@ const cardItems = ref([
             fill=""
           />
         </svg>`,
-    title: 'Total Clients',
-    total: '3656',
+    title: 'Total views',
+    total: '$3.456K',
     growthRate: 0.43
   },
   {
@@ -46,8 +46,8 @@ const cardItems = ref([
               fill=""
             />
           </svg>`,
-    title: 'Pyschologists',
-    total: '7',
+    title: 'Total Profit',
+    total: '$45,2K',
     growthRate: 4.35
   },
   {
@@ -68,8 +68,8 @@ const cardItems = ref([
               fill=""
             />
           </svg>`,
-    title: 'Total Tests Taken',
-    total: '2.3K',
+    title: 'Total Product',
+    total: '2.450',
     growthRate: 2.59
   },
   {
@@ -94,8 +94,8 @@ const cardItems = ref([
               fill=""
             />
           </svg>`,
-    title: 'Reports Generated',
-    total: '2.1K',
+    title: 'Total Users',
+    total: '3.456',
     growthRate: -0.95
   }
 ])

@@ -1,12 +1,30 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 // @ts-ignore
 import VueApexCharts from 'vue3-apexcharts'
 
+const props = defineProps({
+  e: Number,
+  a: Number,
+  c: Number,
+  n: Number,
+  o: Number
+});
+
 const chartData = {
-  series: [65, 34, 45, 12],
-  labels: ['Desktop', 'Tablet', 'Mobile', 'Unknown']
+  series: [props.e, props.a, props.c, props.n, props.o],
+  labels: [
+    'Extroversion',
+    'Agreeableness',
+    'Conscientiousness',
+    'Neuroticism',
+    'Openness to Experience'
+  ]
 }
+ 
+onMounted(() => {
+  console.log('e: ', props.e)
+})
 
 const chart = ref(null)
 
@@ -15,7 +33,7 @@ const apexOptions = {
     type: 'donut',
     width: 380
   },
-  colors: ['#3C50E0', '#6577F3', '#8FD0EF', '#0FADCF'],
+  colors: ['#DB4F26', '#E4A22E', '#618289', '#AC3737', '#5D8262'],
   labels: chartData.labels,
   legend: {
     show: false,
@@ -24,7 +42,7 @@ const apexOptions = {
   plotOptions: {
     pie: {
       donut: {
-        size: '65%',
+        size: '0%',
         background: 'transparent'
       }
     }
@@ -51,39 +69,7 @@ const apexOptions = {
   >
     <div class="mb-3 justify-between gap-4 sm:flex">
       <div>
-        <h4 class="text-xl font-bold text-black dark:text-white">Visitors Analytics</h4>
-      </div>
-      <div>
-        <div class="relative z-20 inline-block">
-          <select
-            name=""
-            id=""
-            class="relative z-20 inline-flex appearance-none bg-transparent py-1 pl-3 pr-8 text-sm font-medium outline-none"
-          >
-            <option value="">Monthly</option>
-            <option value="">Yearly</option>
-          </select>
-          <span class="absolute top-1/2 right-3 z-10 -translate-y-1/2">
-            <svg
-              width="10"
-              height="6"
-              viewBox="0 0 10 6"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0.47072 1.08816C0.47072 1.02932 0.500141 0.955772 0.54427 0.911642C0.647241 0.808672 0.809051 0.808672 0.912022 0.896932L4.85431 4.60386C4.92785 4.67741 5.06025 4.67741 5.14851 4.60386L9.09079 0.896932C9.19376 0.793962 9.35557 0.808672 9.45854 0.911642C9.56151 1.01461 9.5468 1.17642 9.44383 1.27939L5.50155 4.98632C5.22206 5.23639 4.78076 5.23639 4.51598 4.98632L0.558981 1.27939C0.50014 1.22055 0.47072 1.16171 0.47072 1.08816Z"
-                fill="#637381"
-              />
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M1.22659 0.546578L5.00141 4.09604L8.76422 0.557869C9.08459 0.244537 9.54201 0.329403 9.79139 0.578788C10.112 0.899434 10.0277 1.36122 9.77668 1.61224L9.76644 1.62248L5.81552 5.33722C5.36257 5.74249 4.6445 5.7544 4.19352 5.32924C4.19327 5.32901 4.19377 5.32948 4.19352 5.32924L0.225953 1.61241C0.102762 1.48922 -4.20186e-08 1.31674 -3.20269e-08 1.08816C-2.40601e-08 0.905899 0.0780105 0.712197 0.211421 0.578787C0.494701 0.295506 0.935574 0.297138 1.21836 0.539529L1.22659 0.546578ZM4.51598 4.98632C4.78076 5.23639 5.22206 5.23639 5.50155 4.98632L9.44383 1.27939C9.5468 1.17642 9.56151 1.01461 9.45854 0.911642C9.35557 0.808672 9.19376 0.793962 9.09079 0.896932L5.14851 4.60386C5.06025 4.67741 4.92785 4.67741 4.85431 4.60386L0.912022 0.896932C0.809051 0.808672 0.647241 0.808672 0.54427 0.911642C0.500141 0.955772 0.47072 1.02932 0.47072 1.08816C0.47072 1.16171 0.50014 1.22055 0.558981 1.27939L4.51598 4.98632Z"
-                fill="#637381"
-              />
-            </svg>
-          </span>
-        </div>
+        <h4 class="text-xl font-bold text-black dark:text-white">Personality traits scores</h4>
       </div>
     </div>
     <div class="mb-2">
@@ -97,41 +83,114 @@ const apexOptions = {
         />
       </div>
     </div>
-    <div class="-mx-8 flex flex-wrap items-center justify-center gap-y-3">
-      <div class="w-full px-8 sm:w-1/2">
+    <div class="cahrt-description -mx-8 grid grid-cols-1 sm:grid-cols-2 gap-y-3">
+      <div class="w-full px-8" v-for="(value, index) in chartData.labels" :key="index">
         <div class="flex w-full items-center">
-          <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-primary"></span>
+          <span
+            class="mr-2 block h-3 w-full max-w-3 rounded-full"
+            :style="{ backgroundColor: apexOptions.colors[index] }"
+          />
           <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-            <span> Desktop </span>
-            <span> 65% </span>
+            <span> {{ value }} </span>
+            <span> {{ chartData.series[index] }}% </span>
           </p>
         </div>
       </div>
-      <div class="w-full px-8 sm:w-1/2">
-        <div class="flex w-full items-center">
-          <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#6577F3]"></span>
-          <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-            <span> Tablet </span>
-            <span> 34% </span>
+    </div>
+  </div>
+  <div class="deatailed-description">
+    <p class="text-2xl font-bold text-[#16163f] px-4 border-l-4 border-[#d3b574] mb-5">
+      Detailed Dimension Description
+    </p>
+    <div class="traits grid grid-cols-1 sm:grid-cols-2 gap-y-3">
+      <div class="traits-description p-2 shadow-4 bg-white">
+        <div class="bg-[#753131] px-4 pt-8 pb-4 flex flex-col gap-4">
+          <div class="flex justify-between items-center">
+            <div
+              class="flex items-center justify-center h-16 w-16 bg-red-700 text-white text-xl font-bold rounded-full border-4 border-white"
+            >
+              19
+            </div>
+            <p class="text-title-md2 font-medium text-white">Neuroticism</p>
+          </div>
+          <div class="w-full bg-[#A6817F] rounded-full h-4">
+            <div class="bg-[#EFE9E9] h-4 rounded-full" style="width: 38%">
+              <div class="text-red-900 text-right text-xs font-bold leading-4 pr-2">38%</div>
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <p class="text-lg font-medium text-white">Emotional Stability</p>
+            <p class="text-sm text-white">VS.</p>
+            <p class="text-lg font-medium text-white">Reactivity</p>
+          </div>
+        </div>
+        <div class="flex flex-col mt-2 p-4 font-medium gap-5">
+          <h5 class="text-title-sm font-semibold text-[#753131]">You result: Moderately low</h5>
+          <p>
+            <span class="font-bold">Neuroticism</span> is characterized by frequent mood changes, a
+            tendency to worry about things, ease of irritation and disturbance, and recurrent
+            sadness.
           </p>
+          <p>
+            Because you scored moderately low on Neuroticism, you are primarily relaxed, have high
+            self-esteem and efficiently deal with stress. You also tend to have realistic
+            expectations.
+          </p>
+          <p>
+            You are generally a calm person capable of coping with stress factors. However, you tend
+            to experience more intense negative emotions like guilt, anger and sadness than you
+            wished for.
+          </p>
+          <p>
+            You are a calm, sensible and thoughtful person who shows his human side and is cautious.
+          </p>
+          <p>Read more about Neuroticism here (opens in a new tab).</p>
         </div>
       </div>
-      <div class="w-full px-8 sm:w-1/2">
-        <div class="flex w-full items-center">
-          <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
-          <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-            <span> Mobile </span>
-            <span> 45% </span>
-          </p>
-        </div>
-      </div>
-      <div class="w-full px-8 sm:w-1/2">
-        <div class="flex w-full items-center">
-          <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#0FADCF]"></span>
-          <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-            <span> Unknown </span>
-            <span> 12% </span>
-          </p>
+      <div class="traits-result flex justify-center items-center">
+        <div>
+          <h6 class="text-md font-semibold">
+            You have a natural inclination for
+            <span class="text-[#753131]">moderately low</span> levels of:
+          </h6>
+          <div class="grid grid-cols-2 gap-y-6 gap-x-4 my-10">
+            <div>
+              <p class="font-semibold">Anxiety</p>
+              <div class="w-full bg-white rounded-full h-3">
+                <div class="bg-[#C8C9C6] h-3 rounded-full" style="width: 25%"></div>
+              </div>
+            </div>
+            <div>
+              <p class="font-semibold">Depression</p>
+              <div class="w-full bg-white rounded-full h-3">
+                <div class="bg-[#C8C9C6] h-3 rounded-full" style="width: 25%"></div>
+              </div>
+            </div>
+            <div>
+              <p class="font-semibold">Vulnerability</p>
+              <div class="w-full bg-white rounded-full h-3">
+                <div class="bg-[#C8C9C6] h-3 rounded-full" style="width: 25%"></div>
+              </div>
+            </div>
+            <div>
+              <p class="font-semibold">Self-consciousness</p>
+              <div class="w-full bg-white rounded-full h-3">
+                <div class="bg-[#C8C9C6] h-3 rounded-full" style="width: 25%"></div>
+              </div>
+            </div>
+            <div>
+              <p class="font-semibold">Irritability</p>
+              <div class="w-full bg-white rounded-full h-3">
+                <div class="bg-[#C8C9C6] h-3 rounded-full" style="width: 25%"></div>
+              </div>
+            </div>
+            <div>
+              <p class="font-semibold">Immoderation</p>
+              <div class="w-full bg-white rounded-full h-3">
+                <div class="bg-[#C8C9C6] h-3 rounded-full" style="width: 25%"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

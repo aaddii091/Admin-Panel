@@ -1,46 +1,14 @@
+///
+<reference path="path/types.d.ts" />
 <script setup lang="ts">
-import DataStatsOne from '@/components/DataStats/DataStatsOne.vue'
-import ChartOne from '@/components/Charts/ChartOne.vue'
-import ChartThree from '@/components/Charts/ChartThree.vue'
-import ChartTwo from '@/components/Charts/ChartTwo.vue'
-import ChatCard from '@/components/ChatCard.vue'
-import MapOne from '@/components/Maps/MapOne.vue'
-import TableOne from '@/components/Tables/TableOne.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import TestList from '@/components/Tables/TestList.vue'
 </script>
 
 <template>
   <DefaultLayout>
-    <div class="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-      <!-- ====== Table One Start -->
-      <div class="col-span-12 xl:col-span-8">
-        <TableOne />
-      </div>
-      <!-- ====== Table One End -->
-
-      <!-- ====== Chat Card Start -->
-      <ChatCard />
-      <!-- ====== Chat Card End -->
-      <!-- ====== Chart One Start -->
-    </div>
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 mt-6">
-      <DataStatsOne />
-    </div>
-    <div class="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-      <!-- ====== Chart One End -->
-
-      <ChartOne />
-      <!-- ====== Chart Two Start -->
-      <ChartTwo />
-      <!-- ====== Chart Two End -->
-
-      <ChartThree />
-      <!-- ====== Chart Three Start -->
-      <!-- ====== Chart Three End -->
-
-      <!-- ====== Map One Start -->
-      <!-- <MapOne /> -->
-      <!-- ====== Map One End -->
+    <div class="flex flex-col gap-10">
+      <TestList />
     </div>
   </DefaultLayout>
 </template>

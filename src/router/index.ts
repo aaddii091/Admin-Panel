@@ -1,42 +1,70 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import SigninView from '@/views/Authentication/SigninView.vue'
-import SignupView from '@/views/Authentication/SignupView.vue'
-import CalendarView from '@/views/CalendarView.vue'
-import BasicChartView from '@/views/Charts/BasicChartView.vue'
-import Dashboard from '@/views/Dashboard/ECommerceView.vue'
-import Client from '@/views/Clients/Clients.vue'
-import FormElementsView from '@/views/Forms/FormElementsView.vue'
-import FormLayoutView from '@/views/Forms/FormLayoutView.vue'
-import SettingsView from '@/views/Pages/SettingsView.vue'
+import SigninView from '@/components/Authentication/SigninView.vue'
+import SignupView from '@/components/Authentication/SignupView.vue'
+import ECommerceView from '@/views/Dashboard/ECommerceView.vue'
 import ProfileView from '@/views/ProfileView.vue'
-import TablesView from '@/views/TablesView.vue'
-import AlertsView from '@/views/UiElements/AlertsView.vue'
-import ButtonsView from '@/views/UiElements/ButtonsView.vue'
+import QuestionnairesTopView from '@/views/Questionnaires/topView.vue'
+import QuestionnairesFormView from '@/views/Questionnaires/formView.vue'
+import QuestionnairesCompletedView from '@/views/Questionnaires/completedView.vue'
+import ResultsView from '@/views/Results/resultsView.vue'
+import TestsView from '@/views/TestsView.vue'
+import LoginPage from '@/views/Authentication/LoginPage.vue'
+
 
 const routes = [
   {
     path: '/',
-    name: 'dashboard',
-    component: Dashboard,
+    name: 'Dashboard',
+    component: ECommerceView,
     meta: {
-      title: 'Dashboard'
+      title: 'Dashboard',
+      requiresAuth: true
     }
   },
   {
-    path: '/clients',
-    name: 'client',
-    component: Client,
+    path: '/questionnaires/:id/:questionnaireId',
+    name: 'questionnairesTop',
+    component: QuestionnairesTopView,
     meta: {
-      title: 'Client'
+      title: 'Test top',
+      requiresAuth: true
     }
   },
   {
-    path: '/calendar',
-    name: 'calendar',
-    component: CalendarView,
+    path: '/questionnaires/form',
+    name: 'questionnairesForm',
+    component: QuestionnairesFormView,
     meta: {
-      title: 'Calendar'
+      title: 'Test',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/questionnaires/completed',
+    name: 'questionnairesCompleted',
+    component: QuestionnairesCompletedView,
+    meta: {
+      title: 'Test Completed',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/results',
+    name: 'results',
+    component: ResultsView,
+    meta: {
+      title: 'Results',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/tests',
+    name: 'tests',
+    component: TestsView,
+    meta: {
+      title: 'Tests',
+      requiresAuth: true
     }
   },
   {
@@ -44,79 +72,34 @@ const routes = [
     name: 'profile',
     component: ProfileView,
     meta: {
-      title: 'Profile'
+      title: 'Profile',
+      requiresAuth: true
     }
   },
   {
-    path: '/forms/form-elements',
-    name: 'formElements',
-    component: FormElementsView,
+    path: '/login',
+    name: 'login',
+    component: LoginPage,
     meta: {
-      title: 'Form Elements'
+      title: 'Login',
+      requiresAuth: false
     }
   },
   {
-    path: '/forms/form-layout',
-    name: 'formLayout',
-    component: FormLayoutView,
-    meta: {
-      title: 'Form Layout'
-    }
-  },
-  {
-    path: '/tables',
-    name: 'tables',
-    component: TablesView,
-    meta: {
-      title: 'Tables'
-    }
-  },
-  {
-    path: '/pages/settings',
-    name: 'settings',
-    component: SettingsView,
-    meta: {
-      title: 'Settings'
-    }
-  },
-  {
-    path: '/charts/basic-chart',
-    name: 'basicChart',
-    component: BasicChartView,
-    meta: {
-      title: 'Basic Chart'
-    }
-  },
-  {
-    path: '/ui-elements/alerts',
-    name: 'alerts',
-    component: AlertsView,
-    meta: {
-      title: 'Alerts'
-    }
-  },
-  {
-    path: '/ui-elements/buttons',
-    name: 'buttons',
-    component: ButtonsView,
-    meta: {
-      title: 'Buttons'
-    }
-  },
-  {
-    path: '/auth/signin',
-    name: 'signin',
-    component: SigninView,
-    meta: {
-      title: 'Signin'
-    }
-  },
-  {
-    path: '/auth/signup',
+    path: '/signup',
     name: 'signup',
     component: SignupView,
     meta: {
-      title: 'Signup'
+      title: 'Signup',
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: '404',
+    meta: {
+      title: '404',
+      requiresAuth: true
     }
   }
 ]
@@ -130,8 +113,15 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title}`
-  next()
+  const isAuthenticated = localStorage.getItem('token') // Or however you track authentication
+  
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    // Redirect to login if trying to access protected route while not authenticated
+    next({ name: 'login' })
+  } else {
+    document.title = `${to.meta.title} | ZenGarden User page`
+    next()
+  }
 })
 
 export default router

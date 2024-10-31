@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-const days = ['Sun', 'Mon', 'Tues', 'Wednes', 'Thurs', 'Fri', 'Satur']
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-const currentDate = ref(new Date(2024, 7, 16))
+const currentDate = ref(new Date(2024, 12, 1))
 
 const getDaysInMonth = (year: number, month: number): Date[] => {
   const date = new Date(year, month, 1)
@@ -97,10 +97,10 @@ const isDateSelected = (day: any): boolean => {
               class="event invisible absolute left-2 z-99 mb-1 flex w-[200%] flex-col rounded-sm border-l-[3px] border-primary bg-gray px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-meta-4 md:visible md:w-[190%] md:opacity-100"
             >
               <span class="event-name text-sm font-semibold text-black dark:text-white">
-                Admin Design
+                Redesign Website
               </span>
               <span class="time text-sm font-medium text-black dark:text-white">
-                1 July - 3 July
+                1 Dec - 2 Dec
               </span>
             </div>
           </div>
