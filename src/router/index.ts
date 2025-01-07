@@ -2,11 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import SigninView from '@/components/Authentication/SigninView.vue'
 import SignupView from '@/components/Authentication/SignupView.vue'
-import ECommerceView from '@/views/Dashboard/ECommerceView.vue'
+import Dashboard from '@/views/Dashboard/Dashboard.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import QuestionnairesTopView from '@/views/Questionnaires/topView.vue'
 import QuestionnairesFormView from '@/views/Questionnaires/formView.vue'
 import QuestionnairesCompletedView from '@/views/Questionnaires/completedView.vue'
+import QuizView from '@/components/Quiz/MCQQuiz.vue'
 import ResultsView from '@/views/Results/resultsView.vue'
 import TestsView from '@/views/TestsView.vue'
 import LoginPage from '@/views/Authentication/LoginPage.vue'
@@ -16,7 +17,7 @@ const routes = [
   {
     path: '/',
     name: 'Dashboard',
-    component: ECommerceView,
+    component: Dashboard,
     meta: {
       title: 'Dashboard',
       requiresAuth: true
@@ -92,6 +93,15 @@ const routes = [
     meta: {
       title: 'Signup',
       requiresAuth: false
+    }
+  },
+  {
+    path: '/quiz/:id',
+    name: 'quiz',
+    component: QuizView,
+    meta: {
+      title: 'Quiz',
+      requiresAuth: true
     }
   },
   {
