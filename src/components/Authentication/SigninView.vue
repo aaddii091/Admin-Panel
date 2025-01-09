@@ -1,440 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style> @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+<template>
+  <!-- Breadcrumb Start -->
 
-:root {
-    --Neutral-500: #737373;
-    --Neutral-900: #171717;
-    --Neutral-400: #A3A3A3;
-    --Neutral-200: #E5E5E5;
-    --Generic-White: #FFFFFF;
-    --primary-500-main: #6366F1;
-}
+  <!-- Breadcrumb End -->
 
-/*Universal selectors*/
-*{
-    margin : 0;
-    padding : 0;
-    box-sizing: border-box;
-    font-family: Nunito, sans-serif;
-}
+  <DefaultAuthCard
+    subtitle="Start for free"
+    title="Sign In"
+    class="mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12"
+  >
+    <form @submit="handleSubmit">
+      <!-- Show error message if exists -->
+      <div v-if="error" class="mb-4 p-4 bg-red-100 text-red-600 rounded-lg">
+        {{ error }}
+      </div>
 
-/* Nunito - Regular (Selection Color 900) */
-.nunito-regular-color900 {
-    color: var(--Neutral-900, #171717);
-    font-family: "Nunito", sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
-}
-
-/* Nunito - Regular (Selection Color 500) */
-.nunito-regular-color500 {
-    color: var(--Neutral-500, #737373);
-    text-align: right;
-
-    /* Paragraph/Small/Regular */
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; /* 142.857% */
-}
-
-/* Nunito - Regular (Selection Color 400) */
-.nunito-regular-color400 {
-    color: var(--Neutral-400, #A3A3A3);
-
-    /* Paragraph/Small/Regular */
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; /* 142.857% */
-}
-
-/* Nunito - Small Regular */
-.nunito-small-regular {
-    color: #84818A;
-
-    text-align: center;
-    /* Paragraph/XSmall/Regular */
-    font-family: Nunito;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; /* 166.667% */
-}
-
-/* Nunito - Medium */
-.nunito-medium-white-justified {
-    color: var(--Generic-White, #FFF);
-    text-align: justify;
-
-    /* Paragraph/Medium/Medium */
-    font-family: Nunito;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 150% */
-}
-
-/* Nunito - Medium Center */
-.nunito-medium-primary-center {
-    color: var(--primary-500-main, #6366F1);
-    text-align: center;
-
-    /* Paragraph/Medium/Medium */
-    font-family: Nunito;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 150% */
-}
-
-/* Nunito - Semiold */
-.nunito-semibold-color900 {
-    color: var(--Neutral-900, #171717);
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 20px; /* 142.857% */
-}
-
-/* Nunito Sans - Italic with custom weight */
-.nunito-bold-color700 {
-    color: var(--Neutral-700, #404040);
-
-    /* Heading/H2/Bold/Desktop */
-    font-family: Nunito;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 44px; /* 122.222% */
-    text-align: center;
-}
-
-.Signin-rightside {
-    display: flex;
-    width: 488px;
-    padding: 24px;
-    align-items: flex-start;
-    gap: 10px;
-    border-radius: 12px;
-    background: var(--Generic-White, #FFF);
-    position: absolute;
-    left: 50%;
-}
-
-/*Final style*/
-
-.Signin-picture {
-    width: 400px;
-    flex-shrink: 0;
-    position: absolute;
-    top: 55%; /* Center the image vertically */
-    left: 25%; /* Center the image horizontally */
-    transform: translate(-50%, -50%); /* Precisely align the image to the center */
-}
-
-.Signin-leftside {
-    background-color: #EEF2FF;
-    width: 49%; /* Occupy half of the screen's width */
-    height: 182.4px; /* Adjust height as needed */
-    margin: 0 ; /* Left positions the rectangle horizontally */
-}
-
-.zengarden-logo {
-    width: 238px;
-    height: 51.958px;
-    flex-shrink: 0;
-    position: absolute;
-    top: 16%; /* Center the image vertically */
-    left: 23%; /* Center the image horizontally */
-    transform: translate(-50%, -50%); /* Precisely align the image to the center */
-}
-
-.icon-eye {
-    width: 20px;
-    height: 20px;
-}
-
-.icon-google{
-    width: 24px;
-    height: 24px;
-}
-
-.Signin-rightside .input-box {
-    align-self: stretch;
-    color: var(--Neutral-900, #171717);
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 20px; /* 142.857% */
-}
-
-.Signin-rightside .input-box .email-box {
-    color: var(--Neutral-400, #A3A3A3);
-
-    /* Paragraph/Small/Regular */
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; /* 142.857% */
-    display: flex;
-    gap: 4px;
-    align-self: stretch;
-    height: 40px;
-    width: 440px;
-    padding: 8px 12px;
-    align-items: center;
-    gap: 12px;
-    align-self: stretch;
-    border-radius: 6px;
-    border: 1px solid var(--Neutral-200, #E5E5E5);
-    background: var(--Generic-White, #FFF);
-
-    /* Drop shadow/XSmall */
-    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-    }
-
-#email {
-    border: none; /* Removes the border */
-    outline: none; /* Removes the focus outline (optional) */
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex: 1 0 0;
-    }
-
-#password {
-    border: none; /* Removes the border */
-    outline: none; /* Removes the focus outline (optional) */
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex: 1 0 0;
-}
-
-.Signin-rightside .forgot-password {
-    align-self: stretch;
-    color: var(--Neutral-500, #737373);
-    text-align: right;
-
-    /* Paragraph/Small/Regular */
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; /* 142.857% */
-}
-
-.Signin-rightside .remember-me {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    align-self: stretch;
-    flex: 1 0 0;
-    color: var(--Neutral-900, #171717);
-
-    /* Paragraph/Small/Regular */
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; /* 142.857% */
-}
-
-.Signin-rightside .remember-me .remember-me-checkbox{
-    background: var(--Generic-White, #FFF);
-    width: 20px;
-    height: 20px;
-    border: 1.5px solid var(--Neutral-300, #D4D4D4); /* Customize the border color and thickness */
-    border-radius: 4px; /* Optional: Round the corners */
-    appearance: none; /* Remove the default styling */
-    -webkit-appearance: none; /* Ensure cross-browser consistency */
-    cursor: pointer;
-}
-
-/*
-.Signin-rightside .remember-me .remember-me-checkbox:checked {
-    background-color: lightblue; 
-    border-color: darkblue;
-} */
-
-.Signin-rightside .btn {
-    display: flex;
-    height: 44px;
-    width: 440px;
-    padding: 10px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    align-self: stretch;
-    border-radius: 24px;
-    background: var(--Zen-Primary-Primary-500, #3C50E0);
-    color: var(--Generic-White, #FFF);
-    text-align: justify;
-    font-family: Nunito;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 150% */
-    border: none; /* No border */
-}
-
-.Signin-rightside .btnGoogle {
-    display: flex;
-    height: 44px;
-    width: 440px;
-    padding: 10px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    align-self: stretch;
-    border-radius: 24px;
-    border: 1px solid var(--primary-500-main, #6366F1);
-    color: var(--primary-500-main, #6366F1);
-    text-align: center;
-    background-color: var(--Generic-White, #FFFFFF);
-
-    /* Paragraph/Medium/Medium */
-    font-family: Nunito;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 150% */
-}
-
-.Signin-rightside .line-block .line {
-    width: 177px;
-    height: 1px;
-    flex-shrink: 0;
-    background: #DCDBDD;
-}
-
-/*color: var(--Neutral-500, #737373);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; /* 142.857% */ </style>
-  </head>
-  <body>
-    <span class="Signin-leftside">
-      <img
-        src="Signin-picture.png"
-        alt="Sign in image"
-        class="Signin-picture"
-      />
-      <img
-        src="Zengarden Logo group 22.png"
-        alt="Zengarden Logo"
-        class="zengarden-logo"
-      />
-    </span>
-    <div class="Signin-rightside">
-      <form>
-        <h1 class="nunito-bold-color700">Sign in</h1>
-
-        <div class="input-box">
-          <label for="email">Email Address</label>
-          <div class="email-box">
-            <input
-              type="text"
-              id="email"
-              placeholder="john.dowry@example.com"
-              required
+      <InputGroup
+        label="Email"
+        type="email"
+        placeholder="john.dowry@example.com"
+        v-model="email"
+        required
+      >
+        <svg
+          class="fill-current"
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g opacity="0.5">
+            <path
+              d="M19.2516 3.30005H2.75156C1.58281 3.30005 0.585938 4.26255 0.585938 5.46567V16.6032C0.585938 17.7719 1.54844 18.7688 2.75156 18.7688H19.2516C20.4203 18.7688 21.4172 17.8063 21.4172 16.6032V5.4313C21.4172 4.26255 20.4203 3.30005 19.2516 3.30005ZM19.2516 4.84692C19.2859 4.84692 19.3203 4.84692 19.3547 4.84692L11.0016 10.2094L2.64844 4.84692C2.68281 4.84692 2.71719 4.84692 2.75156 4.84692H19.2516ZM19.2516 17.1532H2.75156C2.40781 17.1532 2.13281 16.8782 2.13281 16.5344V6.35942L10.1766 11.5157C10.4172 11.6875 10.6922 11.7563 10.9672 11.7563C11.2422 11.7563 11.5172 11.6875 11.7578 11.5157L19.8016 6.35942V16.5688C19.8703 16.9125 19.5953 17.1532 19.2516 17.1532Z"
+              fill=""
             />
-          </div>
-        </div>
-        <div class="input-box">
-          <label for="password">Password</label>
-          <div class="email-box">
-            <input type="password" id="password" placeholder="" required />
-            <div class="icon-eye">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M12.2004 10.0003C12.2004 11.2158 11.2151 12.2011 9.99967 12.2011C8.78423 12.2011 7.79892 11.2158 7.79892 10.0003C7.79892 8.78488 8.78423 7.79957 9.99967 7.79957C11.2151 7.79957 12.2004 8.78488 12.2004 10.0003Z"
-                  stroke="#737373"
-                  stroke-width="1.67"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M3 10.0003C3.93479 7.02408 6.71528 4.86523 9.99999 4.86523C13.2847 4.86523 16.0652 7.02411 17 10.0003C16.0652 12.9766 13.2847 15.1354 10 15.1354C6.71527 15.1354 3.93477 12.9765 3 10.0003Z"
-                  stroke="#737373"
-                  stroke-width="1.67"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
+          </g>
+        </svg>
+      </InputGroup>
 
-        <div class="forgot-password">
-          <a href="#">Forgot Password?</a>
-        </div>
-        <div class="remember-me">
-          <label> <input class="remember-me-checkbox" type="checkbox" /> Remember Me </label>
-        </div>
+      <InputGroup
+        label="Password"
+        type="password"
+        placeholder="6+ Characters, 1 Capital letter"
+        v-model="password"
+        required
+      >
+        <svg
+          class="fill-current"
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g opacity="0.5">
+            <path
+              d="M16.1547 6.80626V5.91251C16.1547 3.16251 14.0922 0.825009 11.4797 0.618759C10.0359 0.481259 8.59219 0.996884 7.52656 1.95938C6.46094 2.92188 5.84219 4.29688 5.84219 5.70626V6.80626C3.84844 7.18438 2.33594 8.93751 2.33594 11.0688V17.2906C2.33594 19.5594 4.19219 21.3813 6.42656 21.3813H15.5016C17.7703 21.3813 19.6266 19.525 19.6266 17.2563V11C19.6609 8.93751 18.1484 7.21876 16.1547 6.80626ZM8.55781 3.09376C9.31406 2.40626 10.3109 2.06251 11.3422 2.16563C13.1641 2.33751 14.6078 3.98751 14.6078 5.91251V6.70313H7.38906V5.67188C7.38906 4.70938 7.80156 3.78126 8.55781 3.09376ZM18.1141 17.2906C18.1141 18.7 16.9453 19.8688 15.5359 19.8688H6.46094C5.05156 19.8688 3.91719 18.7344 3.91719 17.325V11.0688C3.91719 9.52189 5.15469 8.28438 6.70156 8.28438H15.2953C16.8422 8.28438 18.1141 9.52188 18.1141 11V17.2906Z"
+              fill=""
+            />
+            <path
+              d="M10.9977 11.8594C10.5852 11.8594 10.207 12.2031 10.207 12.65V16.2594C10.207 16.6719 10.5508 17.05 10.9977 17.05C11.4102 17.05 11.7883 16.7063 11.7883 16.2594V12.6156C11.7883 12.2031 11.4102 11.8594 10.9977 11.8594Z"
+              fill=""
+            />
+          </g>
+        </svg>
+      </InputGroup>
 
-        <button type="submit" class="btn">Sign In</button>
-        <div class="line-block">
-            <span class="line"></span>
-            <p>or</p>
-        </div>
-        <button type="submit" class="btnGoogle">
-          <div class="icon-google">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="24"
-              viewBox="0 0 25 24"
-              fill="none"
-            >
-              <path
-                d="M23.0015 12.2336C23.0015 11.3702 22.93 10.7402 22.7753 10.0869H12.7158V13.9835H18.6205C18.5015 14.9519 17.8587 16.4102 16.4301 17.3902L16.41 17.5206L19.5907 19.9354L19.811 19.9569C21.8348 18.1252 23.0015 15.4302 23.0015 12.2336Z"
-                fill="#4285F4"
-              />
-              <path
-                d="M12.715 22.4996C15.6078 22.4996 18.0363 21.5662 19.8102 19.9562L16.4292 17.3895C15.5245 18.0078 14.3102 18.4395 12.715 18.4395C9.88167 18.4395 7.47693 16.6079 6.61971 14.0762L6.49406 14.0866L3.18681 16.595L3.14355 16.7128C4.90543 20.1428 8.52448 22.4996 12.715 22.4996Z"
-                fill="#34A853"
-              />
-              <path
-                d="M6.61997 14.0765C6.39379 13.4232 6.26289 12.7231 6.26289 11.9998C6.26289 11.2764 6.39379 10.5765 6.60807 9.92313L6.60208 9.78398L3.25337 7.23535L3.14381 7.28642C2.41765 8.70977 2.00098 10.3081 2.00098 11.9998C2.00098 13.6915 2.41765 15.2897 3.14381 16.7131L6.61997 14.0765Z"
-                fill="#FBBC05"
-              />
-              <path
-                d="M12.715 5.55997C14.7269 5.55997 16.084 6.41163 16.8579 7.12335L19.8817 4.23C18.0246 2.53834 15.6078 1.5 12.715 1.5C8.52451 1.5 4.90544 3.85665 3.14355 7.28662L6.60783 9.92332C7.47696 7.39166 9.88171 5.55997 12.715 5.55997Z"
-                fill="#EB4335"
-              />
-            </svg>
-          </div>
-          Sign in with Google
+      <div class="mb-5 mt-6">
+        <button
+          type="submit"
+          :disabled="loading"
+          class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50"
+        >
+          {{ loading ? 'Signing in...' : 'Sign In' }}
         </button>
+      </div>
 
-        <div class="register-link">
-          <p>
-            Don't have an account?
-            <a class="nunito-medium-primary-center" href="#">Register</a>
-          </p>
-        </div>
-      </form>
-    </div>
-  </body>
-</html>
+      <div class="mt-6 text-center">
+        <p class="font-medium">
+          Don’t have any account?
+          <router-link to="signup" class="text-primary">Sign up</router-link>
+        </p>
+      </div>
+    </form>
+  </DefaultAuthCard>
+</template>
+<script setup lang="ts">
+import DefaultAuthCard from '@/components/Auths/DefaultAuthCard.vue'
+import InputGroup from '@/components/Auths/InputGroup.vue'
+import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import axios from 'axios'
+
+const router = useRouter()
+const pageTitle = ref('Sign In')
+const email = ref('')
+const password = ref('')
+const error = ref('')
+const loading = ref(false)
+
+const handleSubmit = async (e: Event) => {
+  e.preventDefault()
+  loading.value = true
+  error.value = ''
+
+  try {
+    const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}users/login`, {
+      email: email.value,
+      password: password.value
+    })
+
+    console.log('Response:', response)
+
+    localStorage.setItem('token', response.data.token)
+    router.push('/')
+  } catch (err) {
+    console.error('Error details:', err)
+    error.value = axios.isAxiosError(err)
+      ? err.response?.data?.message || 'Login failed'
+      : 'An error occurred'
+  } finally {
+    loading.value = false
+  }
+}
+</script>
+
+<style scoped></style>
