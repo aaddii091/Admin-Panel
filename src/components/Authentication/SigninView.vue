@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In</title>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+    <title>Document</title>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-    :root {
+:root {
     --Neutral-500: #737373;
     --Neutral-900: #171717;
     --Neutral-400: #A3A3A3;
     --Neutral-200: #E5E5E5;
-    --Generic-White: #FFF;
+    --Generic-White: #FFFFFF;
     --primary-500-main: #6366F1;
 }
 
@@ -22,14 +22,6 @@
     box-sizing: border-box;
     font-family: Nunito, sans-serif;
 }
-
-a:link{
-    color: var(--Neutral-500, #737373);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; /* 142.857% */
-} /*For unvisited links*/
 
 /* Nunito - Regular (Selection Color 900) */
 .nunito-regular-color900 {
@@ -276,7 +268,64 @@ a:link{
 .Signin-rightside .remember-me .remember-me-checkbox:checked {
     background-color: lightblue; 
     border-color: darkblue;
-} */ </style>
+} */
+
+.Signin-rightside .btn {
+    display: flex;
+    height: 44px;
+    width: 440px;
+    padding: 10px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    align-self: stretch;
+    border-radius: 24px;
+    background: var(--Zen-Primary-Primary-500, #3C50E0);
+    color: var(--Generic-White, #FFF);
+    text-align: justify;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    border: none; /* No border */
+}
+
+.Signin-rightside .btnGoogle {
+    display: flex;
+    height: 44px;
+    width: 440px;
+    padding: 10px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    align-self: stretch;
+    border-radius: 24px;
+    border: 1px solid var(--primary-500-main, #6366F1);
+    color: var(--primary-500-main, #6366F1);
+    text-align: center;
+    background-color: var(--Generic-White, #FFFFFF);
+
+    /* Paragraph/Medium/Medium */
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+}
+
+.Signin-rightside .line-block .line {
+    width: 177px;
+    height: 1px;
+    flex-shrink: 0;
+    background: #DCDBDD;
+}
+
+/*color: var(--Neutral-500, #737373);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */ </style>
   </head>
   <body>
     <span class="Signin-leftside">
@@ -341,10 +390,14 @@ a:link{
           <a href="#">Forgot Password?</a>
         </div>
         <div class="remember-me">
-          <label> <input class="remember-me-checkbox" type="checkbox" /> Remember Me? </label>
+          <label> <input class="remember-me-checkbox" type="checkbox" /> Remember Me </label>
         </div>
 
         <button type="submit" class="btn">Sign In</button>
+        <div class="line-block">
+            <span class="line"></span>
+            <p>or</p>
+        </div>
         <button type="submit" class="btnGoogle">
           <div class="icon-google">
             <svg
