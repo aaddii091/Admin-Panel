@@ -20,7 +20,7 @@ const routes = [
     component: Dashboard,
     meta: {
       title: 'Dashboard',
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {
