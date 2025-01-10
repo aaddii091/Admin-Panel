@@ -11,14 +11,14 @@ const props = defineProps(['subtitle', 'title', 'customClasses'])
       <div class="hidden w-full xl:block xl:w-1/2">
         <div class="py-17.5 px-26 text-center">
           <router-link class="mb-5.5 inline-block" to="/">
-            <img class="hidden dark:block" src="../../assets/images/logo/logo.svg" alt="Logo" />
-            <img class="dark:hidden" src="../../assets/images/logo/logo-dark.svg" alt="Logo" />
+            <img class="hidden dark:block" src="../../assets/images/logo/src/assets/images/logo/logo-light.png" alt="Logo" />
+            <img class="dark:hidden" src="../../assets/images/logo/src/assets/images/logo/logo-light.png" alt="Logo" />
           </router-link>
 
           <p class="font-medium 2xl:px-20">Login to Your Emotional Headquarters</p>
 
           <span class="mt-15 inline-block">
-            <img src="../../assets/images/illustration/illustration-03.svg" alt="illustration" />
+            <img src="../../assets/images/illustration/src/assets/images/illustration/Signin-picture.png" alt="illustration" />
           </span>
         </div>
       </div>
