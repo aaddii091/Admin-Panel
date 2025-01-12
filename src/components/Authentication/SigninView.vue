@@ -70,6 +70,11 @@
             </div>
       </InputGroup>
 
+      <div class="mt-0 text-right"> 
+        <router-link to="change-password" class="text-primary font-medium">Forgot Password?</router-link> 
+      </div>
+      <div class="mt-2 text-left"> <input type="checkbox" class="remember-me mr-2">Remember Me</div>
+
       <div class="mb-5 mt-6">
         <button
           type="submit"
@@ -132,5 +137,10 @@ const handleSubmit = async (e: Event) => {
 </script>
 
 <style scoped>
-
+.remember-me{
+  width: 20px;
+  height: 20px;
+  stroke: "#D4D4D4"; 
+  stroke-width:"1.5";
+}
 </style>
