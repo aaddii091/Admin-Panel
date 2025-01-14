@@ -7,5 +7,6 @@ import QuizList from '@/components/Quiz/QuizList.vue'
 <template>
   <DefaultLayout>
     <QuizList />
+    hello
   </DefaultLayout>
 </template>
