@@ -7,6 +7,6 @@ import QuizList from '@/components/Quiz/QuizList.vue'
 <template>
   <DefaultLayout>
     <QuizList />
-    hello to you
+    hello to you my
   </DefaultLayout>
 </template>
