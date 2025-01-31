@@ -4,7 +4,7 @@
   <!-- Breadcrumb End -->
 
   <DefaultAuthCard
-    title="Sign In to Zengarden"
+    title="Sign In"
     class="mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12"
   >
     <form @submit="handleSubmit">
