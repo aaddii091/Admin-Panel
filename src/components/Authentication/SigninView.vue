@@ -4,7 +4,7 @@
   <!-- Breadcrumb End -->
 
   <DefaultAuthCard
-    title="Sign In"
+    title="Sign In to Zengarden"
     class="mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12"
   >
     <form @submit="handleSubmit">
@@ -73,7 +73,7 @@
       <div class="mt-0 text-right"> 
         <router-link to="change-password" class="text-primary font-medium">Forgot Password?</router-link> 
       </div>
-      <div class="mt-2 text-left"> <input type="checkbox" class="remember-me mr-2">Remember Me</div>
+      <div class="mt-2 text-left remember-me-box"> <input type="checkbox" class="remember-me mr-2">Remember Me</div>
 
       <div class="mb-5 mt-6">
         <button
@@ -142,5 +142,15 @@ const handleSubmit = async (e: Event) => {
   height: 20px;
   stroke: "#D4D4D4"; 
   stroke-width:"1.5";
+}
+
+.remember-me-box {
+  display : flex;
+  align-items: center;
+}
+
+.sign-in-box{
+  display : flex;
+  justify-content : center;
 }
 </style>
