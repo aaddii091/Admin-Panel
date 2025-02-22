@@ -44,36 +44,40 @@
         v-model="password"
         required
       >
-      <div class="icon-eye">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M12.2004 10.0003C12.2004 11.2158 11.2151 12.2011 9.99967 12.2011C8.78423 12.2011 7.79892 11.2158 7.79892 10.0003C7.79892 8.78488 8.78423 7.79957 9.99967 7.79957C11.2151 7.79957 12.2004 8.78488 12.2004 10.0003Z"
-                  stroke="#737373"
-                  stroke-width="1.67"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M3 10.0003C3.93479 7.02408 6.71528 4.86523 9.99999 4.86523C13.2847 4.86523 16.0652 7.02411 17 10.0003C16.0652 12.9766 13.2847 15.1354 10 15.1354C6.71527 15.1354 3.93477 12.9765 3 10.0003Z"
-                  stroke="#737373"
-                  stroke-width="1.67"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
+        <div class="icon-eye">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <path
+              d="M12.2004 10.0003C12.2004 11.2158 11.2151 12.2011 9.99967 12.2011C8.78423 12.2011 7.79892 11.2158 7.79892 10.0003C7.79892 8.78488 8.78423 7.79957 9.99967 7.79957C11.2151 7.79957 12.2004 8.78488 12.2004 10.0003Z"
+              stroke="#737373"
+              stroke-width="1.67"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3 10.0003C3.93479 7.02408 6.71528 4.86523 9.99999 4.86523C13.2847 4.86523 16.0652 7.02411 17 10.0003C16.0652 12.9766 13.2847 15.1354 10 15.1354C6.71527 15.1354 3.93477 12.9765 3 10.0003Z"
+              stroke="#737373"
+              stroke-width="1.67"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
       </InputGroup>
 
-      <div class="mt-0 text-right"> 
-        <router-link to="change-password" class="text-primary font-medium">Forgot Password?</router-link> 
+      <div class="mt-0 text-right">
+        <router-link to="change-password" class="text-primary font-medium"
+          >Forgot Password?</router-link
+        >
       </div>
-      <div class="mt-2 text-left remember-me-box"> <input type="checkbox" class="remember-me mr-2">Remember Me</div>
+      <div class="mt-2 text-left remember-me-box">
+        <input type="checkbox" class="remember-me mr-2" />Remember Me
+      </div>
 
       <div class="mb-5 mt-6">
         <button
@@ -137,20 +141,20 @@ const handleSubmit = async (e: Event) => {
 </script>
 
 <style scoped>
-.remember-me{
+.remember-me {
   width: 20px;
   height: 20px;
-  stroke: "#D4D4D4"; 
-  stroke-width:"1.5";
+  stroke: '#D4D4D4';
+  stroke-width: '1.5';
 }
 
 .remember-me-box {
-  display : flex;
+  display: flex;
   align-items: center;
 }
 
-.sign-in-box{
-  display : flex;
-  justify-content : center;
+.sign-in-box {
+  display: flex;
+  justify-content: center;
 }
 </style>
