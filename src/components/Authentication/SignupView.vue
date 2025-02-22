@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import DefaultAuthCard from '@/components/Auths/DefaultAuthCard.vue'
 import InputGroup from '@/components/Auths/InputGroup.vue'
-import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import SignUpAuthCard from '../Auths/SignUpAuthCard.vue'
+
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
@@ -61,7 +60,7 @@ const handleSubmit = async (e: Event) => {
 </script>
 
 <template>
-  <DefaultAuthCard
+  <SignUpAuthCard
     subtitle="Start for free"
     title="Sign Up to ZenGarden"
     class="mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12"
@@ -129,5 +128,5 @@ const handleSubmit = async (e: Event) => {
         </p>
       </div>
     </form>
-  </DefaultAuthCard>
+  </SignUpAuthCard>
 </template>
