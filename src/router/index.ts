@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import SigninView from '@/components/Authentication/SigninView.vue'
+import Error from '@/views/Pages/404PageView.vue'
 import SignupView from '@/components/Authentication/SignupView.vue'
 import Dashboard from '@/views/Dashboard/Dashboard.vue'
 import ProfileView from '@/views/ProfileView.vue'
@@ -117,7 +118,7 @@ const routes = [
   {
     path: '/:catchAll(.*)',
     name: '404',
-    component: LoginPage,
+    component: Error,
     meta: {
       title: '404',
       requiresAuth: true
