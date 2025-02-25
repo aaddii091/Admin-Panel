@@ -9,7 +9,7 @@ const props = defineProps(['subtitle', 'title', 'customClasses'])
   >
     <div class="flex flex-wrap items-center">
       <div class="hidden w-full xl:block xl:w-1/2 bg-indigo-50">
-        <div class="py-17.5 px-26 text-center">
+        <div class="py-18.5 px-26 text-center">
           <router-link class="mb-5.5 inline-block" to="/">
             <img
               class="hidden dark:block zengarden-logo"
@@ -34,7 +34,7 @@ const props = defineProps(['subtitle', 'title', 'customClasses'])
           </span>
         </div>
       </div>
-      <div class="w-full bg-white border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
+      <div class="w-full bg-white border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-0">
         <div class="w-full p-4 sm:p-12.5 xl:p-17.5">
           <span class="mb-1.5 block font-medium">{{ props.subtitle }}</span>
           <h2
