@@ -4,7 +4,7 @@
   <!-- Breadcrumb End -->
 
   <ResetPasswordAuthCard
-    title="Sign In"
+    title="Reset Password"
     class="mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12"
   >
     <form @submit="handleSubmit">
@@ -13,8 +13,10 @@
         {{ error }}
       </div>
 
+      <p class="mb-10 block font-medium text-black dark:text-white"> Please submit your email address. We will send you a link to reset your Password.</p>
+
       <InputGroup
-        label="Email Address"
+        label="Your Email Address"
         type="email"
         placeholder="john.dowry@example.com"
         v-model="email"
@@ -37,7 +39,7 @@
         </svg>
       </InputGroup>
 
-      <InputGroup
+      <!--<InputGroup
         label="Password"
         type="password"
         placeholder="6+ Characters, 1 Capital letter"
@@ -77,22 +79,21 @@
       </div>
       <div class="mt-2 text-left remember-me-box">
         <input type="checkbox" class="remember-me mr-2" />Remember Me
-      </div>
+      </div> -->
 
-      <div class="mb-5 mt-6">
+      <div class="mb-5 mt-10">
         <button
           type="submit"
           :disabled="loading"
-          class="w-full cursor-pointer rounded-full border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50"
+          class="w-full cursor-pointer rounded-full border border-primary bg-primary py-3 pl-4 p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50"
         >
-          {{ loading ? 'Signing in...' : 'Sign In' }}
+          {{ loading ? 'Signing in...' : 'Submit' }}
         </button>
       </div>
 
       <div class="mt-6 text-center">
         <p class="font-medium">
-          Don’t have any account?
-          <router-link to="signup" class="text-primary">Register</router-link>
+          <router-link to="signup" class="text-primary">Resend Link</router-link>
         </p>
       </div>
     </form>
