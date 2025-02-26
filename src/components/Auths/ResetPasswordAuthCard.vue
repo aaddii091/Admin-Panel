@@ -23,7 +23,7 @@ const props = defineProps(['subtitle', 'title', 'customClasses'])
             />
           </router-link>
 
-          <p class="font-medium 2xl:px-20">Register to Your Emotional Headquarters</p>
+          <p class="font-medium 2xl:px-20">Your Emotional Headquarters</p>
 
           <span class="mt-15 inline-block">
             <img
