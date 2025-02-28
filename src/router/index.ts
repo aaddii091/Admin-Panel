@@ -121,7 +121,7 @@ const routes = [
     component: Error,
     meta: {
       title: '404',
-      requiresAuth: true
+      requiresAuth: false
     }
   }
 ]
