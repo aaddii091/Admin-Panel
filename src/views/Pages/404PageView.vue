@@ -14,9 +14,11 @@
             <button
             type="submit"
             :disabled="loading"
-            class="w-full cursor-pointer rounded-full border border-primary bg-primary py-3 pl-4 p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50"
+            class="flex items-center justify-center gap-1 w-full cursor-pointer rounded-full border border-primary bg-primary py-3 pl-4 p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50"
             >
-              <img src="C:\Users\PRANAV BHANDAWAT\Documents\Zengarden\ZengardenCode\Admin-Panel\src\assets\images\icon\icon-copy-alt.svg">
+            <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.2437 15.8687C9.90201 16.2104 9.34799 16.2104 9.00628 15.8687L3.75628 10.6187C3.41457 10.277 3.41457 9.72299 3.75628 9.38128L9.00628 4.13128C9.34799 3.78957 9.90201 3.78957 10.2437 4.13128C10.5854 4.47299 10.5854 5.02701 10.2437 5.36872L6.48744 9.125H16.625C17.1082 9.125 17.5 9.51675 17.5 10C17.5 10.4832 17.1082 10.875 16.625 10.875L6.48744 10.875L10.2437 14.6313C10.5854 14.973 10.5854 15.527 10.2437 15.8687Z" fill="white"/>
+            </svg>
             {{ loading ? 'Signing in...' : 'Return to Home' }}
           </button>
         </div>
