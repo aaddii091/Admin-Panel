@@ -1,8 +1,9 @@
 <template>
-  <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark  mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
-    <div class="flex flex-wrap items-stretch xl:flex-nowrap items-center"> 
+  <!-- <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark  mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12"> -->
+  <!-- <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark  mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12"> -->
+    <div class="flex flex-wrap items-stretch flex-nowrap items-center min-h-screen"> 
       <!-- Left Section: Text -->
-      <div class="flex items-center justify-end w-full bg-white border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-0 p-4 sm:p-12.5 xl:p-17.5">
+      <div class="flex items-center sm:justify-center xl:justify-end w-full bg-white border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-0 p-4 sm:p-12.5 xl:p-17.5">
         <div class="container-content ">
           <span class="mb-1.5 block font-medium"></span> 
           <h2 class="mb-5 text-2xl font-bold text-black dark:text-white sm:text-title-xl2 sign-in-box">
@@ -32,7 +33,7 @@
         <img src="../../assets/images/illustration/404 Page Not Found.png" alt="illustration" class="sign-in-image ml-7"/>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <style>
