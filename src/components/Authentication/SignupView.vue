@@ -61,7 +61,8 @@ const handleSubmit = async (e: Event) => {
 
 <template>
   <SignUpAuthCard
-    title="Register"
+    subtitle="Start for free"
+    title="Sign Up to ZenGarden"
     class="mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12"
   >
     <form @submit="handleSubmit">
