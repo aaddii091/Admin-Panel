@@ -1,5 +1,4 @@
 <template>
-  <!-- pranav -->
   <div>
     <div class="flex flex-col gap-10">
       <div
@@ -49,7 +48,7 @@
                 <td class="py-5 px-4 text-center">
                   <div
                     class="items-center space-x-3.5 text-hover-1 cursor-pointer hover:text-primary"
-                    @click="startQuiz(item._id)"
+                    @click="startQuiz(item._id, item.type)"
                   >
                     Start
                   </div>
@@ -73,8 +72,12 @@ const router = useRouter()
 const store = useStore()
 const packages = ref([])
 
-const startQuiz = (quizId) => {
-  router.push(`/quiz/${quizId}`)
+const startQuiz = (quizId, type) => {
+  if (type === 'poll') {
+    router.push(`/mcq/${quizId}`)
+  } else if (type === 'poll PF') {
+    router.push(`/poll-pf/${quizId}`)
+  }
 }
 
 onBeforeMount(async () => {
