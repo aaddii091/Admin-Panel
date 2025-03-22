@@ -13,14 +13,14 @@
             {{ currentQuestion.text }}
           </h2>
 
-          <div v-if="currentQuestion" class="flex flex-col w-full gap-4 mt-4">
+          <div v-if="currentOptions" class="flex flex-col w-full gap-4 mt-4">
             <button
-              v-for="(option, key) in currentQuestion.options"
-              :key="key"
-              @click="selectChoice(currentQuestion.text, option)"
+              v-for="([key, value], index) in Object.entries(currentOptions)"
+              :key="index"
+              @click="selectChoice(currentQuestion.text, value)"
               class="w-full py-4 px-6 rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors font-medium text-lg dark:hover:bg-meta-4"
             >
-              {{ option }}
+              {{ value }}
             </button>
           </div>
 
@@ -58,7 +58,8 @@
 <script setup>
 import HeaderArea from '@/components/Header/HeaderLogoStance.vue'
 import axios from 'axios'
-import { onBeforeMount, ref } from 'vue'
+import { watch } from 'vue'
+import { onBeforeMount, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -66,6 +67,8 @@ const quizId = ref(route.params.id)
 const data = ref([])
 const quizName = ref('')
 const currentIndex = ref(0)
+const currentOptions = ref()
+const currentQuestion = ref(null)
 
 onBeforeMount(async () => {
   const authToken = localStorage.getItem('token')
@@ -82,11 +85,26 @@ onBeforeMount(async () => {
   } catch (error) {
     console.error('Error fetching quiz:', error)
   }
+
+  if (data.value.length > 0) {
+    currentQuestion.value = data.value[currentIndex.value]
+    currentOptions.value = data.value[0].options[0]
+  }
+
+  Object.entries(data.value[0].options[0]).forEach(([key, value]) => {
+    console.log(key, value)
+  })
+})
+
+watch(currentIndex, () => {
+  currentQuestion.value = data.value[currentIndex.value]
+  currentOptions.value = data.value[currentIndex.value].options[0]
 })
 
 // Function to handle selection
 const selectChoice = (questionText, choice) => {
   console.log(`Selected for "${questionText}": ${choice}`)
+  currentIndex.value++
 }
 
 // Navigation functions
@@ -101,12 +119,4 @@ const prevQuestion = () => {
     currentIndex.value--
   }
 }
-
-const currentQuestion = ref(null)
-
-onBeforeMount(() => {
-  if (data.value.length > 0) {
-    currentQuestion.value = data.value[currentIndex.value]
-  }
-})
 </script>
