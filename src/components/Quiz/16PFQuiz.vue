@@ -17,7 +17,7 @@
             <button
               v-for="([key, value], index) in Object.entries(currentOptions)"
               :key="index"
-              @click="selectChoice(currentQuestion.text, value)"
+              @click="selectChoice(key, value)"
               class="w-full py-4 px-6 rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors font-medium text-lg dark:hover:bg-meta-4"
             >
               {{ value }}
@@ -25,29 +25,29 @@
           </div>
 
           <!-- Navigation -->
-          <div class="flex justify-between w-full mt-8">
-            <button
+          <div class="flex justify-center w-full mt-8">
+            <!-- <button
               @click="prevQuestion"
               :disabled="currentIndex === 0"
               class="flex items-center gap-2 py-4 px-8 rounded-full border-2 border-gray-300 text-blue-500 hover:bg-blue-50 transition-colors font-medium dark:hover:bg-meta-4"
             >
               <span class="mr-2">←</span>
               Back
-            </button>
+            </button> -->
 
             <div
               class="flex items-center justify-center rounded-md border border-gray-300 px-4 py-2 text-blue-500"
             >
               Q{{ currentIndex + 1 }}
             </div>
-
+            <!-- 
             <button
               @click="nextQuestion"
-              class="flex items-center gap-2 py-4 px-8 rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors font-medium dark:hover:bg-meta-4"
+              class="flex items-center gap-2 py-4 px-8 rounded-full border-2 disable border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors font-medium dark:hover:bg-meta-4"
             >
               Next
               <span class="ml-2">→</span>
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
@@ -57,9 +57,12 @@
 
 <script setup>
 import HeaderArea from '@/components/Header/HeaderLogoStance.vue'
+
+import Swal from 'sweetalert2'
+
 import axios from 'axios'
 import { watch } from 'vue'
-import { onBeforeMount, onMounted, ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -70,6 +73,13 @@ const currentIndex = ref(0)
 const currentOptions = ref()
 const currentQuestion = ref(null)
 
+const answerSheet = ref({
+  quizId: '',
+  quizName: '',
+  quizType: '',
+  answers: {}
+})
+
 onBeforeMount(async () => {
   const authToken = localStorage.getItem('token')
 
@@ -79,6 +89,13 @@ onBeforeMount(async () => {
       { id: quizId.value },
       { headers: { Authorization: `Bearer ${authToken}` } }
     )
+    console.log(response)
+
+    let quiz = response.data.quiz[0]
+
+    answerSheet.value.quizId = quizId.value
+    answerSheet.value.quizName = quiz.title
+    answerSheet.value.quizType = quiz.type
 
     data.value = response.data.quiz[0].questions
     quizName.value = response.data.quiz[0].name
@@ -102,21 +119,54 @@ watch(currentIndex, () => {
 })
 
 // Function to handle selection
-const selectChoice = (questionText, choice) => {
-  console.log(`Selected for "${questionText}": ${choice}`)
-  currentIndex.value++
+const selectChoice = async (key, choice) => {
+  const questionId = currentQuestion.value._id
+  answerSheet.value.answers[questionId] = {
+    point: key,
+    answer: choice,
+    trait: currentQuestion.value.trait
+  }
+
+  console.log('AnswerSheet:', answerSheet.value)
+
+  if (currentIndex.value < data.value.length - 1) {
+    currentIndex.value++
+  } else {
+    try {
+      const authToken = localStorage.getItem('token')
+      const response = await axios
+        .post(`${import.meta.env.VITE_SERVER_URL}users/submit-quiz`, answerSheet.value, {
+          headers: { Authorization: `Bearer ${authToken}` }
+        })
+        .then(() => {
+          Swal.fire({
+            title: response.response.data.message,
+            icon: 'success',
+            draggable: true
+          })
+        })
+    } catch (err) {
+      Swal.fire({
+        title: err.response.data.message,
+        icon: 'error',
+        draggable: true
+      })
+      console.log(err)
+      err.response.data.message
+    }
+  }
 }
 
 // Navigation functions
-const nextQuestion = () => {
-  if (currentIndex.value < data.value.length - 1) {
-    currentIndex.value++
-  }
-}
+// const nextQuestion = () => {
+//   if (currentIndex.value < data.value.length - 1) {
+//     currentIndex.value++
+//   }
+// }
 
-const prevQuestion = () => {
-  if (currentIndex.value > 0) {
-    currentIndex.value--
-  }
-}
+// const prevQuestion = () => {
+//   if (currentIndex.value > 0) {
+//     currentIndex.value--
+//   }
+// }
 </script>
