@@ -24,30 +24,12 @@
             </button>
           </div>
 
-          <!-- Navigation -->
           <div class="flex justify-center w-full mt-8">
-            <!-- <button
-              @click="prevQuestion"
-              :disabled="currentIndex === 0"
-              class="flex items-center gap-2 py-4 px-8 rounded-full border-2 border-gray-300 text-blue-500 hover:bg-blue-50 transition-colors font-medium dark:hover:bg-meta-4"
-            >
-              <span class="mr-2">←</span>
-              Back
-            </button> -->
-
             <div
               class="flex items-center justify-center rounded-md border border-gray-300 px-4 py-2 text-blue-500"
             >
               Q{{ currentIndex + 1 }}
             </div>
-            <!-- 
-            <button
-              @click="nextQuestion"
-              class="flex items-center gap-2 py-4 px-8 rounded-full border-2 disable border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors font-medium dark:hover:bg-meta-4"
-            >
-              Next
-              <span class="ml-2">→</span>
-            </button> -->
           </div>
         </div>
       </div>
@@ -57,15 +39,13 @@
 
 <script setup>
 import HeaderArea from '@/components/Header/HeaderLogoStance.vue'
-
+import axios from 'axios'
+import { watch, onBeforeMount, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 
-import axios from 'axios'
-import { watch } from 'vue'
-import { onBeforeMount, ref } from 'vue'
-import { useRoute } from 'vue-router'
-
 const route = useRoute()
+const router = useRouter()
 const quizId = ref(route.params.id)
 const data = ref([])
 const quizName = ref('')
@@ -89,36 +69,42 @@ onBeforeMount(async () => {
       { id: quizId.value },
       { headers: { Authorization: `Bearer ${authToken}` } }
     )
-    console.log(response)
 
-    let quiz = response.data.quiz[0]
-
+    const quiz = response.data.quiz[0]
     answerSheet.value.quizId = quizId.value
     answerSheet.value.quizName = quiz.title
     answerSheet.value.quizType = quiz.type
+    data.value = quiz.questions
+    quizName.value = quiz.title
 
-    data.value = response.data.quiz[0].questions
-    quizName.value = response.data.quiz[0].name
+    // ✅ Restore from localStorage if available
+    const savedProgress = localStorage.getItem('currentQuizProgress')
+    if (savedProgress) {
+      const parsed = JSON.parse(savedProgress)
+      if (parsed.answerSheet.quizId === quizId.value) {
+        const confirmResume = confirm('Do you want to resume where you left off?')
+        if (confirmResume) {
+          answerSheet.value = parsed.answerSheet
+          currentIndex.value = parsed.currentIndex
+        }
+      }
+    }
+
+    if (data.value.length > 0) {
+      currentQuestion.value = data.value[currentIndex.value]
+      currentOptions.value = currentQuestion.value.options[0]
+    }
   } catch (error) {
     console.error('Error fetching quiz:', error)
   }
-
-  if (data.value.length > 0) {
-    currentQuestion.value = data.value[currentIndex.value]
-    currentOptions.value = data.value[0].options[0]
-  }
-
-  Object.entries(data.value[0].options[0]).forEach(([key, value]) => {
-    console.log(key, value)
-  })
 })
 
 watch(currentIndex, () => {
   currentQuestion.value = data.value[currentIndex.value]
-  currentOptions.value = data.value[currentIndex.value].options[0]
+  currentOptions.value = currentQuestion.value.options[0]
 })
 
-// Function to handle selection
+// ✅ Handle answer + localStorage save
 const selectChoice = async (key, choice) => {
   const questionId = currentQuestion.value._id
   answerSheet.value.answers[questionId] = {
@@ -127,8 +113,16 @@ const selectChoice = async (key, choice) => {
     trait: currentQuestion.value.trait
   }
 
-  console.log('AnswerSheet:', answerSheet.value)
+  // ✅ Save to localStorage on every answer
+  localStorage.setItem(
+    'currentQuizProgress',
+    JSON.stringify({
+      currentIndex: currentIndex.value,
+      answerSheet: answerSheet.value
+    })
+  )
 
+  // Go to next question or submit
   if (currentIndex.value < data.value.length - 1) {
     currentIndex.value++
   } else {
@@ -140,10 +134,12 @@ const selectChoice = async (key, choice) => {
         })
         .then(() => {
           Swal.fire({
-            title: response.response.data.message,
+            title: 'Quiz is Submitted',
             icon: 'success',
             draggable: true
           })
+
+          localStorage.removeItem('currentQuizProgress')
         })
     } catch (err) {
       Swal.fire({
@@ -156,17 +152,4 @@ const selectChoice = async (key, choice) => {
     }
   }
 }
-
-// Navigation functions
-// const nextQuestion = () => {
-//   if (currentIndex.value < data.value.length - 1) {
-//     currentIndex.value++
-//   }
-// }
-
-// const prevQuestion = () => {
-//   if (currentIndex.value > 0) {
-//     currentIndex.value--
-//   }
-// }
 </script>
