@@ -1,0 +1,60 @@
+{
+  "title": "16PF Scoring System",
+  "type": "scoring",
+  "questions": [
+    {
+      "text": "I have the instructions for this test clearly in mind.",
+      "trait": "A",
+      "options": { "0": "yes", "1": "no", "2": "maybe" }
+    },
+    {
+      "text": "I am ready to answer each question as truthfully as possible.",
+      "trait": "B",
+      "options": ["yes", "in between", "no"]
+    },
+    {
+      "text": "For a vacation I would rather go to a busy holiday town.",
+      "trait": "C",
+      "options": [
+        "a busy holiday town",
+        "something in between",
+        "a quiet cottage off the beaten track"
+      ]
+    },
+    {
+      "text": "When I'm in a small, cramped space (as on a crowded elevator), I have an uncomfortable feeling of being 'shut in.'",
+      "trait": "E",
+      "options": ["never", "rarely", "occasionally"]
+    },
+    {
+      "text": "I find myself thinking over quite trivial troubles again and again and have to make a real effort to put them out of my mind.",
+      "trait": "F",
+      "options": ["yes (true)", "occasionally", "no (false)"]
+    },
+    {
+      "text": "If I know that another person's line of reasoning is in error, I tend to speak out.",
+      "trait": "G",
+      "options": ["keep quiet", "in between", "speak out"]
+    },
+    {
+      "text": "My ideas appear to be ahead of the times.",
+      "trait": "H",
+      "options": ["ahead of the times", "uncertain", "with the times"]
+    },
+    {
+      "text": "I am not much given to cracking jokes and telling amusing stories.",
+      "trait": "I",
+      "options": ["true", "in between", "false"]
+    },
+    {
+      "text": "It is better to live to a ripe old age than to be worn out with good services for one's community.",
+      "trait": "L",
+      "options": ["true", "in between", "false"]
+    },
+    {
+      "text": "I have been active in organizing a club, team, or similar social group.",
+      "trait": "M",
+      "options": ["yes, often", "occasionally", "never"]
+    }
+  ]
+}
