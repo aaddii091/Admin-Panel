@@ -3,7 +3,7 @@
 
   <!-- Breadcrumb End -->
 
-  <DefaultAuthCard
+  <ResetPasswordAuthCard
     title="Sign In"
     class="mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12"
   >
@@ -96,10 +96,11 @@
         </p>
       </div>
     </form>
-  </DefaultAuthCard>
+  </ResetPasswordAuthCard>
 </template>
 <script setup lang="ts">
-import DefaultAuthCard from '@/components/Auths/DefaultAuthCard.vue'
+import ResetPasswordAuthCard from '@/components/Auths/ResetPasswordAuthCard.vue'
+
 import InputGroup from '@/components/Auths/InputGroup.vue'
 import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'

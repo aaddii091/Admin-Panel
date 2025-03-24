@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import SigninView from '@/components/Authentication/SigninView.vue'
+import Error from '@/views/Pages/404PageView.vue'
 import SignupView from '@/components/Authentication/SignupView.vue'
 import Dashboard from '@/views/Dashboard/Dashboard.vue'
 import ProfileView from '@/views/ProfileView.vue'
@@ -8,10 +9,11 @@ import QuestionnairesTopView from '@/views/Questionnaires/topView.vue'
 import QuestionnairesFormView from '@/views/Questionnaires/formView.vue'
 import QuestionnairesCompletedView from '@/views/Questionnaires/completedView.vue'
 import ResetPasswordViewVue from '@/components/Authentication/ResetPasswordView.vue'
-import QuizView from '@/components/Quiz/MCQQuiz.vue'
+import MCQView from '@/components/Quiz/MCQQuiz.vue'
 import ResultsView from '@/views/Results/resultsView.vue'
 import TestsView from '@/views/TestsView.vue'
 import LoginPage from '@/views/Authentication/LoginPage.vue'
+import PF from '@/components/Quiz/16PFQuiz.vue'
 
 
 const routes = [
@@ -97,11 +99,20 @@ const routes = [
     }
   },
   {
-    path: '/quiz/:id',
-    name: 'quiz',
-    component: QuizView,
+    path: '/mcq/:id',
+    name: 'mcq',
+    component: MCQView,
     meta: {
-      title: 'Quiz',
+      title: 'MCQ',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/poll-pf/:id',
+    name: '16-pf',
+    component: PF,
+    meta: {
+      title: '16-PF',
       requiresAuth: true
     }
   },
@@ -115,12 +126,21 @@ const routes = [
     }
   },
   {
-    path: '/:catchAll(.*)',
-    name: '404',
-    component: LoginPage,
+    path: '/pf',
+    name: '16',
+    component: PF,
     meta: {
       title: '404',
-      requiresAuth: true
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: '404',
+    component: Error,
+    meta: {
+      title: '404',
+      requiresAuth: false
     }
   }
 ]
