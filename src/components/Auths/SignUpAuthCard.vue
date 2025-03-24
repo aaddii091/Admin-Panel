@@ -54,7 +54,7 @@ const props = defineProps(['subtitle', 'title', 'customClasses'])
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @theme {
-  font-display: "Nunito", sans-serif; 
+  font-display: 'Nunito', sans-serif;
 }
 
 .sign-in-box {
