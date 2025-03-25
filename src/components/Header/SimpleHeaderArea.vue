@@ -44,13 +44,13 @@ const goToPage = (url: string) => {
           <!-- <img src="@/assets/images/logo/logo-icon.svg" alt="Logo" /> -->
           <img
             class="hidden dark:block"
-            src="@/assets/images/logo/logo-dark.png"
+            src="../../assets/images/logo/Zengarden Logo-28.png"
             alt="Logo"
             width="180"
           />
           <img
             class="dark:hidden"
-            src="@/assets/images/logo/logo-light.png"
+            src="../../assets/images/logo/Zengarden Logo-28.png"
             alt="Logo"
             width="180"
           />
