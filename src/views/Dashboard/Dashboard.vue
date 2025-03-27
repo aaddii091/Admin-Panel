@@ -2,12 +2,13 @@
 <script setup lang="ts">
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import QuizList from '@/components/Quiz/QuizList.vue'
-// import TestCount from '../components/Quiz/TestCount.vue'
+import TestCount from '@/components/DataStats/TestCount.vue'
+
 </script>
 
 <template>
   <DefaultLayout>
-    <!-- <TestCount/> -->
+    <TestCount/>
     <QuizList />
   </DefaultLayout>
 </template>

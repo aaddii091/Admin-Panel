@@ -15,9 +15,9 @@
  </div>
 </template>
 
-<script>
-export default {
-    name: 'TestCount'
-};
+<script setup>
+defineOptions({
+  name: 'TestCount'
+});
 </script>
 
