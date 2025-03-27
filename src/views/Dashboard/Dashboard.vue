@@ -8,7 +8,10 @@ import TestCount from '@/components/DataStats/TestCount.vue'
 
 <template>
   <DefaultLayout>
-    <TestCount/>
+    <div class="flex justify-around gap=32px"> 
+      <TestCount label="Assigned Tests"/>
+      <TestCount label="Completed Tests"/>
+    </div>
     <QuizList />
   </DefaultLayout>
 </template>

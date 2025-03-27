@@ -3,7 +3,7 @@
     <div class="flex w-full justify-between">
       <!-- Text Section -->
       <div class="flex flex-col items-start">
-        <h2 class="text-[#404040] text-[18px] font-medium">Assigned Tests</h2>
+        <h2 class="text-[#404040] text-[18px] font-medium">{{ label }}</h2>
         <h2 class="mt-4 text-[28px] font-bold text-black">03</h2>
       </div>
 
@@ -25,6 +25,10 @@
 <script setup>
 defineOptions({
   name: 'TestCount'
+});
+
+defineProps({
+  label: String
 });
 </script>
 
