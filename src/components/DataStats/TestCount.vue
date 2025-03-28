@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[592px] h-[108px] rounded-[6px] border-0 flex items-center px-4 md:shadow-sm shadow-[0_1px_2px_rgba(16, 24, 40, 0.05)]" :class="background">
+  <div class="w-[592px] h-[108px] rounded-[6px] border-0 flex items-center px-4 drop-shadow-xs" :class="background">
     <div class="flex w-full justify-between">
       <!-- Text Section -->
       <div class="flex flex-col items-start">
