@@ -4,7 +4,7 @@
       <!-- Text Section -->
       <div class="flex flex-col items-start">
         <h2 class="text-[#404040] text-[18px] font-medium">{{ label }}</h2>
-        <h2 class="mt-4 text-[28px] font-bold text-black">{{ count }}</h2>
+        <h2 class="mt-4 text-[28px] font-bold text-black">{{ formattedCount }}</h2>
       </div>
 
       <!-- Button Section (Moved to Right) -->
@@ -23,17 +23,19 @@
 
 
 <script setup>
+import { computed } from 'vue';
+
 defineOptions({
   name: 'TestCount'
 });
 
-defineProps({
+const props = defineProps({
   label: String,
   background : String,
   count : Number
 });
 
 // Format count to always show as 2 digits (e.g., 03, 07, 10)
-// const formattedCount = computed(() => String(props.count).padStart(2, '0'));
+const formattedCount = computed(() => String(props.count).padStart(2, '0'));
 </script>
 
