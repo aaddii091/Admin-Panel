@@ -1,10 +1,10 @@
 <template>
-  <div class="w-[592px] h-[108px] rounded-[6px] border bg-[#EBEDFF] flex items-center px-4">
+  <div class="w-[592px] h-[108px] rounded-[6px] border-0 flex items-center px-4 md:shadow-sm shadow-[0_1px_2px_rgba(16, 24, 40, 0.05)]" :class="background">
     <div class="flex w-full justify-between">
       <!-- Text Section -->
       <div class="flex flex-col items-start">
         <h2 class="text-[#404040] text-[18px] font-medium">{{ label }}</h2>
-        <h2 class="mt-4 text-[28px] font-bold text-black">03</h2>
+        <h2 class="mt-4 text-[28px] font-bold text-black">{{ count }}</h2>
       </div>
 
       <!-- Button Section (Moved to Right) -->
@@ -28,7 +28,12 @@ defineOptions({
 });
 
 defineProps({
-  label: String
+  label: String,
+  background : String,
+  count : Number
 });
+
+// Format count to always show as 2 digits (e.g., 03, 07, 10)
+// const formattedCount = computed(() => String(props.count).padStart(2, '0'));
 </script>
 
