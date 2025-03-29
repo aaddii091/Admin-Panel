@@ -141,7 +141,7 @@ router.beforeEach((to, from, next) => {
     // Redirect to login if trying to access protected route while not authenticated
     next({ name: 'login' })
   } else {
-    document.title = `${to.meta.title} | ZenGarden User page`
+    document.title = `${to.meta.title} | Zengarden User page`
     next()
   }
 })
