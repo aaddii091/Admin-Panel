@@ -9,26 +9,26 @@
           <table class="w-full table-auto">
             <thead>
               <!-- border-gray-2 -->
-              <tr class="bg-[#FAFAFA] text-left dark:bg-meta-4">
-                <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+              <tr class="bg-[#FAFAFA] text-left dark:bg-meta-4 text-uppercase">
+                <th class="min-w-[220px] py-4 px-4 font-medium text-[#525252] dark:text-white xl:pl-11 ">
                   Test Name
                 </th>
                 <th
-                  class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white text-center"
+                  class="min-w-[150px] py-4 px-4 font-medium text-[#525252] dark:text-white text-center"
                 >
                   Assigned By
                 </th>
                 <th
-                  class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white text-center"
+                  class="min-w-[120px] py-4 px-4 font-medium text-[#525252] dark:text-white text-center"
                 >
                   Date Taken
                 </th>
                 <th
-                  class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white text-center"
+                  class="min-w-[120px] py-4 px-4 font-medium text-[#525252] dark:text-white text-center"
                 >
                   Report Status
                 </th>
-                <th class="py-4 px-4 font-medium text-black dark:text-white text-center">
+                <th class="py-4 px-4 font-medium text-[#525252] dark:text-white text-center">
                   Actions
                 </th>
               </tr>
@@ -108,4 +108,9 @@ onBeforeMount(async () => {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
 </style>
