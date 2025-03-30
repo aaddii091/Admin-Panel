@@ -39,6 +39,12 @@
   <!-- </div> -->
 </template>
 
+<script setup>
+import { ref } from 'vue';
+
+const loading = ref(false);
+</script>
+
 <style>
   .sign-in-image {
     width: 400px;

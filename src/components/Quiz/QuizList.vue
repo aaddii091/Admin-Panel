@@ -60,7 +60,7 @@
                     class="items-center space-x-3.5 text-hover-1 cursor-pointer hover:text-primary"
                     @click="startQuiz(item._id)"
                   >
-                    Start
+                    View
                   </div>
                 </td>
               </tr>
