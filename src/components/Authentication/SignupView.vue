@@ -61,7 +61,7 @@ const handleSubmit = async (e: Event) => {
 
 <template>
   <SignUpAuthCard
-    title="Register to Zengarden"
+    title="Register"
     class="mx-4 sm:mx-8 md:mx-12 lg:mx-18 mt-6 sm:mt-8 md:mt-10 lg:mt-12"
   >
     <form @submit="handleSubmit">
@@ -90,37 +90,31 @@ const handleSubmit = async (e: Event) => {
         <!-- svg content -->
       </InputGroup>
 
-      <InputGroup
-        label="Password"
-        type="password"
-        placeholder=""
-        v-model="password"
-        required
-      >
-      <div class="icon-eye">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M12.2004 10.0003C12.2004 11.2158 11.2151 12.2011 9.99967 12.2011C8.78423 12.2011 7.79892 11.2158 7.79892 10.0003C7.79892 8.78488 8.78423 7.79957 9.99967 7.79957C11.2151 7.79957 12.2004 8.78488 12.2004 10.0003Z"
-                  stroke="#737373"
-                  stroke-width="1.67"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M3 10.0003C3.93479 7.02408 6.71528 4.86523 9.99999 4.86523C13.2847 4.86523 16.0652 7.02411 17 10.0003C16.0652 12.9766 13.2847 15.1354 10 15.1354C6.71527 15.1354 3.93477 12.9765 3 10.0003Z"
-                  stroke="#737373"
-                  stroke-width="1.67"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
+      <InputGroup label="Password" type="password" placeholder="" v-model="password" required>
+        <div class="icon-eye">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <path
+              d="M12.2004 10.0003C12.2004 11.2158 11.2151 12.2011 9.99967 12.2011C8.78423 12.2011 7.79892 11.2158 7.79892 10.0003C7.79892 8.78488 8.78423 7.79957 9.99967 7.79957C11.2151 7.79957 12.2004 8.78488 12.2004 10.0003Z"
+              stroke="#737373"
+              stroke-width="1.67"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3 10.0003C3.93479 7.02408 6.71528 4.86523 9.99999 4.86523C13.2847 4.86523 16.0652 7.02411 17 10.0003C16.0652 12.9766 13.2847 15.1354 10 15.1354C6.71527 15.1354 3.93477 12.9765 3 10.0003Z"
+              stroke="#737373"
+              stroke-width="1.67"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
         <!-- svg content -->
       </InputGroup>
 
@@ -130,36 +124,38 @@ const handleSubmit = async (e: Event) => {
         placeholder=""
         v-model="confirmPassword"
         required
-        >
+      >
         <div class="icon-eye">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M12.2004 10.0003C12.2004 11.2158 11.2151 12.2011 9.99967 12.2011C8.78423 12.2011 7.79892 11.2158 7.79892 10.0003C7.79892 8.78488 8.78423 7.79957 9.99967 7.79957C11.2151 7.79957 12.2004 8.78488 12.2004 10.0003Z"
-                  stroke="#737373"
-                  stroke-width="1.67"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M3 10.0003C3.93479 7.02408 6.71528 4.86523 9.99999 4.86523C13.2847 4.86523 16.0652 7.02411 17 10.0003C16.0652 12.9766 13.2847 15.1354 10 15.1354C6.71527 15.1354 3.93477 12.9765 3 10.0003Z"
-                  stroke="#737373"
-                  stroke-width="1.67"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <path
+              d="M12.2004 10.0003C12.2004 11.2158 11.2151 12.2011 9.99967 12.2011C8.78423 12.2011 7.79892 11.2158 7.79892 10.0003C7.79892 8.78488 8.78423 7.79957 9.99967 7.79957C11.2151 7.79957 12.2004 8.78488 12.2004 10.0003Z"
+              stroke="#737373"
+              stroke-width="1.67"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3 10.0003C3.93479 7.02408 6.71528 4.86523 9.99999 4.86523C13.2847 4.86523 16.0652 7.02411 17 10.0003C16.0652 12.9766 13.2847 15.1354 10 15.1354C6.71527 15.1354 3.93477 12.9765 3 10.0003Z"
+              stroke="#737373"
+              stroke-width="1.67"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
         <!-- svg content -->
       </InputGroup>
 
       <div class="remember-me mb-8">
-        <label class="remember-me-box"><input type="checkbox" class="remember-me-checkbox">Remember me</label>
+        <label class="remember-me-box"
+          ><input type="checkbox" class="remember-me-checkbox" />Remember me</label
+        >
       </div>
 
       <div class="mb-5 mt-6">
@@ -182,11 +178,11 @@ const handleSubmit = async (e: Event) => {
   </SignUpAuthCard>
 </template>
 <style scoped>
-.remember-me{
+.remember-me {
   width: 440px;
   height: 20px;
-  stroke: "#D4D4D4"; 
-  stroke-width:"1.5";
+  stroke: '#D4D4D4';
+  stroke-width: '1.5';
 }
 
 .remember-me-box {
@@ -196,10 +192,10 @@ const handleSubmit = async (e: Event) => {
   align-self: stretch;
 }
 
-.remember-me-checkbox{
+.remember-me-checkbox {
   width: 20px;
   height: 20px;
-  stroke: #D4D4D4;
+  stroke: #d4d4d4;
   stroke-width: 1.5px;
 }
 </style>
