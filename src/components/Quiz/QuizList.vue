@@ -2,26 +2,32 @@
   <div>
     <div class="flex flex-col gap-10">
       <div
-        class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
+        class="rounded-sm border-0 border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
       >
         <div class="max-w-full overflow-x-auto">
           <table class="w-full table-auto">
             <thead>
-              <tr class="bg-gray-2 text-left dark:bg-meta-4">
-                <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                  Test
+              <!-- border-gray-2 -->
+              <tr class="bg-[#FAFAFA] text-left dark:bg-meta-4 text-uppercase">
+                <th class="min-w-[220px] py-4 px-4 font-medium text-[#525252] dark:text-white xl:pl-11 ">
+                  Test Name
                 </th>
                 <th
-                  class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white text-center"
+                  class="min-w-[150px] py-4 px-4 font-medium text-[#525252] dark:text-white text-center"
                 >
                   Assigned By
                 </th>
                 <th
-                  class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white text-center"
+                  class="min-w-[120px] py-4 px-4 font-medium text-[#525252] dark:text-white text-center"
                 >
-                  Type
+                  Date Taken
                 </th>
-                <th class="py-4 px-4 font-medium text-black dark:text-white text-center">
+                <th
+                  class="min-w-[120px] py-4 px-4 font-medium text-[#525252] dark:text-white text-center"
+                >
+                  Report Status
+                </th>
+                <th class="py-4 px-4 font-medium text-[#525252] dark:text-white text-center">
                   Actions
                 </th>
               </tr>
@@ -45,12 +51,15 @@
                     {{ item.type }}
                   </p>
                 </td>
+                <td class="py-5 px-4">
+                  <p class="text-black dark:text-white text-center">Zen</p>
+                </td>
                 <td class="py-5 px-4 text-center">
                   <div
                     class="items-center space-x-3.5 text-hover-1 cursor-pointer hover:text-primary"
                     @click="startQuiz(item._id, item.type)"
                   >
-                    Start
+                    View
                   </div>
                 </td>
               </tr>
@@ -102,4 +111,9 @@ onBeforeMount(async () => {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
 </style>

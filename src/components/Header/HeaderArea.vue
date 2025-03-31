@@ -18,8 +18,9 @@ const sidebarStore = useSidebarStore()
     <!-- SIDEBAR HEADER --->
     <div class="flex flex-grow items-center justify-between shadow-2 md:px-6 2xl:px-11">
       <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
+        
         <router-link to="/">
-          <img src="@/assets/images/logo/logo-dark.png" alt="Logo" width="180" />
+          <img src="@/assets/images/logo/Zengarden Logo-28.png" alt="Logo" width="180" />
         </router-link>
 
         <button class="block lg:hidden" @click="sidebarStore.isSidebarOpen = false">

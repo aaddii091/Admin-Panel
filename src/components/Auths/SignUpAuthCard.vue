@@ -34,7 +34,11 @@ const props = defineProps(['subtitle', 'title', 'customClasses'])
           </span>
         </div>
       </div>
+<<<<<<< HEAD
+      <div class="w-full bg-white border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
+=======
       <div class="w-full bg-white border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-0">
+>>>>>>> origin/main
         <div class="w-full p-4 sm:p-12.5 xl:p-17.5">
           <span class="mb-1.5 block font-medium">{{ props.subtitle }}</span>
           <h2
@@ -52,11 +56,14 @@ const props = defineProps(['subtitle', 'title', 'customClasses'])
 </template>
 
 <style scoped>
+<<<<<<< HEAD
+=======
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @theme {
   font-display: 'Nunito', sans-serif;
 }
 
+>>>>>>> origin/main
 .sign-in-box {
   display: flex;
   justify-content: center;
