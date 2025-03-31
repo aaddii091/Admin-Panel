@@ -11,6 +11,7 @@ export default {
     screens: {
       '2xsm': '375px',
       xsm: '425px',
+      md: '725px',
       '3xl': '2000px',
       ...defaultTheme.screens
     },
@@ -292,7 +293,7 @@ export default {
           '0%, 100%': { transform: 'translate3d(0, 0, 0)' },
           '50%': { transform: 'translate3d(0, -100%, 0)' }
         },
-        shake : {
+        shake: {
           '10%, 90%': {
             transform: 'translate3d(0px, 0, 0)'
           },
@@ -316,7 +317,7 @@ export default {
         'spin-1.5': 'spin 1.5s linear infinite',
         'spin-2': 'spin 2s linear infinite',
         'spin-3': 'spin 3s linear infinite',
-        shake: 'shake 1s cubic-bezier(.36,.07,.19,.97) both infinite',
+        shake: 'shake 1s cubic-bezier(.36,.07,.19,.97) both infinite'
       }
     }
   },
