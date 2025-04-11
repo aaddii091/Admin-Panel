@@ -84,15 +84,15 @@ const sidebarStore = useSidebarStore()
         </router-link>
       </div>
       <div class="hidden sm:block">
-        <ul class="flex gap-6 text-sm font-medium text-gray-600 dark:text-gray-300 ml-6">
-          <li>
-            <router-link to="/" class="hover:text-blue-600">Dashboard</router-link>
+        <ul class="flex gap-18 text-xl font-medium text-[#262626] dark:text-gray-300 ml-6">
+          <li class="navbar">
+            <router-link to="/">Dashboard</router-link>
           </li>
-          <li>
-            <router-link to="/tests" class="hover:text-blue-600">Tests</router-link>
+          <li class="navbar">
+            <router-link to="/tests" >Tests</router-link>
           </li>
-          <li>
-            <router-link to="/support" class="hover:text-blue-600">Support</router-link>
+          <li class="navbar">
+            <router-link to="/support">Support</router-link>
           </li>
         </ul>
 
@@ -157,5 +157,23 @@ const sidebarStore = useSidebarStore()
 </template>
 
 <style scoped>
+  .navbar{
+    text-transform : capitalize;
+    position: relative;
+  }
 
+.navbar a::before {
+  position: absolute;
+  content: '';
+  bottom: -10px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #3C50E0;
+  transition: all .5s
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
 </style>
