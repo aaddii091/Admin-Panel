@@ -39,8 +39,4 @@ defineOptions({
     .support-screen {
         height : calc(100vh - 128px);
     }
-
-    .support-container{
-
-    }
 </style>

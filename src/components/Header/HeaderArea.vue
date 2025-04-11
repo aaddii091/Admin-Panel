@@ -168,6 +168,7 @@ const sidebarStore = useSidebarStore()
   bottom: -10px;
   left: 0;
   width: 0%;
+  border-radius: 2px;
   height: 3px;
   background-color: #3C50E0;
   transition: all .5s
