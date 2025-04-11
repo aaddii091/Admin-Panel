@@ -143,3 +143,7 @@ const sidebarStore = useSidebarStore()
     </div>
   </header>
 </template>
+
+<style scoped>
+
+</style>
