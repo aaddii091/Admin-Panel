@@ -86,7 +86,7 @@ const sidebarStore = useSidebarStore()
       <div class="hidden sm:block">
         <ul class="flex gap-6 text-sm font-medium text-gray-600 dark:text-gray-300 ml-6">
           <li>
-            <router-link to="/dashboard" class="hover:text-blue-600">Dashboard</router-link>
+            <router-link to="/" class="hover:text-blue-600">Dashboard</router-link>
           </li>
           <li>
             <router-link to="/tests" class="hover:text-blue-600">Tests</router-link>

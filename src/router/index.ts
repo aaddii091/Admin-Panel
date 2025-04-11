@@ -14,6 +14,8 @@ import ResultsView from '@/views/Results/resultsView.vue'
 import TestsView from '@/views/TestsView.vue'
 import LoginPage from '@/views/Authentication/LoginPage.vue'
 import PF from '@/components/Quiz/16PFQuiz.vue'
+import Support from '@/views/Dashboard/Support.vue'
+
 
 
 const routes = [
@@ -141,6 +143,15 @@ const routes = [
     meta: {
       title: '404',
       requiresAuth: false
+    }
+  },
+  {
+    path: '/support',
+    name: 'support',
+    component: Support,
+    meta: {
+      title: 'Support',
+      requiresAuth: true
     }
   }
 ]
