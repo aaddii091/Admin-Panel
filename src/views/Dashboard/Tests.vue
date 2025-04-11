@@ -8,6 +8,10 @@ import TestCount from '@/components/DataStats/TestCount.vue'
 const assignedTests = 3;
 const completedTests = 9;
 const username = 'x';
+
+defineOptions({
+  name: 'Tests-tab'
+});
 </script>
 
 <template>
