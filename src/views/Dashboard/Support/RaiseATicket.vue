@@ -3,7 +3,7 @@
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
 defineOptions({
-  name: 'Support-tab'
+  name: 'Support-tab-raise-a-ticket'
 });
 </script>
 
@@ -12,7 +12,7 @@ defineOptions({
     <div class="mb-4">
     </div>
     <div class="support-screen bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark">
-      <h2 class="font-bold text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white">Support Ticket</h2>
+      <h2 class="font-bold text-center text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white">Raise A Support Ticket</h2>
 
       <div class="support-container flex flex-col items-center justify-center h-full gap-y-6 mx-auto sm:max-w-[548px] w-full">
         <h2 class="flex font-bold text-[36px] leading-[44px] text-[#404040] text-center dark:text-white">Request Support from Us</h2>
@@ -21,7 +21,7 @@ defineOptions({
         <div class="mb-5 mt-2">
             <router-link to="/support/raiseATicket">
                 <button
-                type="button"
+                type="submit"
                 :disabled="loading"
                 class="flex gap-x-2 w-sm cursor-pointer rounded-full border border-primary bg-primary py-3 pl-4 p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50 items-center"
                 >
