@@ -1,6 +1,7 @@
 <reference path="path/types.d.ts" />
 <script setup lang="ts">
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import InputGroup from '@/components/Auths/InputGroup.vue'
 
 defineOptions({
   name: 'Support-tab-raise-a-ticket'
