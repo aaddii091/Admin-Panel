@@ -91,6 +91,7 @@ const handleSubmit = async (e: Event) => {
       </InputGroup>
 
       <InputGroup label="Password" type="password" placeholder="" v-model="password" required>
+        <template #right>
         <div class="icon-eye">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -115,6 +116,7 @@ const handleSubmit = async (e: Event) => {
             />
           </svg>
         </div>
+      </template>
         <!-- svg content -->
       </InputGroup>
 
@@ -125,6 +127,7 @@ const handleSubmit = async (e: Event) => {
         v-model="confirmPassword"
         required
       >
+      <template #right>
         <div class="icon-eye">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -149,6 +152,7 @@ const handleSubmit = async (e: Event) => {
             />
           </svg>
         </div>
+      </template>
         <!-- svg content -->
       </InputGroup>
 

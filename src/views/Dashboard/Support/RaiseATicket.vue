@@ -12,13 +12,50 @@ defineOptions({
   <DefaultLayout>
     <div class="mb-4">
     </div>
-    <div class="support-screen bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark">
+    <div class="support-screen bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark flex flex-col items-center justify-center">
       <h2 class="font-bold text-center text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white">Raise A Support Ticket</h2>
 
-      <div class="support-container flex flex-col items-center justify-center h-full gap-y-6 mx-auto sm:max-w-[548px] w-full">
-        <h2 class="flex font-bold text-[36px] leading-[44px] text-[#404040] text-center dark:text-white">Request Support from Us</h2>
-        <h2 class="flex font-medium text-[18px] leading-[28px] text-[#404040] text-center dark:text-[#AEAEAE]">We welcome any suggestions or reporting bugs to help with the improvement of our Zengarden Ecosystem!</h2>
+      <div class="support-form flex flex-col mt-6">
+        <div>
+            <InputGroup
+            label="Title"
+            type="text"
+            placeholder="Give a short title here"
+            v-model="name"
+            required
+        >
+        <template #left>
+            
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 20.2499H4.5C4.30109 20.2499 4.11032 20.1709 3.96967 20.0302C3.82902 19.8896 3.75 19.6988 3.75 19.4999V15.3105C3.75 15.2121 3.7694 15.1145 3.80709 15.0235C3.84478 14.9325 3.90003 14.8499 3.96967 14.7802L15.2197 3.53022C15.3603 3.38956 15.5511 3.31055 15.75 3.31055C15.9489 3.31055 16.1397 3.38956 16.2803 3.53022L20.4697 7.71956C20.6103 7.86021 20.6893 8.05097 20.6893 8.24989C20.6893 8.4488 20.6103 8.63956 20.4697 8.78022L9 20.2499Z" stroke="#3C50E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.75 6L18 11.25" stroke="#3C50E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20.2501 20.2499H9.00013L3.79785 15.0476" stroke="#3C50E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
 
+        </template>
+        </InputGroup>
+    </div>
+    <div class="mt-4">
+            <InputGroup
+            label="What happened"
+            type="text"
+            placeholder="I encountered a bug in the Zengarden AI Assistant where it fails to recognize text selections within a canvas in row view. Despite highlighting the text, the assistant does not respond appropriately..."
+            v-model="name"
+            required
+        >
+        <template #left>
+            
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 20.2499H4.5C4.30109 20.2499 4.11032 20.1709 3.96967 20.0302C3.82902 19.8896 3.75 19.6988 3.75 19.4999V15.3105C3.75 15.2121 3.7694 15.1145 3.80709 15.0235C3.84478 14.9325 3.90003 14.8499 3.96967 14.7802L15.2197 3.53022C15.3603 3.38956 15.5511 3.31055 15.75 3.31055C15.9489 3.31055 16.1397 3.38956 16.2803 3.53022L20.4697 7.71956C20.6103 7.86021 20.6893 8.05097 20.6893 8.24989C20.6893 8.4488 20.6103 8.63956 20.4697 8.78022L9 20.2499Z" stroke="#3C50E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.75 6L18 11.25" stroke="#3C50E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20.2501 20.2499H9.00013L3.79785 15.0476" stroke="#3C50E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+        </template>
+        </InputGroup>
+    </div>
+      </div>
+      <div class="support-container flex flex-col items-center justify-center h-full gap-y-6 mx-auto sm:max-w-[548px] w-full">
         <div class="mb-5 mt-2">
             <router-link to="/support/raiseATicket">
                 <button
@@ -43,5 +80,8 @@ defineOptions({
 <style scoped>
     .support-screen {
         height : calc(100vh - 128px);
+    }
+    .support-form{
+        width: 100vh;
     }
 </style>
