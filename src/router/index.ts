@@ -14,7 +14,7 @@ import ResultsView from '@/views/Results/resultsView.vue'
 import TestsView from '@/views/TestsView.vue'
 import LoginPage from '@/views/Authentication/LoginPage.vue'
 import PF from '@/components/Quiz/16PFQuiz.vue'
-import Support from '@/views/Dashboard/Support.vue'
+import Support from '@/views/Dashboard/Support/Support.vue'
 
 
 
