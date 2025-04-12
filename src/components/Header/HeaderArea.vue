@@ -85,13 +85,13 @@ const sidebarStore = useSidebarStore()
       </div>
       <div class="hidden sm:block">
         <ul class="flex gap-18 text-xl font-medium text-[#262626] dark:text-gray-300 ml-6">
-          <li class="navbar">
+          <li class="navbar dark:text-white">
             <router-link to="/">Dashboard</router-link>
           </li>
-          <li class="navbar">
+          <li class="navbar dark:text-white">
             <router-link to="/tests" >Tests</router-link>
           </li>
-          <li class="navbar">
+          <li class="navbar dark:text-white">
             <router-link to="/support">Support</router-link>
           </li>
         </ul>

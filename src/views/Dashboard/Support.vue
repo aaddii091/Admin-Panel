@@ -9,12 +9,14 @@ defineOptions({
 
 <template>
   <DefaultLayout>
-    <div class="support-screen bg-white text-black py-7 pt-6 pb-6">
-      <h2 class="font-bold text-[24px] leading-[36px] text-[#171717] pl-7">Support Ticket</h2>
+    <div class="mb-4">
+    </div>
+    <div class="support-screen bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark">
+      <h2 class="font-bold text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white">Support Ticket</h2>
 
       <div class="support-container flex flex-col items-center justify-center h-full gap-y-6 mx-auto sm:max-w-[548px] w-full">
-        <h2 class="flex font-bold text-[36px] leading-[44px] text-[#404040] text-center">Request Support from Us</h2>
-        <h2 class="flex font-medium text-[18px] leading-[28px] text-[#404040] text-center">We welcome any suggestions or reporting bugs to help with the improvement of our Zengarden Ecosystem!</h2>
+        <h2 class="flex font-bold text-[36px] leading-[44px] text-[#404040] text-center dark:text-white">Request Support from Us</h2>
+        <h2 class="flex font-medium text-[18px] leading-[28px] text-[#404040] text-center dark:text-[#AEAEAE]">We welcome any suggestions or reporting bugs to help with the improvement of our Zengarden Ecosystem!</h2>
 
         <div class="mb-5 mt-2">
         <button
