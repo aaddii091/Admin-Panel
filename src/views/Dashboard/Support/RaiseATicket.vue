@@ -41,6 +41,7 @@ defineOptions({
             type="text"
             placeholder="I encountered a bug in the Zengarden AI Assistant where it fails to recognize text selections within a canvas in row view. Despite highlighting the text, the assistant does not respond appropriately..."
             v-model="name"
+            isTextarea
             required
         >
         <template #left>
