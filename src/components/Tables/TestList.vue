@@ -17,12 +17,13 @@ const goToPage = (questionnaireId: number) => {
 
 <template>
   <div
-    class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
+    class="rounded-sm border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
   >
+  <!--removed border from the above div-->
     <div class="max-w-full overflow-x-auto">
       <table class="w-full table-auto">
         <thead>
-          <tr class="bg-gray-2 text-left dark:bg-meta-4">
+          <tr class="bg-gray-2 text-left dark:bg-meta-4 text-uppercase">
             <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
               Test
             </th>
@@ -39,7 +40,7 @@ const goToPage = (questionnaireId: number) => {
               <h5 class="font-medium text-black dark:text-white">{{ item.name }}</h5>
             </td>
             <td class="py-5 px-4">
-              <p class="text-black dark:text-white">{{ item.completedDate }}</p>
+              <p class="text-black dark:text-white ">{{ item.completedDate }}</p>
             </td>
             <td class="py-5 px-4">
               <p
@@ -68,3 +69,9 @@ const goToPage = (questionnaireId: number) => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.text-uppercase {
+  text-transform: uppercase;
+}
+</style>
