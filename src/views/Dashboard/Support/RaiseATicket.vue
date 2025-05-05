@@ -126,9 +126,6 @@ const fileUploadArea = ref()
 </template>
 
 <style scoped>
-    /* .support-screen {
-        height : calc(100vh - 128px);
-    } */
     .support-form{
         width: 100vh;
     }
