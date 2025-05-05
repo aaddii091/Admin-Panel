@@ -20,7 +20,7 @@ const fileUploadArea = ref()
     <div class="mb-4">
     </div>
     <div class="support-screen bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark flex flex-col items-center justify-center">
-      <h2 class="font-bold text-center text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white">Raise A Support Ticket</h2>
+      <h2 class="font-bold text-center text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white pt-10">Raise A Support Ticket</h2>
 
       <div class="support-form flex flex-col mt-6">
         <div>
@@ -52,8 +52,6 @@ const fileUploadArea = ref()
             Textarea
             required
         >
-            
-
         </TextGroup>
     </div>
     <div class="mt-4">
@@ -63,13 +61,41 @@ const fileUploadArea = ref()
             placeholder="Upload a File"
             v-model="fileUploadArea"
           >
-            <div class="FirstHalfFileInputText">Upload a File</div>
-            <div class="SecondHalfFileInputText">or drag and drop</div>
+          <div class="UploadTextFileSpecificationIcon text-center gap-y-2">
+            
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.5 18V5.775L6.6 9.675L4.5 7.5L12 0L19.5 7.5L17.4 9.675L13.5 5.775V18H10.5ZM3 24C2.175 24 1.46875 23.7063 0.88125 23.1188C0.29375 22.5312 0 21.825 0 21V16.5H3V21H21V16.5H24V21C24 21.825 23.7063 22.5312 23.1188 23.1188C22.5312 23.7063 21.825 24 21 24H3Z" fill="#1D1B20"/>
+            </svg>
+
+            <div class="UploadTextFileSpecification">
+              <div class="uploadText flex gap-x-1">
+              <div class="FirstHalfFileInputText font-semibold">Upload a File</div>
+              <div class=" font-semibold SecondHalfFileInputText">or drag and drop</div> 
+            </div>
+            <div class="FileSpecification">PNG, JPG, GIF up to 5MB</div>
+            </div>
+          </div>
           </MediaGroup>
     </div>
       </div>
-      <div class="support-container flex flex-col items-center justify-center h-full gap-y-6 mx-auto sm:max-w-[548px] w-full">
+      <div class="support-container flex gap-x-90 items-center justify-center h-full mx-auto sm:max-w-[780px] w-full">
         <div class="mb-5 mt-2">
+            <router-link to="/support/raiseATicket">
+                <button
+                type="submit"
+                :disabled="loading"
+                class="flex gap-x-2 w-sm cursor-pointer rounded-full border border-primary bg-primary py-3 pl-4 p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50 items-center"
+                >
+                
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.0285 5.91333V7.93241M16.0285 11.9706V13.9896M16.0285 18.0278V20.0469M5.93314 5.91333C4.81804 5.91333 3.91406 6.8173 3.91406 7.93241V10.961C5.02917 10.961 5.93314 11.865 5.93314 12.9801C5.93314 14.0952 5.02917 14.9992 3.91406 14.9992V18.0278C3.91406 19.1429 4.81804 20.0469 5.93314 20.0469H20.0667C21.1818 20.0469 22.0858 19.1429 22.0858 18.0278V14.9992C20.9707 14.9992 20.0667 14.0952 20.0667 12.9801C20.0667 11.865 20.9707 10.961 22.0858 10.961V7.93241C22.0858 6.8173 21.1818 5.91333 20.0667 5.91333H5.93314Z" stroke="white" stroke-width="2.16763" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                {{ loading ? 'Initializing a ticket...' : 'Submit a Ticket' }}
+                </button>
+            </router-link>
+      </div>
+      <div class="mb-5 mt-2">
             <router-link to="/support/raiseATicket">
                 <button
                 type="submit"
@@ -98,6 +124,25 @@ const fileUploadArea = ref()
         width: 100vh;
     }
     .FirstHalfFileInputText{
-      color: purple;
+      color: #6366F1;
+      display: inline-block;
+      font-size: 16px;
+    }
+    .SecondHalfFileInputText{
+      color : #171717;
+      display: inline-block;
+      font-size: 16px;
+    }
+    .FileSpecification{
+      display: block;
+      color : #737373;
+    }
+    .UploadTextFileSpecificationIcon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%
     }
 </style>

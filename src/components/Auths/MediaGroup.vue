@@ -42,6 +42,6 @@ const emit = defineEmits(['update:modelValue'])
 
 <style scoped>
 .textAreaStyle{
-    height : 15vh;
+    height : 18vh;
 }
 </style>
