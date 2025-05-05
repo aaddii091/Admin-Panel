@@ -78,20 +78,24 @@ const fileUploadArea = ref()
           </MediaGroup>
     </div>
       </div>
-      <div class="support-container flex gap-x-90 items-center justify-center h-full mx-auto sm:max-w-[780px] w-full">
+      <div class="support-container flex gap-x-70 items-center justify-center h-full mx-auto sm:max-w-[780px] w-full">
         <div class="mb-5 mt-2">
             <router-link to="/support/raiseATicket">
                 <button
                 type="submit"
                 :disabled="loading"
-                class="flex gap-x-2 w-sm cursor-pointer rounded-full border border-primary bg-primary py-3 pl-4 p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50 items-center"
+                class="flex gap-x-2 w-sm cursor-pointer rounded-full border border-primary border-[#A5B4FC] py-3 p-4 font-medium text-[#A5B4FC] transition hover:bg-opacity-90 disabled:opacity-50 items-center px-16"
                 >
                 
-                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16.0285 5.91333V7.93241M16.0285 11.9706V13.9896M16.0285 18.0278V20.0469M5.93314 5.91333C4.81804 5.91333 3.91406 6.8173 3.91406 7.93241V10.961C5.02917 10.961 5.93314 11.865 5.93314 12.9801C5.93314 14.0952 5.02917 14.9992 3.91406 14.9992V18.0278C3.91406 19.1429 4.81804 20.0469 5.93314 20.0469H20.0667C21.1818 20.0469 22.0858 19.1429 22.0858 18.0278V14.9992C20.9707 14.9992 20.0667 14.0952 20.0667 12.9801C20.0667 11.865 20.9707 10.961 22.0858 10.961V7.93241C22.0858 6.8173 21.1818 5.91333 20.0667 5.91333H5.93314Z" stroke="white" stroke-width="2.16763" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    
+                  <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.6503 22.7351H11.3816C9.62936 22.7351 7.9528 21.9887 6.78462 20.7016L2.96639 16.5048C1.14922 14.5145 1.14922 11.5076 2.96639 9.5065L6.78462 5.3097C7.9528 4.01172 9.62936 3.26538 11.3816 3.26538H18.6503C22.0791 3.26538 24.8698 6.05604 24.8698 9.48487V16.5156C24.8698 19.9444 22.0791 22.7351 18.6503 22.7351ZM11.3816 4.88786C10.0945 4.88786 8.85057 5.4395 7.98525 6.39135L4.15621 10.599C2.91231 11.9727 2.91231 14.0386 4.15621 15.4123L7.97443 19.6091C8.83975 20.561 10.0837 21.1126 11.3708 21.1126H18.6503C21.1814 21.1126 23.2473 19.0467 23.2473 16.5156V9.48487C23.2473 6.95381 21.1814 4.88786 18.6503 4.88786H11.3816Z" fill="#A5B4FC"/>
+                  <path d="M17.5689 16.483C17.3634 16.483 17.1578 16.4073 16.9956 16.245L11.6523 10.8908C11.3386 10.5772 11.3386 10.058 11.6523 9.74429C11.9659 9.43061 12.4851 9.43061 12.7988 9.74429L18.1422 15.0985C18.4558 15.4121 18.4558 15.9313 18.1422 16.245C17.9799 16.4073 17.7744 16.483 17.5689 16.483Z" fill="#A5B4FC"/>
+                  <path d="M12.2255 16.4831C12.02 16.4831 11.8145 16.4074 11.6523 16.2452C11.3386 15.9315 11.3386 15.4123 11.6523 15.0986L16.9956 9.75528C17.3093 9.4416 17.8285 9.4416 18.1422 9.75528C18.4558 10.069 18.4558 10.5881 18.1422 10.9018L12.7988 16.2452C12.6366 16.4074 12.431 16.4831 12.2255 16.4831Z" fill="#A5B4FC"/>
+                  </svg>
 
-                {{ loading ? 'Initializing a ticket...' : 'Submit a Ticket' }}
+
+                {{ loading ? 'Initializing a ticket...' : 'Cancel' }}
                 </button>
             </router-link>
       </div>
@@ -100,14 +104,19 @@ const fileUploadArea = ref()
                 <button
                 type="submit"
                 :disabled="loading"
-                class="flex gap-x-2 w-sm cursor-pointer rounded-full border border-primary bg-primary py-3 pl-4 p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50 items-center"
+                class="flex gap-x-2 w-sm cursor-pointer rounded-full border border-primary bg-primary py-3 p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50 items-center px-16"
                 >
-                
-                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16.0285 5.91333V7.93241M16.0285 11.9706V13.9896M16.0285 18.0278V20.0469M5.93314 5.91333C4.81804 5.91333 3.91406 6.8173 3.91406 7.93241V10.961C5.02917 10.961 5.93314 11.865 5.93314 12.9801C5.93314 14.0952 5.02917 14.9992 3.91406 14.9992V18.0278C3.91406 19.1429 4.81804 20.0469 5.93314 20.0469H20.0667C21.1818 20.0469 22.0858 19.1429 22.0858 18.0278V14.9992C20.9707 14.9992 20.0667 14.0952 20.0667 12.9801C20.0667 11.865 20.9707 10.961 22.0858 10.961V7.93241C22.0858 6.8173 21.1818 5.91333 20.0667 5.91333H5.93314Z" stroke="white" stroke-width="2.16763" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
 
-                {{ loading ? 'Initializing a ticket...' : 'Submit a Ticket' }}
+                {{ loading ? 'Initializing a ticket...' : 'Submit' }}
+
+                    
+                  <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.7576 24.628C7.34344 24.628 2.12988 19.4145 2.12988 13.0003C2.12988 6.58611 7.34344 1.37256 13.7576 1.37256C20.1718 1.37256 25.3854 6.58611 25.3854 13.0003C25.3854 19.4145 20.1718 24.628 13.7576 24.628ZM13.7576 2.99503C8.2412 2.99503 3.75236 7.48388 3.75236 13.0003C3.75236 18.5167 8.2412 23.0056 13.7576 23.0056C19.274 23.0056 23.7629 18.5167 23.7629 13.0003C23.7629 7.48388 19.274 2.99503 13.7576 2.99503Z" fill="white"/>
+                  <path d="M16.4613 13.8114H9.97139C9.52792 13.8114 9.16016 13.4437 9.16016 13.0002C9.16016 12.5567 9.52792 12.189 9.97139 12.189H16.4613C16.9048 12.189 17.2725 12.5567 17.2725 13.0002C17.2725 13.4437 16.9048 13.8114 16.4613 13.8114Z" fill="white"/>
+                  <path d="M14.2978 17.0567C14.0923 17.0567 13.8868 16.981 13.7245 16.8187C13.4108 16.505 13.4108 15.9859 13.7245 15.6722L16.3962 13.0005L13.7245 10.3288C13.4108 10.0152 13.4108 9.49596 13.7245 9.18228C14.0382 8.8686 14.5574 8.8686 14.8711 9.18228L18.116 12.4272C18.4297 12.7409 18.4297 13.2601 18.116 13.5738L14.8711 16.8187C14.7088 16.981 14.5033 17.0567 14.2978 17.0567Z" fill="white"/>
+                  </svg>
+
+
                 </button>
             </router-link>
       </div>
