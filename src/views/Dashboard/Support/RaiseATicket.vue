@@ -19,8 +19,8 @@ const fileUploadArea = ref()
   <DefaultLayout>
     <div class="mb-4">
     </div>
-    <div class="support-screen bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark flex flex-col items-center justify-center">
-      <h2 class="font-bold text-center text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white pt-10">Raise A Support Ticket</h2>
+    <div class="bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark flex flex-col items-center justify-center">
+      <h2 class="font-bold text-center text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white">Raise A Support Ticket</h2>
 
       <div class="support-form flex flex-col mt-6">
         <div>
@@ -126,9 +126,9 @@ const fileUploadArea = ref()
 </template>
 
 <style scoped>
-    .support-screen {
+    /* .support-screen {
         height : calc(100vh - 128px);
-    }
+    } */
     .support-form{
         width: 100vh;
     }
