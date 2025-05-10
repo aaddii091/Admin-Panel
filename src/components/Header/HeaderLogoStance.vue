@@ -20,7 +20,7 @@ const sidebarStore = useSidebarStore()
           <!-- <img src="@/assets/images/logo/logo-dark.png" alt="Logo" width="180" /> -->
         </router-link>
         <router-link to="/" class="dark:hidden">
-          <img src="@/assets/images/logo/Zengarden Logo-28.png" alt="Logo" width="180" />
+          <img src="@/assets/images/logo/Zengarden-DarkBg-Logo-v2.png" alt="Logo" width="180" />
         </router-link>
 
         <button class="block lg:hidden" @click="sidebarStore.isSidebarOpen = false">

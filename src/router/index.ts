@@ -16,6 +16,8 @@ import LoginPage from '@/views/Authentication/LoginPage.vue'
 import PF from '@/components/Quiz/16PFQuiz.vue'
 import Support from '@/views/Dashboard/Support/Support.vue'
 import SupportTicket from '@/views/Dashboard/Support/RaiseATicket.vue'
+import TicketSubmissionThankYou from '@/views/Dashboard/Support/TicketSubmissionThankYou.vue'
+
 
 
 
@@ -161,6 +163,15 @@ const routes = [
     component: SupportTicket,
     meta: {
       title: 'Support- Raise a Ticket',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/support/ticketSubmission',
+    name: 'TicketSubmissionThankYou',
+    component: TicketSubmissionThankYou,
+    meta: {
+      title: 'Support Ticket Submitted',
       requiresAuth: true
     }
   }
