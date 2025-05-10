@@ -13,12 +13,12 @@ const props = defineProps(['subtitle', 'title', 'customClasses'])
           <router-link class="mb-5.5 inline-block" to="/">
             <img
               class="hidden dark:block zengarden-logo"
-              src="../../assets/images/logo/Zengarden Logo-28.png"
+              src="../../assets/images/logo/Zengarden-dark.png"
               alt="Logo"
             />
             <img
               class="dark:hidden zengarden-logo"
-              src="../../assets/images/logo/Zengarden Logo-28.png"
+              src="../../assets/images/logo/Zengarden-light.png"
               alt="Logo"
             />
           </router-link>
