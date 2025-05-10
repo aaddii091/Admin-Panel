@@ -20,7 +20,7 @@ const loading = ref(false)
       </h2> -->
 
       <div
-        class="submission-container border border-[#E5E5E5] rounded-lg bg-[#FAFAFA] w-full max-w-[773px] h-[461px]support-container flex flex-col items-center justify-center h-full gap-y-6 mx-auto w-full"
+        class="submission-container border border-[#E5E5E5] rounded-lg bg-[#FAFAFA] w-full max-w-[773px] h-[461px]support-container flex flex-col items-center justify-center h-full gap-y-6 mx-auto w-full dark:bg-meta-4 dark:border-none"
       >
         <img
               src="../../src/assets/images/illustration/Reset-Password.png"
