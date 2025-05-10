@@ -28,7 +28,7 @@ const loading = ref(false)
               class="sign-in-image"
             />
         <h2
-          class="flex font-medium text-[16px] leading-[28px] text-[#404040] text-center dark:text-[#AEAEAE]"
+          class="flex font-medium text-[18px] leading-[28px] text-[#404040] text-center dark:text-[#FFFFFF]"
         >
           Thank You! Your Support Ticket has been submitted.<br>We will get back to you shortly.
         </h2>
