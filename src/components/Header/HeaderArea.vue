@@ -18,9 +18,19 @@ const sidebarStore = useSidebarStore()
     <!-- SIDEBAR HEADER --->
     <div class="flex flex-grow items-center justify-between shadow-2 md:px-6 2xl:px-11">
       <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-        
         <router-link to="/">
-          <img src="@/assets/images/logo/Zengarden Logo-28.png" alt="Logo" width="180" />
+          <img
+            src="@/assets/images/logo/Zengarden-dark.png"
+            class="hidden dark:block"
+            alt="Logo"
+            width="180"
+          />
+          <img
+            src="@/assets/images/logo/Zengarden-light.png"
+            class="dark:hidden"
+            alt="Logo"
+            width="180"
+          />
         </router-link>
 
         <button class="block lg:hidden" @click="sidebarStore.isSidebarOpen = false">
@@ -89,7 +99,7 @@ const sidebarStore = useSidebarStore()
             <router-link to="/">Dashboard</router-link>
           </li>
           <li class="navbar dark:text-white">
-            <router-link to="/tests" >Tests</router-link>
+            <router-link to="/tests">Tests</router-link>
           </li>
           <li class="navbar dark:text-white">
             <router-link to="/support">Support</router-link>
@@ -157,10 +167,10 @@ const sidebarStore = useSidebarStore()
 </template>
 
 <style scoped>
-  .navbar{
-    text-transform : capitalize;
-    position: relative;
-  }
+.navbar {
+  text-transform: capitalize;
+  position: relative;
+}
 
 .navbar a::before {
   position: absolute;
@@ -170,8 +180,8 @@ const sidebarStore = useSidebarStore()
   width: 0%;
   border-radius: 2px;
   height: 3px;
-  background-color: #3C50E0;
-  transition: all .5s
+  background-color: #3c50e0;
+  transition: all 0.5s;
 }
 
 .navbar a:hover::before {
