@@ -20,6 +20,7 @@
         v-model="email"
         required
       >
+      <template #right>
         <svg
           class="fill-current"
           width="22"
@@ -35,6 +36,7 @@
             />
           </g>
         </svg>
+      </template>
       </InputGroup>
 
       <InputGroup
@@ -44,6 +46,7 @@
         v-model="password"
         required
       >
+      <template #right>
       <div class="icon-eye">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -68,6 +71,7 @@
                 />
               </svg>
             </div>
+          </template>
       </InputGroup>
 
       <div class="mt-0 text-right"> 

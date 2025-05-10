@@ -84,6 +84,18 @@ const sidebarStore = useSidebarStore()
         </router-link>
       </div>
       <div class="hidden sm:block">
+        <ul class="flex gap-18 text-xl font-medium text-[#262626] dark:text-gray-300 ml-6">
+          <li class="navbar dark:text-white">
+            <router-link to="/">Dashboard</router-link>
+          </li>
+          <li class="navbar dark:text-white">
+            <router-link to="/tests" >Tests</router-link>
+          </li>
+          <li class="navbar dark:text-white">
+            <router-link to="/support">Support</router-link>
+          </li>
+        </ul>
+
         <!-- <form action="https://formbold.com/s/unique_form_id" method="POST">
           <div class="relative">
             <button class="absolute top-1/2 left-0 -translate-y-1/2">
@@ -143,3 +155,26 @@ const sidebarStore = useSidebarStore()
     </div>
   </header>
 </template>
+
+<style scoped>
+  .navbar{
+    text-transform : capitalize;
+    position: relative;
+  }
+
+.navbar a::before {
+  position: absolute;
+  content: '';
+  bottom: -10px;
+  left: 0;
+  width: 0%;
+  border-radius: 2px;
+  height: 3px;
+  background-color: #3C50E0;
+  transition: all .5s
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
+</style>

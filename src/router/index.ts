@@ -14,6 +14,9 @@ import ResultsView from '@/views/Results/resultsView.vue'
 import TestsView from '@/views/TestsView.vue'
 import LoginPage from '@/views/Authentication/LoginPage.vue'
 import PF from '@/components/Quiz/16PFQuiz.vue'
+import Support from '@/views/Dashboard/Support/Support.vue'
+import SupportTicket from '@/views/Dashboard/Support/RaiseATicket.vue'
+
 
 
 const routes = [
@@ -141,6 +144,24 @@ const routes = [
     meta: {
       title: '404',
       requiresAuth: false
+    }
+  },
+  {
+    path: '/support',
+    name: 'support',
+    component: Support,
+    meta: {
+      title: 'Support',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/support/raiseATicket',
+    name: 'supportTicket',
+    component: SupportTicket,
+    meta: {
+      title: 'Support- Raise a Ticket',
+      requiresAuth: true
     }
   }
 ]
