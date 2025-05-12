@@ -89,7 +89,7 @@ const sidebarStore = useSidebarStore()
             <router-link to="/">Dashboard</router-link>
           </li>
           <li class="navbar dark:text-white">
-            <router-link to="/tests" >Tests</router-link>
+            <router-link to="/tests/assigned" >Tests</router-link>
           </li>
           <li class="navbar dark:text-white">
             <router-link to="/support">Support</router-link>
@@ -177,4 +177,5 @@ const sidebarStore = useSidebarStore()
 .navbar a:hover::before {
   width: 100%;
 }
+
 </style>

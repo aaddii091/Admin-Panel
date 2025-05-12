@@ -11,12 +11,13 @@ import QuestionnairesCompletedView from '@/views/Questionnaires/completedView.vu
 import ResetPasswordViewVue from '@/components/Authentication/ResetPasswordView.vue'
 import MCQView from '@/components/Quiz/MCQQuiz.vue'
 import ResultsView from '@/views/Results/resultsView.vue'
-import TestsView from '@/views/TestsView.vue'
+import AssignedTests from '@/views/Dashboard/TestsView/AssignedTests.vue'
 import LoginPage from '@/views/Authentication/LoginPage.vue'
 import PF from '@/components/Quiz/16PFQuiz.vue'
 import Support from '@/views/Dashboard/Support/Support.vue'
 import SupportTicket from '@/views/Dashboard/Support/RaiseATicket.vue'
 import TicketSubmissionThankYou from '@/views/Dashboard/Support/TicketSubmissionThankYou.vue'
+import CompletedTests from '@/views/Dashboard/TestsView/CompletedTests.vue'
 
 
 
@@ -68,11 +69,20 @@ const routes = [
     }
   },
   {
-    path: '/tests',
-    name: 'tests',
-    component: TestsView,
+    path: '/tests/assigned',
+    name: 'assignedTests',
+    component: AssignedTests,
     meta: {
-      title: 'Tests',
+      title: 'Assigned Tests',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/tests/completed',
+    name: 'completedTests',
+    component: CompletedTests,
+    meta: {
+      title: 'Completed Tests',
       requiresAuth: true
     }
   },
