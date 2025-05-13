@@ -4,6 +4,14 @@ import { ref } from 'vue'
 import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
 import TestList from '@/components/Tables/TestList.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import TestCard from '@/components/DataStats/TestCard.vue'
+
+const assignedDateBigFive = ref(new Date())
+const assignedByBigFive = ref("Miss Chitrangda Chauhan")
+const estimatedMinutesBigFive = ref(135)
+const estimatedMinutes16PF = ref(60)
+const labelDescriptionBigFive = ref("To access a person’s personality along five key dimensions")
+const labelDescription16PF = ref("Measures an individual's personality across 16 primary factor")
 
 const pageTitle = ref('Tests')
 </script>
@@ -27,6 +35,17 @@ const pageTitle = ref('Tests')
             <router-link to="/tests/completed" >Completed Tests</router-link>
           </li>
     </ul>
+
+    <div class="flex ml-24 mr-24 gap-x-30">
+    <TestCard label="Big Five (Ocean) Personality Test" stroke="bg-[#3C50E0]" 
+    :assignedBy="assignedByBigFive"
+    :labelDescription="labelDescriptionBigFive" :estimatedMinutes="estimatedMinutesBigFive" 
+    :assignedDate ="assignedDateBigFive"/>
+    <TestCard label="16 PF Personality Test" stroke="bg-[#3C50E0]" 
+    :labelDescription = "labelDescription16PF"
+    :estimatedMinutes="estimatedMinutes16PF"/>
+    </div>
+
     </div>
     <div class="flex flex-col gap-10">
       <TestList />
