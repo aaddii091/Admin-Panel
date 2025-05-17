@@ -12,6 +12,8 @@ const estimatedMinutesBigFive = ref(135)
 const estimatedMinutes16PF = ref(60)
 const labelDescriptionBigFive = ref("To access a person’s personality along five key dimensions")
 const labelDescription16PF = ref("Measures an individual's personality across 16 primary factor")
+const assignedBy16PF = ref("Dr. Nelson Nordman")
+const assignedDate16PF = ref(new Date())
 
 const pageTitle = ref('Tests')
 </script>
@@ -41,9 +43,12 @@ const pageTitle = ref('Tests')
     :assignedBy="assignedByBigFive"
     :labelDescription="labelDescriptionBigFive" :estimatedMinutes="estimatedMinutesBigFive" 
     :assignedDate ="assignedDateBigFive"/>
-    <TestCard label="16 PF Personality Test" stroke="bg-[#3C50E0]" 
-    :labelDescription = "labelDescription16PF"
-    :estimatedMinutes="estimatedMinutes16PF"/>
+    
+    <TestCard label="16PF Personality Test" stroke="bg-[#3C50E0]" 
+    :assignedBy="assignedBy16PF"
+    :labelDescription="labelDescription16PF" :estimatedMinutes="estimatedMinutes16PF" 
+    :assignedDate ="assignedDate16PF"/>
+    
     </div>
 
     </div>
