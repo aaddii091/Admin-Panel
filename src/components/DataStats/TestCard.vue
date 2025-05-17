@@ -160,7 +160,11 @@
         </li>
         <li class="progress-step-box flex flex-col items-center">
           <div>
-            <p class="progress-icon list-two text-[#6B7280] border-[0.3vh]">2</p>
+            <p class="progress-icon list-two text-[#6B7280] border-[0.3vh]"
+            :class="{
+                'bg-primary text-white border-primary': activeStep >= 1,
+                'text-[#6B7280]': activeStep < 1
+              }">2</p>
           </div>
           <p>Report Generation</p>
         </li>
