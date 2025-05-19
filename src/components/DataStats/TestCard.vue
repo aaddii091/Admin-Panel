@@ -140,7 +140,7 @@
           </div>
         </div>
       </div>
-      <ul class="flex w-[530px] justify-around text-[#404040] text-[14px] font-medium">
+      <!-- <ul class="flex w-[530px] justify-around text-[#404040] text-[14px] font-medium">
         <li
           class="progress-step-box flex flex-col items-center"
           :class="{ 'text-primary': activeStep >= 1 }"
@@ -149,7 +149,7 @@
             <p
               class="progress-icon list-one border-[0.3vh] text-[#6B7280]"
               :class="{
-                'bg-primary text-white border-primary': activeStep >= 1,
+                'bg-primary text-[#6B7280] border-primary': activeStep >= 1,
                 'text-[#6B7280]': activeStep < 1
               }"
             >
@@ -162,7 +162,7 @@
           <div>
             <p class="progress-icon list-two text-[#6B7280] border-[0.3vh]"
             :class="{
-                'bg-primary text-white border-primary': activeStep >= 1,
+                'bg-primary text-[#6B7280] border-primary': activeStep >= 1,
                 'text-[#6B7280]': activeStep < 1
               }">2</p>
           </div>
@@ -173,7 +173,7 @@
             <p
               class="progress-icon list-three text-[#6B7280] border-[0.3vh]"
               :class="{
-                'bg-primary text-white border-primary': activeStep >= 1,
+                'bg-primary text-[#6B7280] border-primary': activeStep >= 1,
                 'text-[#6B7280]': activeStep < 1
               }"
             >
@@ -182,7 +182,22 @@
           </div>
           <p>Report Available</p>
         </li>
-      </ul>
+      </ul> -->
+
+      <div class="container">
+        <div class="steps">
+          <span class="circle active">1</span>
+          <span class="circle">2</span>
+          <span class="circle">3</span>
+          <div class="progress-bar">
+            <span class="indicator"></span>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="prev" disabled>Prev</button>
+        <button id="next">Next</button>
+      </div>
     </div>
   </div>
 </template>
@@ -230,6 +245,11 @@ const formattedDate = computed(() => {
     year: 'numeric'
   })
 })
+
+const circles = document.querySelectorAll(".circles"),
+progressBar = document.querySelector(".indicator"),
+buttons = document.querySeleectorAll(".circles")
+
 </script>
 
 <style scoped>
@@ -237,7 +257,80 @@ const formattedDate = computed(() => {
   width: 136px;
 }
 
-.progress-icon {
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  max-width: 400px;
+  width: 100%;
+  /* background-color: grey; */
+}
+
+.container .steps{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.steps .circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  color: #999;
+  font-size: 22px;
+  font-weight: 500;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid #e0e0e0;
+}
+
+.steps .circle.active{
+  border-color: #4070f4;
+  color: #4070f4;
+}
+.steps .progress-bar{
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background-color: #e0e0e0;
+  /* z-index: -1; */
+}
+
+.progress-bar .indicator{
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  background: #4070f4;
+}
+
+.container .buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.buttons button {
+  padding: 8px 25px;
+  background: #4070f4;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.buttons button:disabled{
+  background: #87a5f8;
+  cursor: not-allowed;
+}
+
+/* .progress-icon {
   background-color: #f9fafb;
   width: 28px;
   height: 28px;
@@ -256,7 +349,7 @@ const formattedDate = computed(() => {
   background-color: #e5e7eb;
   right: 26px;
   z-index: 0;
-}
+} */
 
 .list-one::after {
   width: 0px;
