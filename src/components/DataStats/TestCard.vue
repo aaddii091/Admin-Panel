@@ -195,7 +195,7 @@
         </div>
       </div>
       <div class="buttons">
-        <button id="prev" disabled>Prev</button>
+        <button id="prev">Prev</button>
         <button id="next">Next</button>
       </div>
     </div>
@@ -217,10 +217,10 @@ const props = defineProps({
   assignedDate: Date,
   description: String,
   stroke: String,
-  activeStep: {
-  type: Number,
-  default: 1
-}
+  // activeStep: {
+  // type: Number,
+  // default: 1
+// }
 })
 
 // Format count to always show as 2 digits (e.g., 03, 07, 10)
@@ -248,8 +248,22 @@ const formattedDate = computed(() => {
 
 const circles = document.querySelectorAll(".circles"),
 progressBar = document.querySelector(".indicator"),
-buttons = document.querySeleectorAll(".circles")
+buttons = document.querySeleectorAll(".circles");
 
+// function that updates the current step and updates the DOM
+const updateSteps = () => {
+//update current step based on the button clicked
+  currentStep = e.target.id === "next" ? ++currentStep : --currentStep; 
+
+//loop through all circles and remove "active" class based on their index and current step
+circles.forEach((circle, index) => {
+  circle.classList[`${index < currentStep ? "add" : "remove"}`]("active");
+});
+}
+
+buttons.forEach(button => {
+  button.addEventListener("click", updateSteps);
+});
 </script>
 
 <style scoped>
