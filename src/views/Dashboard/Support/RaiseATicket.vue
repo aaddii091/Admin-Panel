@@ -199,7 +199,7 @@ const handleSubmit = async (e: Event) => {
                   />
                 </svg>
 
-                {{ loading ? 'Initializing a ticket...' : 'Cancel' }}
+                {{ 'Cancel' }}
               </button>
             </router-link>
           </div>
@@ -209,7 +209,7 @@ const handleSubmit = async (e: Event) => {
               :disabled="loading"
               class="flex gap-x-2 w-sm cursor-pointer rounded-full border border-primary bg-primary py-3 p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50 items-center px-16"
             >
-              {{ loading ? 'Initializing a ticket...' : 'Submit' }}
+              {{ 'Submit' }}
 
               <svg
                 width="27"
