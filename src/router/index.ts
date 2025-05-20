@@ -156,11 +156,11 @@ const routes = [
     }
   },
   {
-    path: '/support/raiseATicket',
+    path: '/support/raiseTicket',
     name: 'supportTicket',
     component: SupportTicket,
     meta: {
-      title: 'Support- Raise a Ticket',
+      title: 'Support Raise a Ticket',
       requiresAuth: true
     }
   }

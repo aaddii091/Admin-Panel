@@ -1,8 +1,10 @@
-/// <reference path="path/types.d.ts" />
+///
+<reference path="path/types.d.ts" />
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
 
 // svg files
 import IconUser from '@/assets/images/icon/icon-user.svg'
@@ -10,7 +12,7 @@ import IconSetting from '@/assets/images/icon/icon-setting.svg'
 import IconLogout from '@/assets/images/icon/icon-logout.svg'
 import IconArrow from '@/assets/images/icon/icon-arrow-line.svg'
 
-const router = useRouter();
+const router = useRouter()
 const props = defineProps({
   data: {
     type: Object,
@@ -19,32 +21,42 @@ const props = defineProps({
       alertMsg: ''
     })
   }
-});
-const target = ref(null);
-const dropdownOpen = ref(false);
+})
+const target = ref(null)
+const dropdownOpen = ref(false)
 
 onClickOutside(target, () => {
-  dropdownOpen.value = false;
+  dropdownOpen.value = false
 })
 
 // Show comfirm alert
 const getConfirmLeaveFlg = (): boolean => {
-  if (!props.data.alertFlg) return false;
-  return confirm(props.data.alertMsg) ? false : true;
+  if (!props.data.alertFlg) return false
+  return confirm(props.data.alertMsg) ? false : true
 }
 
 // Navigate to the page
 const goToPage = (url: string) => {
-  if(getConfirmLeaveFlg()) return;
-  router.push({ path: url });
+  if (getConfirmLeaveFlg()) return
+  router.push({ path: url })
 }
 
 const logOut = () => {
-  if(getConfirmLeaveFlg()) return;
-  // Log out process below
-
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'Any unsaved data will be deleted',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.clear()
+      location.reload()
+    }
+  })
 }
-
 </script>
 
 <template>
