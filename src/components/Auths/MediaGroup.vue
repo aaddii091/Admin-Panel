@@ -1,10 +1,9 @@
 <script setup lang="ts">
-
 const props = defineProps<{
   label: string
   type: string
-  placeholder?: string // optional const 
-  modelValue: string
+  placeholder?: string // optional const
+  modelValue: File | null
 }>()
 
 const emit = defineEmits(['update:modelValue'])
@@ -42,7 +41,7 @@ const emit = defineEmits(['update:modelValue'])
 </template>
 
 <style scoped>
-.textAreaStyle{
-    height : 18vh;
+.textAreaStyle {
+  height: 18vh;
 }
 </style>

@@ -54,7 +54,7 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
 import ButtonDefault from '@/components/Buttons/ButtonDefault.vue'
 
 import { useStore } from '@/stores/store'
