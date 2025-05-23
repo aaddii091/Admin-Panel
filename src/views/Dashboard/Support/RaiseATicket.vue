@@ -42,15 +42,18 @@ const handleSubmit = async (e: Event) => {
   try {
     const authToken = localStorage.getItem('token')
 
-    const jsonData = {
-      title: name.value,
-      message: paragraphArea.value
+    // Build form data
+    const formData = new FormData()
+    formData.append('title', name.value)
+    formData.append('message', paragraphArea.value)
+
+    if (uploadedFile.value) {
+      formData.append('file', uploadedFile.value)
     }
 
-    await axios.post(`${import.meta.env.VITE_SERVER_URL}tickets`, jsonData, {
+    await axios.post(`${import.meta.env.VITE_SERVER_URL}tickets`, formData, {
       headers: {
-        Authorization: `Bearer ${authToken}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${authToken}`
       }
     })
 
