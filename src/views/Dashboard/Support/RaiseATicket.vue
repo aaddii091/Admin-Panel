@@ -21,6 +21,10 @@ const uploadedFile = ref<File | null>(null)
 const router = useRouter()
 const error = ref('')
 
+const removeFile = () => {
+  uploadedFile.value = null
+}
+
 const loading = ref(false)
 
 onMounted(() => {
@@ -77,8 +81,10 @@ const handleSubmit = async (e: Event) => {
 <template>
   <DefaultLayout>
     <div class="mb-4"></div>
+    <div class="flex h-s"></div>
     <div
       class="bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark flex flex-col items-center justify-center"
+      style="flex: 1"
     >
       <h2
         class="font-bold text-center text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white"
@@ -146,6 +152,7 @@ const handleSubmit = async (e: Event) => {
             type="file"
             placeholder="Upload a File"
             v-model="uploadedFile"
+            v-if="!uploadedFile"
           >
             <div class="UploadTextFileSpecificationIcon text-center gap-y-2">
               <svg
@@ -170,6 +177,15 @@ const handleSubmit = async (e: Event) => {
               </div>
             </div>
           </MediaGroup>
+          <div
+            v-if="uploadedFile"
+            class="mt-2 mb-6 flex items-center justify-between rounded border border-[#E5E5E5] dark:border-form-strokedark px-3 py-2 dark:border-gray-600"
+          >
+            <span class="text-sm text-black dark:text-white">{{ uploadedFile.name }}</span>
+            <button type="button" class="text-red-500 dark:text-white" @click="removeFile">
+              Remove
+            </button>
+          </div>
         </div>
         <div
           class="support-container flex gap-x-70 items-center justify-center h-full mx-auto sm:max-w-[780px] w-full"
