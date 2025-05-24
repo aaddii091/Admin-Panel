@@ -42,6 +42,7 @@ const handleSubmit = async (e: Event) => {
       icon: 'error',
       draggable: false
     })
+    return
   }
   try {
     const authToken = localStorage.getItem('token')
