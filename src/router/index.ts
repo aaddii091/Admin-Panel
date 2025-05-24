@@ -11,15 +11,12 @@ import QuestionnairesCompletedView from '@/views/Questionnaires/completedView.vu
 import ResetPasswordViewVue from '@/components/Authentication/ResetPasswordView.vue'
 import MCQView from '@/components/Quiz/MCQQuiz.vue'
 import ResultsView from '@/views/Results/resultsView.vue'
-import AssignedTests from '@/views/Dashboard/TestsView/AssignedTests.vue'
+import Tests from '@/views/Dashboard/TestsView/Tests.vue'
 import LoginPage from '@/views/Authentication/LoginPage.vue'
 import PF from '@/components/Quiz/16PFQuiz.vue'
 import Support from '@/views/Dashboard/Support/Support.vue'
 import SupportTicket from '@/views/Dashboard/Support/RaiseATicket.vue'
-import Clients from '@/views/Clients/Clients.vue'
 import { useAuthStore } from '@/stores/auth'
-import TicketSubmissionThankYou from '@/views/Dashboard/Support/TicketSubmissionThankYou.vue'
-import CompletedTests from '@/views/Dashboard/TestsView/CompletedTests.vue'
 
 
 
@@ -71,23 +68,15 @@ const routes = [
     }
   },
   {
-    path: '/tests/assigned',
-    name: 'assignedTests',
-    component: AssignedTests,
+    path: '/tests',
+    name: 'Tests',
+    component: Tests,
     meta: {
-      title: 'Assigned Tests',
+      title: 'Tests',
       requiresAuth: true
     }
   },
-  {
-    path: '/tests/completed',
-    name: 'completedTests',
-    component: CompletedTests,
-    meta: {
-      title: 'Completed Tests',
-      requiresAuth: true
-    }
-  },
+
   {
     path: '/profile',
     name: 'profile',
@@ -175,15 +164,6 @@ const routes = [
     component: SupportTicket,
     meta: {
       title: 'Support Raise a Ticket',
-      requiresAuth: true
-    }
-  },
-  {
-    path: '/support/ticketSubmission',
-    name: 'TicketSubmissionThankYou',
-    component: TicketSubmissionThankYou,
-    meta: {
-      title: 'Support Ticket Submitted',
       requiresAuth: true
     }
   }
