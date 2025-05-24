@@ -16,11 +16,10 @@ const sidebarStore = useSidebarStore()
     <div class="flex flex-grow items-center justify-between shadow-2 md:px-6 2xl:px-11">
       <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-5">
         <router-link to="/" class="dark:block hidden">
-          <img src="@/assets/images/logo/Zengarden Logo-28.png" alt="Logo" width="180" />
-          <!-- <img src="@/assets/images/logo/logo-dark.png" alt="Logo" width="180" /> -->
+          <img src="@/assets/images/logo/Zengarden-light.png" alt="Logo" width="180" />
         </router-link>
         <router-link to="/" class="dark:hidden">
-          <img src="@/assets/images/logo/Zengarden-DarkBg-Logo-v2.png" alt="Logo" width="180" />
+          <img src="@/assets/images/logo/Zengarden-dark.png" alt="Logo" width="180" />
         </router-link>
 
         <button class="block lg:hidden" @click="sidebarStore.isSidebarOpen = false">

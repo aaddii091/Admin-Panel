@@ -9,7 +9,9 @@
             <thead>
               <!-- border-gray-2 -->
               <tr class="bg-[#FAFAFA] text-left dark:bg-meta-4 text-uppercase">
-                <th class="min-w-[220px] py-4 px-4 font-medium text-[#525252] dark:text-white xl:pl-11 ">
+                <th
+                  class="min-w-[220px] py-4 px-4 font-medium text-[#525252] dark:text-white xl:pl-11"
+                >
                   Test Name
                 </th>
                 <th
@@ -115,5 +117,4 @@ onBeforeMount(async () => {
 .text-uppercase {
   text-transform: uppercase;
 }
-
 </style>

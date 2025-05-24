@@ -3,6 +3,9 @@
 <script setup lang="ts">
 import HeaderArea from '@/components/Header/HeaderArea.vue'
 import SidebarArea from '@/components/Sidebar/SidebarArea.vue'
+import { useAuthStore } from '@/stores/auth'
+
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -10,6 +13,7 @@ import SidebarArea from '@/components/Sidebar/SidebarArea.vue'
   <div class="flex h-screen overflow-hidden">
     <!-- ===== Sidebar Start ===== -->
     <!-- <SidebarArea /> -->
+    <SidebarArea v-if="authStore.isAdmin" />
     <!-- SIDEBAR HEADER -->
 
     <!-- ===== Sidebar End ===== -->

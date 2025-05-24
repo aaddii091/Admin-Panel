@@ -8,7 +8,6 @@ defineOptions({
 })
 
 const loading = ref(false)
-
 </script>
 
 <template>
@@ -35,7 +34,7 @@ const loading = ref(false)
         </h2>
 
         <div class="mb-5 mt-2">
-          <router-link to="/support/raiseATicket">
+          <router-link to="/support/raiseTicket">
             <button
               type="button"
               :disabled="loading"

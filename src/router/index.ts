@@ -16,6 +16,8 @@ import LoginPage from '@/views/Authentication/LoginPage.vue'
 import PF from '@/components/Quiz/16PFQuiz.vue'
 import Support from '@/views/Dashboard/Support/Support.vue'
 import SupportTicket from '@/views/Dashboard/Support/RaiseATicket.vue'
+import Clients from '@/views/Clients/Clients.vue'
+import { useAuthStore } from '@/stores/auth'
 import TicketSubmissionThankYou from '@/views/Dashboard/Support/TicketSubmissionThankYou.vue'
 import CompletedTests from '@/views/Dashboard/TestsView/CompletedTests.vue'
 
@@ -168,11 +170,11 @@ const routes = [
     }
   },
   {
-    path: '/support/raiseATicket',
+    path: '/support/raiseTicket',
     name: 'supportTicket',
     component: SupportTicket,
     meta: {
-      title: 'Support- Raise a Ticket',
+      title: 'Support Raise a Ticket',
       requiresAuth: true
     }
   },
@@ -196,11 +198,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem('token') // Or however you track authentication
-  
-  if (to.meta.requiresAuth && !isAuthenticated) {
-    // Redirect to login if trying to access protected route while not authenticated
+  const authStore = useAuthStore()
+
+  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
     next({ name: 'login' })
+  } else if (to.meta.requiresAdmin && !authStore.isAdmin) {
+    next({ name: 'Dashboard' })
   } else {
     document.title = `${to.meta.title} | Zengarden User page`
     next()

@@ -207,9 +207,11 @@ import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 import axios from 'axios'
 
 const router = useRouter()
+const authStore = useAuthStore()
 const pageTitle = ref('Sign In')
 const email = ref('')
 const password = ref('')
@@ -231,6 +233,8 @@ const handleSubmit = async (e: Event) => {
     console.log('Response:', response)
 
     localStorage.setItem('token', response.data.token)
+    localStorage.setItem('role', response.data.role)
+    authStore.setAuth(response.data.token, response.data.role)
     router.push('/')
   } catch (err) {
     console.error('Error details:', err)

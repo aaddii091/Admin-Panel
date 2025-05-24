@@ -2,26 +2,90 @@
 <script setup lang="ts">
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import InputGroup from '@/components/Auths/InputGroup.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
+import { useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
 import TextGroup from '@/components/Auths/ParaGroup.vue'
 import MediaGroup from '@/components/Auths/MediaGroup.vue'
 
 defineOptions({
   name: 'Support-tab-raise-a-ticket'
 })
+const success = ref(false)
 
 const name = ref()
 const paragraphArea = ref()
-const fileUploadArea = ref()
+const uploadedFile = ref<File | null>(null)
+
+const router = useRouter()
+const error = ref('')
+
+const removeFile = () => {
+  uploadedFile.value = null
+}
 
 const loading = ref(false)
+
+onMounted(() => {
+  success.value = false
+})
+
+const handleSubmit = async (e: Event) => {
+  e.preventDefault()
+  loading.value = true
+  error.value = ''
+
+  if (!name.value && !paragraphArea.value) {
+    Swal.fire({
+      html: '<p style="line-height: 1.8;">Give your issue a title and let us know what went wrong — we’re here to help!</p>',
+      icon: 'error',
+      draggable: false
+    })
+    return
+  }
+  try {
+    const authToken = localStorage.getItem('token')
+
+    // Build form data
+    const formData = new FormData()
+    formData.append('title', name.value)
+    formData.append('message', paragraphArea.value)
+
+    if (uploadedFile.value) {
+      formData.append('file', uploadedFile.value)
+    }
+
+    await axios.post(`${import.meta.env.VITE_SERVER_URL}tickets`, formData, {
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    })
+
+    Swal.fire({
+      title: 'Ticket submitted successfully',
+      icon: 'success',
+      draggable: true
+    })
+    success.value = true
+  } catch (err) {
+    console.error('Ticket creation failed:', err)
+    error.value = axios.isAxiosError(err)
+      ? err.response?.data?.message || 'Failed to create ticket'
+      : 'An error occurred'
+  } finally {
+    loading.value = false
+  }
+}
 </script>
 
 <template>
   <DefaultLayout>
     <div class="mb-4"></div>
+    <div class="flex h-s"></div>
     <div
       class="bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark flex flex-col items-center justify-center"
+      style="flex: 1"
     >
       <h2
         class="font-bold text-center text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white"
@@ -29,7 +93,7 @@ const loading = ref(false)
         Raise A Support Ticket
       </h2>
 
-      <div class="support-form flex flex-col mt-6">
+      <form @submit="handleSubmit" class="support-form flex flex-col mt-6">
         <div>
           <InputGroup
             label="Title"
@@ -88,7 +152,8 @@ const loading = ref(false)
             label="Please add a screenshot if you have one"
             type="file"
             placeholder="Upload a File"
-            v-model="fileUploadArea"
+            v-model="uploadedFile"
+            v-if="!uploadedFile"
           >
             <div class="UploadTextFileSpecificationIcon text-center gap-y-2">
               <svg
@@ -114,51 +179,58 @@ const loading = ref(false)
               </div>
             </div>
           </MediaGroup>
-        </div>
-      </div>
-      <div
-        class="support-container flex gap-x-70 items-center justify-center h-full mx-auto sm:max-w-[780px] w-full"
-      >
-        <div class="mb-5 mt-2">
-          <router-link to="/support/raiseATicket">
-            <button
-              type="submit"
-              :disabled="loading"
-              class="flex gap-x-2 w-sm cursor-pointer rounded-full border border-primary border-[#A5B4FC] py-3 p-4 font-medium text-[#A5B4FC] transition hover:bg-opacity-90 disabled:opacity-50 items-center px-16"
-            >
-              <svg
-                width="27"
-                height="26"
-                viewBox="0 0 27 26"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M18.6503 22.7351H11.3816C9.62936 22.7351 7.9528 21.9887 6.78462 20.7016L2.96639 16.5048C1.14922 14.5145 1.14922 11.5076 2.96639 9.5065L6.78462 5.3097C7.9528 4.01172 9.62936 3.26538 11.3816 3.26538H18.6503C22.0791 3.26538 24.8698 6.05604 24.8698 9.48487V16.5156C24.8698 19.9444 22.0791 22.7351 18.6503 22.7351ZM11.3816 4.88786C10.0945 4.88786 8.85057 5.4395 7.98525 6.39135L4.15621 10.599C2.91231 11.9727 2.91231 14.0386 4.15621 15.4123L7.97443 19.6091C8.83975 20.561 10.0837 21.1126 11.3708 21.1126H18.6503C21.1814 21.1126 23.2473 19.0467 23.2473 16.5156V9.48487C23.2473 6.95381 21.1814 4.88786 18.6503 4.88786H11.3816Z"
-                  fill="#A5B4FC"
-                />
-                <path
-                  d="M17.5689 16.483C17.3634 16.483 17.1578 16.4073 16.9956 16.245L11.6523 10.8908C11.3386 10.5772 11.3386 10.058 11.6523 9.74429C11.9659 9.43061 12.4851 9.43061 12.7988 9.74429L18.1422 15.0985C18.4558 15.4121 18.4558 15.9313 18.1422 16.245C17.9799 16.4073 17.7744 16.483 17.5689 16.483Z"
-                  fill="#A5B4FC"
-                />
-                <path
-                  d="M12.2255 16.4831C12.02 16.4831 11.8145 16.4074 11.6523 16.2452C11.3386 15.9315 11.3386 15.4123 11.6523 15.0986L16.9956 9.75528C17.3093 9.4416 17.8285 9.4416 18.1422 9.75528C18.4558 10.069 18.4558 10.5881 18.1422 10.9018L12.7988 16.2452C12.6366 16.4074 12.431 16.4831 12.2255 16.4831Z"
-                  fill="#A5B4FC"
-                />
-              </svg>
-
-              {{ loading ? 'Initializing a ticket...' : 'Cancel' }}
+          <div
+            v-if="uploadedFile"
+            class="mt-2 mb-6 flex items-center justify-between rounded border border-[#E5E5E5] dark:border-form-strokedark px-3 py-2 dark:border-gray-600"
+          >
+            <span class="text-sm text-black dark:text-white">{{ uploadedFile.name }}</span>
+            <button type="button" class="text-red-500 dark:text-white" @click="removeFile">
+              Remove
             </button>
-          </router-link>
+          </div>
         </div>
-        <div class="mb-5 mt-2">
-          <router-link to="/support/raiseATicket">
+        <div
+          class="support-container flex gap-x-70 items-center justify-center h-full mx-auto sm:max-w-[780px] w-full"
+        >
+          <div class="mb-5 mt-2">
+            <router-link to="/support">
+              <button
+                type="button"
+                :disabled="loading"
+                class="flex gap-x-2 w-sm cursor-pointer rounded-full border border-primary border-[#A5B4FC] py-3 p-4 font-medium text-[#A5B4FC] transition hover:bg-opacity-90 disabled:opacity-50 items-center px-16"
+              >
+                <svg
+                  width="27"
+                  height="26"
+                  viewBox="0 0 27 26"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18.6503 22.7351H11.3816C9.62936 22.7351 7.9528 21.9887 6.78462 20.7016L2.96639 16.5048C1.14922 14.5145 1.14922 11.5076 2.96639 9.5065L6.78462 5.3097C7.9528 4.01172 9.62936 3.26538 11.3816 3.26538H18.6503C22.0791 3.26538 24.8698 6.05604 24.8698 9.48487V16.5156C24.8698 19.9444 22.0791 22.7351 18.6503 22.7351ZM11.3816 4.88786C10.0945 4.88786 8.85057 5.4395 7.98525 6.39135L4.15621 10.599C2.91231 11.9727 2.91231 14.0386 4.15621 15.4123L7.97443 19.6091C8.83975 20.561 10.0837 21.1126 11.3708 21.1126H18.6503C21.1814 21.1126 23.2473 19.0467 23.2473 16.5156V9.48487C23.2473 6.95381 21.1814 4.88786 18.6503 4.88786H11.3816Z"
+                    fill="#A5B4FC"
+                  />
+                  <path
+                    d="M17.5689 16.483C17.3634 16.483 17.1578 16.4073 16.9956 16.245L11.6523 10.8908C11.3386 10.5772 11.3386 10.058 11.6523 9.74429C11.9659 9.43061 12.4851 9.43061 12.7988 9.74429L18.1422 15.0985C18.4558 15.4121 18.4558 15.9313 18.1422 16.245C17.9799 16.4073 17.7744 16.483 17.5689 16.483Z"
+                    fill="#A5B4FC"
+                  />
+                  <path
+                    d="M12.2255 16.4831C12.02 16.4831 11.8145 16.4074 11.6523 16.2452C11.3386 15.9315 11.3386 15.4123 11.6523 15.0986L16.9956 9.75528C17.3093 9.4416 17.8285 9.4416 18.1422 9.75528C18.4558 10.069 18.4558 10.5881 18.1422 10.9018L12.7988 16.2452C12.6366 16.4074 12.431 16.4831 12.2255 16.4831Z"
+                    fill="#A5B4FC"
+                  />
+                </svg>
+
+                {{ 'Cancel' }}
+              </button>
+            </router-link>
+          </div>
+          <div class="mb-5 mt-2">
             <button
               type="submit"
               :disabled="loading"
               class="flex gap-x-2 w-sm cursor-pointer rounded-full border border-primary bg-primary py-3 p-4 font-medium text-white transition hover:bg-opacity-90 disabled:opacity-50 items-center px-16"
             >
-              {{ loading ? 'Initializing a ticket...' : 'Submit' }}
+              {{ 'Submit' }}
 
               <svg
                 width="27"
@@ -181,10 +253,11 @@ const loading = ref(false)
                 />
               </svg>
             </button>
-          </router-link>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
+    <div v-if="success">hi</div>
   </DefaultLayout>
 </template>
 
