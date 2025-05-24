@@ -184,20 +184,38 @@
         </li>
       </ul> -->
 
-      <div class="container">
-        <div class="steps">
+      <!-- <div class="container flex justify-center align-center">
+        <div class="steps fles justify-center align-center">
           <span class="circle active">1</span>
           <span class="circle">2</span>
           <span class="circle">3</span>
           <div class="progress-bar">
             <span class="indicator"></span>
           </div>
-        </div>
+        </div> -->
+        <!-- <div class="buttons">
+          <button id="prev" disabled>Prev</button>
+          <button id="next">Next</button>
+        </div> -->
+      <!-- </div> -->
+       <div class="stepper-wrapper text-[#404040] text-[16px] font-medium">
+      <div class="stepper-item completed">
+        <div class="step-counter active">1</div>
+        <div class="step-name">Take Test</div>
       </div>
-      <div class="buttons">
-        <button id="prev">Prev</button>
-        <button id="next">Next</button>
+      <div class="stepper-item completed">
+        <div class="step-counter">2</div>
+        <div class="step-name">Report Generation</div>
       </div>
+      <div class="stepper-item">
+        <div class="step-counter">3</div>
+        <div class="step-name">Report Available</div>
+      </div>
+      <!-- <div class="stepper-item">
+        <div class="step-counter">4</div>
+        <div class="step-name">Forth</div>
+      </div> -->
+    </div>
     </div>
   </div>
 </template>
@@ -246,21 +264,37 @@ const formattedDate = computed(() => {
   })
 })
 
+//DOM Elements
 const circles = document.querySelectorAll(".circles"),
 progressBar = document.querySelector(".indicator"),
-buttons = document.querySeleectorAll(".circles");
+buttons = document.querySelectorAll("button");
+
+let currentStep = 1;
 
 // function that updates the current step and updates the DOM
-const updateSteps = () => {
-//update current step based on the button clicked
+const updateSteps = (e) => {
+  //update current step based on the button clicked
   currentStep = e.target.id === "next" ? ++currentStep : --currentStep; 
 
 //loop through all circles and remove "active" class based on their index and current step
-circles.forEach((circle, index) => {
-  circle.classList[`${index < currentStep ? "add" : "remove"}`]("active");
+  circles.forEach((circle, index) => {
+    circle.classList[`${index < currentStep ? "add" : "remove"}`]("active");
 });
+
+  //update progress basr width based on current step
+  progressBar.style.width = `${((currentStep - 1) / (circles.length -  1))}` //100%}%
+
+  //check if the current step is last step or first step and disable corresponding buttons
+  if(currentStep == circles.length){
+    buttons[1].disabled = true;
+   } else if(currentStep === 1){
+    buttons[0].disabled = true;
+   }else{
+    buttons.forEach ((button) => (button.disabled = false));
+   }
 }
 
+//Add click event listeners to all buttons
 buttons.forEach(button => {
   button.addEventListener("click", updateSteps);
 });
@@ -301,9 +335,12 @@ buttons.forEach(button => {
   border-radius: 50%;
   background: #fff;
   border: 4px solid #e0e0e0;
+  transition: all 200ms ease;
+  transition-delay: 0s;
 }
 
 .steps .circle.active{
+  transition-delay: 100ms;
   border-color: #4070f4;
   color: #4070f4;
 }
@@ -311,8 +348,8 @@ buttons.forEach(button => {
   position: absolute;
   height: 4px;
   width: 100%;
-  background-color: #e0e0e0;
-  /* z-index: -1; */
+  background: #e0e0e0;
+  z-index: -1;
 }
 
 .progress-bar .indicator{
@@ -320,6 +357,7 @@ buttons.forEach(button => {
   height: 100%;
   width: 0%;
   background: #4070f4;
+  transition: all 300ms ease;
 }
 
 .container .buttons {
@@ -337,6 +375,11 @@ buttons.forEach(button => {
   font-weight: 400;
   cursor: pointer;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  transition: all 200ms linear;
+}
+
+.buttons button:active{
+  transform: scale(0.97);
 }
 
 .buttons button:disabled{
@@ -371,5 +414,83 @@ buttons.forEach(button => {
 
 .progress-step-box {
   width: 177.6px;
+}
+
+.stepper-wrapper {
+  /* font-family: Arial; */
+  /* margin-top: 50px; */
+  /* font-weight: 400; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.stepper-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: -50%;
+  z-index: 2;
+}
+
+.stepper-item::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 2;
+}
+
+.stepper-item .step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-bottom: 6px;
+}
+
+.stepper-item.active {
+  font-weight: bold;
+}
+
+.stepper-item.completed .step-counter {
+  background-color: #4bb543;
+}
+
+.stepper-item.completed::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #4bb543;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 3;
+}
+
+.stepper-item:first-child::before {
+  content: none;
+}
+.stepper-item:last-child::after {
+  content: none;
 }
 </style>

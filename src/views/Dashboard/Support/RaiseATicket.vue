@@ -97,17 +97,18 @@ const loading = ref(false)
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                class="icon-upload"
               >
                 <path
                   d="M10.5 18V5.775L6.6 9.675L4.5 7.5L12 0L19.5 7.5L17.4 9.675L13.5 5.775V18H10.5ZM3 24C2.175 24 1.46875 23.7063 0.88125 23.1188C0.29375 22.5312 0 21.825 0 21V16.5H3V21H21V16.5H24V21C24 21.825 23.7063 22.5312 23.1188 23.1188C22.5312 23.7063 21.825 24 21 24H3Z"
-                  fill="#1D1B20"
+                  fill="#1D1B20" dark:fill="#E5E7EB"
                 />
               </svg>
 
               <div class="UploadTextFileSpecification">
                 <div class="uploadText flex gap-x-1">
                   <div class="FirstHalfFileInputText font-semibold">Upload a File</div>
-                  <div class="font-semibold SecondHalfFileInputText">or drag and drop</div>
+                  <div class="font-semibold SecondHalfFileInputText dark:text-white">or drag and drop</div>
                 </div>
                 <div class="FileSpecification">PNG, JPG, GIF up to 5MB</div>
               </div>
@@ -200,6 +201,12 @@ const loading = ref(false)
   color: #171717;
   display: inline-block;
   font-size: 16px;
+}
+.dark .SecondHalfFileInputText {
+  color: #E5E7EB;
+}
+.dark .icon-upload{
+  color: #E5E7EB;
 }
 .FileSpecification {
   display: block;
