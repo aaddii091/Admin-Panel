@@ -441,7 +441,7 @@ buttons.forEach(button => {
   content: "";
   border-bottom: 2px solid #ccc;
   width: 100%;
-  top: 20px;
+  top: 12px;
   left: -50%;
   z-index: 2;
 }
@@ -451,7 +451,7 @@ buttons.forEach(button => {
   content: "";
   border-bottom: 2px solid #ccc;
   width: 100%;
-  top: 20px;
+  top: 12px;
   left: 50%;
   z-index: 2;
 }
@@ -462,10 +462,11 @@ buttons.forEach(button => {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #ccc;
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+  border: 3px solid #E5E7EB;
+  background: #ffffff;
   margin-bottom: 6px;
 }
 
@@ -474,15 +475,16 @@ buttons.forEach(button => {
 }
 
 .stepper-item.completed .step-counter {
-  background-color: #4bb543;
+  background-color: #ffffff;
+  border: 3px solid #3C50E0;
 }
 
 .stepper-item.completed::after {
   position: absolute;
   content: "";
-  border-bottom: 2px solid #4bb543;
+  border-bottom: 3px solid #3C50E0;
   width: 100%;
-  top: 20px;
+  top: 12px;
   left: 50%;
   z-index: 3;
 }
