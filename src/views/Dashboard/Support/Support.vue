@@ -8,12 +8,73 @@ defineOptions({
 })
 
 const loading = ref(false)
+const hasTicket = ref(false)
 </script>
 
 <template>
   <DefaultLayout>
     <div class="mb-4"></div>
-    <div class="support-screen bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark">
+    <div v-if="!hasTicket" class="support-screen bg-white py-7 pt-6 pb-6 dark:bg-boxdark shadow-default dark:border-strokedark">
+      <h2 class="font-bold text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white">
+        Support Ticket
+      </h2>
+
+      <div
+      class="rounded-sm border-stroke bg-white px-5 pt-6 pb-2.5 dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
+      >
+      <div class="max-w-full overflow-x-auto">
+      <table class="w-full table-auto">
+        <thead>
+          <tr class="text-[#6E7485] text-[14px] text-left text-transform">
+            <th class="py-4 px-4 font-medium dark:text-white xl:pl-11">
+              Date
+            </th>
+            <th class="min-w-[220px] py-4 px-4 font-medium dark:text-white text-center">
+              Ticket Description
+            </th>
+            <th class="min-w-[120px] py-4 px-4 font-medium dark:text-white text-center">
+              Status
+            </th>
+            <th class="py-4 px-4 font-medium dark:text-white text-center">Ticket ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in packages" :key="index">
+            <td class="py-5 px-4 pl-9 xl:pl-11 bg-[#FAFAFA] border rounded-lg border-[#E5E5E5] text-left dark:bg-meta-4">
+              <h5 class="font-medium text-black dark:text-white">{{ item.title }}</h5>
+            </td>
+            <td class="py-5 px-4">
+              <p class="text-black dark:text-white text-center">{{ item.completedDate }}</p>
+            </td>
+            <td class="py-5 px-4 text-center">
+              <p
+                class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium"
+                :class="{
+                  'bg-graydark text-white': item.status === 'poll',
+                  'bg-success text-success': item.status === 'mcq'
+                }"
+              >
+                {{ item.type }}
+              </p>
+            </td>
+            <td class="py-5 px-4">
+              <div class="flex items-center space-x-3.5 justify-center">
+                <ButtonDefault
+                  @click="startQuiz(item._id, item.type)"
+                  v-if="item.status !== 'Done'"
+                  label="Start test"
+                  customClasses="bg-primary text-white rounded-xl min-w-20 max-h-10"
+                />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </div>
+
+    <div v-else-if="hasTicket" class="support-screen bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark">
       <h2 class="font-bold text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white">
         Support Ticket
       </h2>
@@ -68,5 +129,9 @@ const loading = ref(false)
 <style scoped>
 .support-screen {
   height: calc(100vh - 128px);
+}
+
+.text-transform{
+  text-transform: uppercase;
 }
 </style>
