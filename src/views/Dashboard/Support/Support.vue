@@ -9,6 +9,39 @@ defineOptions({
 
 const loading = ref(false)
 const hasTicket = ref(false)
+
+// const props = defineProps({
+//   status: String,
+//   ticketDescription: String,
+//   ticketDate: Date,
+//   ticketID: String,
+// })
+
+const packages = ref([
+  {
+    dateOfIssue: '2025-06-01',
+    ticketDescription: 'Issue with login functionality not working on mobile.',
+    status: 'poll',
+    type: 'Open',
+    ticketID: 'TICKET001'
+  },
+  {
+    dateOfIssue: '2025-05-25',
+    ticketDescription: 'Dark mode UI glitch on dashboard.',
+    status: 'mcq',
+    type: 'Resolved',
+    ticketID: 'TICKET002'
+  },
+  {
+    dateOfIssue: '2025-05-15',
+    ticketDescription: 'App crashes when clicking on settings.',
+    status: 'mcq',
+    type: 'In Progress',
+    ticketID: '003'
+  }
+])
+
+
 </script>
 
 <template>
@@ -25,32 +58,32 @@ const hasTicket = ref(false)
       <div class="max-w-full overflow-x-auto">
       <table class="w-full table-auto">
         <thead>
-          <tr class="text-[#6E7485] text-[14px] text-left text-transform">
+          <tr class="text-[#6E7485] text-[14px] bg-[#FAFAFA] dark:bg-meta-4 text-left text-transform">
             <th class="py-4 px-4 font-medium dark:text-white xl:pl-11">
               Date
             </th>
-            <th class="min-w-[220px] py-4 px-4 font-medium dark:text-white text-center">
+            <th class="min-w-[220px] py-4 px-4 font-medium dark:text-white text-left">
               Ticket Description
             </th>
-            <th class="min-w-[120px] py-4 px-4 font-medium dark:text-white text-center">
+            <th class="min-w-[120px] py-4 px-4 font-medium dark:text-white text-left">
               Status
             </th>
-            <th class="py-4 px-4 font-medium dark:text-white text-center">Ticket ID</th>
+            <th class="py-4 px-4 font-medium dark:text-white text-right xl:pr-11">Ticket ID</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in packages" :key="index">
-            <td class="py-5 px-4 pl-9 xl:pl-11 bg-[#FAFAFA] border rounded-lg border-[#E5E5E5] text-left dark:bg-meta-4">
-              <h5 class="font-medium text-black dark:text-white">{{ item.title }}</h5>
+          <tr v-for="(item, index) in packages" :key="index" class="m\py-5 px-4 pl-9 xl:pl-11 text-left">
+            <td class="py-5 px-4 pl-9 xl:pl-11 text-[15px]">
+              <h5 class="font-regular text-black dark:text-white">{{ item.dateOfIssue }}</h5>
             </td>
             <td class="py-5 px-4">
-              <p class="text-black dark:text-white text-center">{{ item.completedDate }}</p>
+              <p class="text-black dark:text-white text-left text-[14px]">{{ item.ticketDescription }}</p>
             </td>
-            <td class="py-5 px-4 text-center">
+            <td class="py-5 px-4 text-left">
               <p
                 class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium"
                 :class="{
-                  'bg-graydark text-white': item.status === 'poll',
+                  'bg-graydark text-black dark:bg-meta-4 dark:text-[#E5E7EB]': item.status === 'poll',
                   'bg-success text-success': item.status === 'mcq'
                 }"
               >
@@ -58,14 +91,7 @@ const hasTicket = ref(false)
               </p>
             </td>
             <td class="py-5 px-4">
-              <div class="flex items-center space-x-3.5 justify-center">
-                <ButtonDefault
-                  @click="startQuiz(item._id, item.type)"
-                  v-if="item.status !== 'Done'"
-                  label="Start test"
-                  customClasses="bg-primary text-white rounded-xl min-w-20 max-h-10"
-                />
-              </div>
+              <p class="text-black dark:text-white text-right text-[14px] xl:pr-7">{{ item.ticketID }}</p>
             </td>
           </tr>
         </tbody>
