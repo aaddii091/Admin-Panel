@@ -29,12 +29,12 @@ const pageTitle = ref('Tests')
     <!-- </div> -->
     <!-- Breadcrumb End -->
 
-    <ul class="flex gap-6 text-xl font-medium text-[#262626] dark:text-gray-300 ml-6">
-          <li class="navbar dark:text-white border border-[#737373] border-2 rounded-full dark:border-white text-[#737373] px-6 py-2">
-            <router-link to="/tests/assigned">Assigned Tests</router-link>
+    <ul class="flex gap-6 text-l font-medium text-[#262626] dark:text-gray-300 ml-24">
+          <li class="navbar dark:text-white border border-[#737373] border-2 rounded-full dark:border-white text-[#737373] px-4 py-2">
+            <router-link to="/tests">Assigned Tests</router-link>
           </li>
-          <li class="navbar dark:text-white border border-[#737373] border-2 rounded-full dark:border-white text-[#737373] px-6 py-2">
-            <router-link to="/tests/completed" >Completed Tests</router-link>
+          <li class="navbar dark:text-white border border-[#737373] border-2 rounded-full dark:border-white text-[#737373] px-4 py-2">
+            <router-link to="/tests" >Completed Tests</router-link>
           </li>
     </ul>
 

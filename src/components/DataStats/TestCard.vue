@@ -475,8 +475,9 @@ buttons.forEach(button => {
 }
 
 .stepper-item.completed .step-counter {
-  background-color: #ffffff;
-  border: 3px solid #3C50E0;
+  color: #ffffff;
+  background-color: #6366F1;
+  border: 3px solid #6366F1;
 }
 
 .stepper-item.completed::after {
