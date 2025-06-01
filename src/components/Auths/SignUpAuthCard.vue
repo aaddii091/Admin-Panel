@@ -6,8 +6,8 @@ const props = defineProps(['subtitle', 'title', 'customClasses'])
   <div
     class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
   >
-    <div class="flex flex-wrap items-center">
-      <div class="hidden w-full xl:block xl:w-1/2 bg-indigo-50">
+    <div class="flex flex-wrap items-stretch">
+      <div class="hidden w-full xl:block xl:w-1/2 bg-indigo-50 xl:flex items-center justify-center">
         <div class="py-18.5 px-26 text-center">
           <router-link class="mb-5.5 inline-block" to="/">
             <img

@@ -16,6 +16,9 @@ const assignedBy16PF = ref("Dr. Nelson Nordman")
 const assignedDate16PF = ref(new Date())
 
 const pageTitle = ref('Tests')
+
+const currentTab = ref<'assigned' | 'completed'>('completed')
+
 </script>
 
 <template>
@@ -38,17 +41,27 @@ const pageTitle = ref('Tests')
           </li>
     </ul>
 
-    <div class="flex ml-24 mr-24 gap-x-30">
+    <div v-if="currentTab === 'assigned'" class="flex ml-24 mr-24 gap-x-30">
     <TestCard label="Big Five (Ocean) Personality Test" stroke="bg-[#3C50E0]" 
     :assignedBy="assignedByBigFive"
     :labelDescription="labelDescriptionBigFive" :estimatedMinutes="estimatedMinutesBigFive" 
-    :assignedDate ="assignedDateBigFive"/>
+    :assignedDate ="assignedDateBigFive"
+    actionButton="Take Test"/>
     
     <TestCard label="16PF Personality Test" stroke="bg-[#3C50E0]" 
     :assignedBy="assignedBy16PF"
     :labelDescription="labelDescription16PF" :estimatedMinutes="estimatedMinutes16PF" 
-    :assignedDate ="assignedDate16PF"/>
+    :assignedDate ="assignedDate16PF"
+    actionButton="Take Test"/>
     
+    </div>
+
+    <div v-else class="flex ml-24 mr-24 gap-x-30">
+      <TestCard label="Big Five (Ocean) Personality Test" stroke="bg-[#3C50E0]" 
+    :assignedBy="assignedByBigFive"
+    :labelDescription="labelDescriptionBigFive" :estimatedMinutes="estimatedMinutesBigFive" 
+    :assignedDate ="assignedDateBigFive"
+    actionButton="View Report"/>
     </div>
 
     </div>

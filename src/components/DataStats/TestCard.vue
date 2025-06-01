@@ -135,7 +135,7 @@
               :disabled="loading"
               class="buttonTestCard w-[78px] h-[38px] cursor-pointer rounded-full border border-primary bg-primary text-[16px] font-normal text-white transition hover:bg-opacity-90 disabled:opacity-50 flex items-center justify-center"
             >
-              {{ loading ? 'Signing in...' : 'Take Test' }}
+              {{ loading ? 'Signing in...' : props.actionButton }}
             </button>
           </div>
         </div>
@@ -235,6 +235,7 @@ const props = defineProps({
   assignedDate: Date,
   description: String,
   stroke: String,
+  actionButton: String,
   // activeStep: {
   // type: Number,
   // default: 1
@@ -483,7 +484,7 @@ buttons.forEach(button => {
 .stepper-item.completed::after {
   position: absolute;
   content: "";
-  border-bottom: 3px solid #3C50E0;
+  border-bottom: 3px solid #6366F1;
   width: 100%;
   top: 12px;
   left: 50%;
