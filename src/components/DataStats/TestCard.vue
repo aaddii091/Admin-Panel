@@ -123,7 +123,7 @@
             <button
               type="button"
               :disabled="loading"
-              class="buttonTestCard w-[78px] h-[38px] cursor-pointer rounded-full border border-primary border-[0.15vw] text-[16px] font-medium text-primary transition hover:bg-opacity-90 disabled:opacity-50 flex items-center justify-center"
+              class="buttonTestCard w-[78px] h-[38px] cursor-pointer rounded-full border border-primary border-[0.15vw] text-[16px] font-medium text-primary transition hover:bg-white hover:bg-opacity-50 hover:bg-opacity-90 disabled:opacity-50 flex items-center justify-center"
             >
               {{ loading ? 'Signing in...' : 'Learn More' }}
             </button>
