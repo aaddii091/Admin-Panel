@@ -5,6 +5,8 @@ import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
 import TestList from '@/components/Tables/TestList.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import TestCard from '@/components/DataStats/TestCard.vue'
+import TestResultCard16PF from '@/components/DataStats/TestResultCard16PF.vue'
+import FactorB from '@/assets/images/illustration/FactorB16PF.png'
 
 const assignedDateBigFive = ref(new Date())
 const assignedByBigFive = ref("Miss Chitrangda Chauhan")
@@ -14,6 +16,7 @@ const labelDescriptionBigFive = ref("To access a person’s personality along fi
 const labelDescription16PF = ref("Measures an individual's personality across 16 primary factor")
 const assignedBy16PF = ref("Dr. Nelson Nordman")
 const assignedDate16PF = ref(new Date())
+const factorBScore = ref(68)
 
 const pageTitle = ref('Tests')
 
@@ -90,6 +93,10 @@ const currentTab = ref<'assigned' | 'completed'>('completed')
     :assignedDate ="assignedDateBigFive"
     actionButton="View Report"/>
     </div>
+
+    <TestResultCard16PF :factorImage="FactorB" :factorScore="factorBScore"
+    factorDescription="This shows how much you enjoy new experiences and ideas. This shows how much you enjoy new experiences and ideas.This shows how much you enjoy new experiences and ideas."
+    factorType="Factor B" factorName="Reasoning"></TestResultCard16PF>
 
     </div>
     <div class="flex flex-col gap-10">
