@@ -9,7 +9,7 @@ defineOptions({
 })
 
 const loading = ref(false)
-const hasTicket = ref(false)
+const hasTicket = ref(true)
 
 // const props = defineProps({
 //   status: String,

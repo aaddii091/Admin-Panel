@@ -68,8 +68,8 @@ const packages = ref([
   {
     dateOfIssue: '2025-05-15',
     ticketDescription: 'App crashes when clicking on settings.',
-    status: 'mcq',
-    type: 'In Progress',
+    status: 'poll',
+    type: 'Open',
     ticketID: '003'
   }
 ])

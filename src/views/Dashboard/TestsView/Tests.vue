@@ -32,14 +32,41 @@ const currentTab = ref<'assigned' | 'completed'>('completed')
     <!-- </div> -->
     <!-- Breadcrumb End -->
 
-    <ul class="flex gap-6 text-l font-medium text-[#262626] dark:text-gray-300 ml-24">
-          <li class="navbar dark:text-white border border-[#737373] border-2 rounded-full dark:border-white text-[#737373] px-4 py-2">
+    <!-- <ul class="flex gap-6 text-l font-medium text-[#262626] dark:text-gray-300 ml-24">
+          <li class="navbar focus:border-[#3C50E0] focus:bg-[#3C50E0] focus:text-white hover:border-[#3C50E0] hover:text-[#3C50E0] dark:text-white border border-[#737373] border-2 rounded-full dark:border-white text-[#737373] px-4 py-2">
             <router-link to="/tests">Assigned Tests</router-link>
           </li>
-          <li class="navbar dark:text-white border border-[#737373] border-2 rounded-full dark:border-white text-[#737373] px-4 py-2">
+          <li class="navbar active:bg-violet-700 hover:border-[#3C50E0] hover:text-[#3C50E0] dark:text-white border border-[#737373] border-2 rounded-full dark:border-white text-[#737373] px-4 py-2">
             <router-link to="/tests" >Completed Tests</router-link>
           </li>
+    </ul> -->
+
+    <ul class="flex gap-6 text-l font-medium text-[#262626] dark:text-gray-300 ml-24">
+      <li
+        :class="[
+          'navbar cursor-pointer border-2 rounded-full px-4 py-2 dark:text-white',
+          currentTab === 'assigned'
+            ? 'bg-[#3C50E0] text-white border-[#3C50E0]'
+            : 'border-[#737373] text-[#737373] hover:border-[#3C50E0] hover:text-[#3C50E0]'
+        ]"
+        @click="currentTab = 'assigned'"
+      >
+        Assigned Tests
+      </li>
+
+      <li
+        :class="[
+          'navbar cursor-pointer border-2 rounded-full px-4 py-2 dark:text-white',
+          currentTab === 'completed'
+            ? 'bg-[#3C50E0] text-white border-[#3C50E0]'
+            : 'border-[#737373] text-[#737373] hover:border-[#3C50E0] hover:text-[#3C50E0]'
+        ]"
+        @click="currentTab = 'completed'"
+      >
+        Completed Tests
+      </li>
     </ul>
+
 
     <div v-if="currentTab === 'assigned'" class="flex ml-24 mr-24 gap-x-30">
     <TestCard label="Big Five (Ocean) Personality Test" stroke="bg-[#3C50E0]" 
