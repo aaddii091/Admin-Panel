@@ -1,12 +1,12 @@
 <template>
   <div
-    class="w-[578px] px-8 py-8 rounded-[16px] border-0 flex flex-col gap-y-4 drop-shadow-xs mt-10 mb-14 bg-white border-2 border-black"
+    class="w-[578px] px-8 py-8 rounded-[16px] border-0 flex flex-col gap-y-4 drop-shadow-xs mt-10 mb-14 bg-white"
   >
     <div class="flex flex-col w-full justify-center items-center px-8 gap-y-8 max-w-434">
       <img :src="factorImage" :alt="imageAltText" class="w-[240px] h-[240px] object-contain">
       <div class="flex flex-col gap-y-4 items-center justify-center">
         <div class="flex bg-[#7383FD] py-3 px-6 rounded-full text-white text-[20px] font-normal w-fit">{{ factorType }} - {{ factorName }}</div>
-        <div class="flex flex-col text-black text-[16px] items-start gap-y-10">
+        <div class="flex flex-col text-black font-normal text-[16px] items-start gap-y-10">
           {{ factorDescription }}
         </div>
       </div>
