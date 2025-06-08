@@ -49,7 +49,7 @@ const currentTab = ref<'assigned' | 'completed'>('completed')
           'navbar cursor-pointer border-2 rounded-full px-4 py-2 dark:text-white',
           currentTab === 'assigned'
             ? 'bg-[#3C50E0] text-white border-[#3C50E0]'
-            : 'border-[#737373] text-[#737373] hover:border-[#3C50E0] hover:text-[#3C50E0]'
+            : 'border-[#939EF1] text-[#939EF1] hover:border-[#3C50E0] hover:text-[#3C50E0] hover:bg-white'
         ]"
         @click="currentTab = 'assigned'"
       >
@@ -61,7 +61,7 @@ const currentTab = ref<'assigned' | 'completed'>('completed')
           'navbar cursor-pointer border-2 rounded-full px-4 py-2 dark:text-white',
           currentTab === 'completed'
             ? 'bg-[#3C50E0] text-white border-[#3C50E0]'
-            : 'border-[#737373] text-[#737373] hover:border-[#3C50E0] hover:text-[#3C50E0]'
+            : 'border-[#939EF1] text-[#939EF1] hover:border-[#3C50E0] hover:text-[#3C50E0] hover:bg-white'
         ]"
         @click="currentTab = 'completed'"
       >
