@@ -5,7 +5,8 @@ import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
 import TestList from '@/components/Tables/TestList.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import TestCard from '@/components/DataStats/TestCard.vue'
-
+import TestResultCard16PF from '@/components/DataStats/TestResultCard16PF.vue'
+import FactorB16PF from '@/assets/images/illustration/FactorB16PF.png'
 const assignedDateBigFive = ref(new Date())
 const assignedByBigFive = ref("Miss Chitrangda Chauhan")
 const estimatedMinutesBigFive = ref(135)
