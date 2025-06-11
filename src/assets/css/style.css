@@ -256,3 +256,19 @@ input[type='search']::-webkit-search-cancel-button {
   transition: all 0.35s;
   color: whitesmoke;
 }
+h3 {
+  font-family: Nunito;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 38px;
+  letter-spacing: 0%;
+  color: #334155;
+}
+.paragraph {
+  font-family: Nunito;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  color: black;
+}

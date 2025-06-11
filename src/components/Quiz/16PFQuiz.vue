@@ -1,6 +1,33 @@
 <template>
   <HeaderArea />
-  <div class="mt-4 md:mt-16 sm:mt-8 flex items-center justify-center">
+  <div class="flex justify-center" v-if="isFlashCard">
+    <div class="flex justify-center items-center flex-col h-full w-1/2 my-5">
+      <h3 class="text-center">
+        Uncover Your Unique Personality Blueprint with the Big Five (OCEAN) Personality Test
+      </h3>
+      <p class="paragraph text-center">
+        Your personality shapes how you experience the world, make decisions, and connect with
+        others. The Big Five test delves into the core traits that define you- openness,
+        conscientiousness, extraversion, agreeableness, and emotional stability. By exploring where
+        you stand in each of there, you’ll gain deeper understanding of your natural tendencies,
+        empowering you to make more informed choices and build stronger, more meaningful
+        relationships.
+      </p>
+      <h3 class="text-center">
+        Uncover Your Unique Personality Blueprint with the Big Five (OCEAN) Personality Test
+      </h3>
+      <p class="paragraph text-center">
+        Your personality shapes how you experience the world, make decisions, and connect with
+        others. The Big Five test delves into the core traits that define you- openness,
+        conscientiousness, extraversion, agreeableness, and emotional stability. By exploring where
+        you stand in each of there, you’ll gain deeper understanding of your natural tendencies,
+        empowering you to make more informed choices and build stronger, more meaningful
+        relationships.
+      </p>
+      <button class="btn-zen my-5" @click="flash">Start</button>
+    </div>
+  </div>
+  <div class="mt-4 md:mt-16 sm:mt-8 flex items-center justify-center" v-else>
     <div class="w-full max-w-2xl px-4">
       <div
         class="rounded-sm bg-white px-5 pt-6 pb-2.5 shadow-default dark:bg-boxdark sm:px-7.5 xl:pb-1"
@@ -52,6 +79,7 @@ const quizName = ref('')
 const currentIndex = ref(0)
 const currentOptions = ref()
 const currentQuestion = ref(null)
+const isFlashCard = ref(true)
 
 const answerSheet = ref({
   quizId: '',
@@ -77,7 +105,7 @@ onBeforeMount(async () => {
     data.value = quiz.questions
     quizName.value = quiz.title
 
-    // ✅ Restore from localStorage if available
+    // Restore from localStorage if available
     const savedProgress = localStorage.getItem('currentQuizProgress')
     if (savedProgress) {
       const parsed = JSON.parse(savedProgress)
@@ -104,7 +132,11 @@ watch(currentIndex, () => {
   currentOptions.value = currentQuestion.value.options[0]
 })
 
-// ✅ Handle answer + localStorage save
+const flash = () => {
+  isFlashCard.value = !isFlashCard.value
+}
+
+// Handle answer + localStorage save
 const selectChoice = async (key, choice) => {
   const questionId = currentQuestion.value._id
   answerSheet.value.answers[questionId] = {
@@ -113,7 +145,7 @@ const selectChoice = async (key, choice) => {
     trait: currentQuestion.value.trait
   }
 
-  // ✅ Save to localStorage on every answer
+  // Save to localStorage on every answer
   localStorage.setItem(
     'currentQuizProgress',
     JSON.stringify({
@@ -153,3 +185,20 @@ const selectChoice = async (key, choice) => {
   }
 }
 </script>
+<style scoped>
+.btn-zen {
+  align-items: center;
+  width: 148px;
+  height: 48px;
+  border-radius: 40px;
+  border-width: 1px;
+  padding: 10px;
+  gap: 10px;
+  top: 600px;
+  left: 648px;
+}
+.btn-zen:hover {
+  transition: all 0.15s;
+  border-color: #3c50e0;
+}
+</style>
