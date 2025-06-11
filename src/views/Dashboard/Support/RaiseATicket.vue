@@ -62,13 +62,18 @@ const handleSubmit = async (e: Event) => {
       }
     })
 
-    Swal.fire({
-      title: 'Ticket submitted successfully',
-      icon: 'success',
-      draggable: true
-    })
+    // Swal.fire({
+    //   title: 'Ticket submitted successfully',
+    //   icon: 'success',
+    //   draggable: true
+    // })
     success.value = true
   } catch (err) {
+    Swal.fire({
+      title: 'There was an error',
+      icon: 'error',
+      draggable: false
+    })
     console.error('Ticket creation failed:', err)
     error.value = axios.isAxiosError(err)
       ? err.response?.data?.message || 'Failed to create ticket'
@@ -86,6 +91,7 @@ const handleSubmit = async (e: Event) => {
     <div
       class="bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark flex flex-col items-center justify-center"
       style="flex: 1"
+      v-if="!success"
     >
       <h2
         class="font-bold text-center text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white"
@@ -162,17 +168,21 @@ const handleSubmit = async (e: Event) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                class="icon-upload"
               >
                 <path
                   d="M10.5 18V5.775L6.6 9.675L4.5 7.5L12 0L19.5 7.5L17.4 9.675L13.5 5.775V18H10.5ZM3 24C2.175 24 1.46875 23.7063 0.88125 23.1188C0.29375 22.5312 0 21.825 0 21V16.5H3V21H21V16.5H24V21C24 21.825 23.7063 22.5312 23.1188 23.1188C22.5312 23.7063 21.825 24 21 24H3Z"
                   fill="#1D1B20"
+                  dark:fill="#E5E7EB"
                 />
               </svg>
 
               <div class="UploadTextFileSpecification">
                 <div class="uploadText flex gap-x-1">
                   <div class="FirstHalfFileInputText font-semibold">Upload a File</div>
-                  <div class="font-semibold SecondHalfFileInputText">or drag and drop</div>
+                  <div class="font-semibold SecondHalfFileInputText dark:text-white">
+                    or drag and drop
+                  </div>
                 </div>
                 <div class="FileSpecification">PNG, JPG, GIF up to 5MB</div>
               </div>
@@ -256,11 +266,35 @@ const handleSubmit = async (e: Event) => {
         </div>
       </form>
     </div>
-    <div v-if="success">hi</div>
+    <div v-if="success">
+      <div class="support-screen bg-white text-black py-7 pt-6 pb-6 dark:bg-boxdark">
+        <!-- <h2 class="font-bold text-[24px] leading-[36px] text-[#171717] pl-7 dark:text-white">
+        Support Ticket
+      </h2> -->
+
+        <div
+          class="submission-container border border-[#E5E5E5] rounded-lg bg-[#FAFAFA] w-full max-w-[773px] h-[461px]support-container flex flex-col items-center justify-center h-full gap-y-6 mx-auto w-full dark:bg-meta-4 dark:border-none"
+        >
+          <img
+            src="../../../assets/images/illustration/TicketSubmission.png"
+            alt="illustration"
+            class="sign-in-image"
+          />
+          <h2
+            class="flex font-medium text-[18px] leading-[28px] text-[#404040] text-center dark:text-[#FFFFFF]"
+          >
+            Thank You! Your Support Ticket has been submitted.<br />We will get back to you shortly.
+          </h2>
+        </div>
+      </div>
+    </div>
   </DefaultLayout>
 </template>
 
 <style scoped>
+.support-screen {
+  height: calc(100vh - 128px);
+}
 .support-form {
   width: 100vh;
 }
@@ -273,6 +307,12 @@ const handleSubmit = async (e: Event) => {
   color: #171717;
   display: inline-block;
   font-size: 16px;
+}
+.dark .SecondHalfFileInputText {
+  color: #e5e7eb;
+}
+.dark .icon-upload {
+  color: #e5e7eb;
 }
 .FileSpecification {
   display: block;

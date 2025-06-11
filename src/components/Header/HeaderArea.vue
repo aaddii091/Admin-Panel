@@ -6,9 +6,12 @@ import DarkModeSwitcher from './DarkModeSwitcher.vue'
 import DropdownMessage from './DropdownMessage.vue'
 import DropdownNotification from './DropdownNotification.vue'
 import DropdownUser from './DropdownUser.vue'
+import { useRoute } from 'vue-router'
+
 
 const { toggleSidebar } = useSidebarStore()
 const sidebarStore = useSidebarStore()
+const route = useRoute()
 </script>
 
 <template>
@@ -95,13 +98,16 @@ const sidebarStore = useSidebarStore()
       </div>
       <div class="hidden sm:block">
         <ul class="flex gap-18 text-xl font-medium text-[#262626] dark:text-gray-300 ml-6">
-          <li class="navbar dark:text-white">
+          <li class="navbar dark:text-white"
+          :class="{ 'underline-active': route.path === '/' }">
             <router-link to="/">Dashboard</router-link>
           </li>
-          <li class="navbar dark:text-white">
+          <li class="navbar dark:text-white"
+          :class="{ 'underline-active': route.path === '/tests' }">
             <router-link to="/tests">Tests</router-link>
           </li>
-          <li class="navbar dark:text-white">
+          <li class="navbar dark:text-white"
+          :class="{ 'underline-active': route.path === '/support' }">
             <router-link to="/support">Support</router-link>
           </li>
         </ul>
@@ -185,6 +191,10 @@ const sidebarStore = useSidebarStore()
 }
 
 .navbar a:hover::before {
+  width: 100%;
+}
+
+.underline-active a::before {
   width: 100%;
 }
 </style>

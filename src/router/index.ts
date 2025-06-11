@@ -11,13 +11,13 @@ import QuestionnairesCompletedView from '@/views/Questionnaires/completedView.vu
 import ResetPasswordViewVue from '@/components/Authentication/ResetPasswordView.vue'
 import MCQView from '@/components/Quiz/MCQQuiz.vue'
 import ResultsView from '@/views/Results/resultsView.vue'
-import TestsView from '@/views/TestsView.vue'
+import Tests from '@/views/Dashboard/TestsView/Tests.vue'
 import LoginPage from '@/views/Authentication/LoginPage.vue'
 import PF from '@/components/Quiz/16PFQuiz.vue'
 import Support from '@/views/Dashboard/Support/Support.vue'
 import SupportTicket from '@/views/Dashboard/Support/RaiseATicket.vue'
-import Clients from '@/views/Clients/Clients.vue'
 import { useAuthStore } from '@/stores/auth'
+
 
 
 
@@ -69,13 +69,14 @@ const routes = [
   },
   {
     path: '/tests',
-    name: 'tests',
-    component: TestsView,
+    name: 'Tests',
+    component: Tests,
     meta: {
       title: 'Tests',
       requiresAuth: true
     }
   },
+
   {
     path: '/profile',
     name: 'profile',
@@ -164,16 +165,6 @@ const routes = [
     meta: {
       title: 'Support Raise a Ticket',
       requiresAuth: true
-    }
-  },
-  {
-    path: '/clients',
-    name: 'clients',
-    component: Clients,
-    meta: {
-      title: 'Clients',
-      requiresAuth: true,
-      requiresAdmin: true
     }
   }
 ]
