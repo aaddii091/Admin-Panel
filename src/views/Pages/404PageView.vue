@@ -6,13 +6,13 @@
       <div class="flex items-center sm:justify-center xl:justify-end w-full bg-white border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-0 p-4 sm:p-12.5 xl:p-17.5">
         <div class="container-content ">
           <span class="mb-1.5 block font-medium"></span> 
-          <h2 class="inline-block text-[#3C50E0] mb-5 mr-2 text-2xl font-bold text-black dark:text-white sm:text-title-xl2 sign-in-box">
+          <h2 class="inline-block text-[#3C50E0] mb-5 mr-2 text-2xl font-bold text-black sm:text-title-xl2 sign-in-box">
           404
           </h2>
-          <h2 class="inline-block mb-5 text-2xl font-bold text-black dark:text-white sm:text-title-xl2 sign-in-box">
+          <h2 class="inline-block mb-5 text-2xl font-bold text-black sm:text-title-xl2 sign-in-box">
            - Page Not Found
           </h2>
-          <p class="mb-10 block font-medium text-black dark:text-white">Oops! It seems this page doesn’t exist or may have been removed. <br> <br>
+          <p class="mb-10 block font-medium text-black">Oops! It seems this page doesn’t exist or may have been removed. <br> <br>
           Let’s get you back on track</p>
           <div class="mb-5 mt-10 btn-return-to-home">
             <button
