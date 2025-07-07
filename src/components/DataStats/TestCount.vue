@@ -1,6 +1,6 @@
 <template>
-  <div class="w-[592px] h-[108px] rounded-[6px] border-0 flex items-center px-4 drop-shadow-xs" :class="background">
-    <div class="flex w-full justify-between">
+  <div class="w-full w-max-[592px] sm:mx-8 h-[108px] rounded-[6px] border-0 flex items-center mx-4 px-4 py-6 drop-shadow-xs" :class="background">
+    <div class="flex w-full justify-between px-4 py-6">
       <!-- Text Section -->
       <div class="flex flex-col items-start">
         <h2 class="text-[#404040] text-[18px] font-medium">{{ label }}</h2>
