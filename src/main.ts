@@ -11,12 +11,14 @@ import App from './App.vue';
 import router from './router'
 
 import Swal from 'sweetalert2'
+import { i18n } from './i18n'
 
 const iniApp = () => {
   const app = createApp(App)
 
   app.use(createPinia())
   app.use(router)
+  app.use(i18n)
   app.use(VueApexCharts)
 
   app.config.globalProperties.$swal = Swal

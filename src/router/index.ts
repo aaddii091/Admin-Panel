@@ -3,14 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 import SigninView from '@/components/Authentication/SigninView.vue'
 import Error from '@/views/Pages/404PageView.vue'
 import SignupView from '@/components/Authentication/SignupView.vue'
-import Dashboard from '@/views/Dashboard/Dashboard.vue'
+import Dashboard from '@/views/Dashboard/DashboardWrapper.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import QuestionnairesTopView from '@/views/Questionnaires/topView.vue'
 import QuestionnairesFormView from '@/views/Questionnaires/formView.vue'
 import QuestionnairesCompletedView from '@/views/Questionnaires/completedView.vue'
 import ResetPasswordViewVue from '@/components/Authentication/ResetPasswordView.vue'
 import MCQView from '@/components/Quiz/MCQQuiz.vue'
-import ResultsView from '@/views/Results/resultsView.vue'
+import ReportView from '@/views/Reports/reportView.vue'
 import Tests from '@/views/Dashboard/TestsView/Tests.vue'
 import LoginPage from '@/views/Authentication/LoginPage.vue'
 import PF from '@/components/Quiz/16PFQuiz.vue'
@@ -59,9 +59,9 @@ const routes = [
     }
   },
   {
-    path: '/results',
-    name: 'results',
-    component: ResultsView,
+    path: '/reports',
+    name: 'report',
+    component: ReportView,
     meta: {
       title: 'Results',
       requiresAuth: true

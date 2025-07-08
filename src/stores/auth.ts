@@ -14,6 +14,7 @@ export const useAuthStore = defineStore('auth', () => {
     role.value = newRole
   }
 
+  
   function logout() {
     token.value = null
     role.value = null

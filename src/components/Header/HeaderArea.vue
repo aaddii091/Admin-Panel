@@ -7,11 +7,13 @@ import DropdownMessage from './DropdownMessage.vue'
 import DropdownNotification from './DropdownNotification.vue'
 import DropdownUser from './DropdownUser.vue'
 import { useRoute } from 'vue-router'
-
+import { useAuthStore } from '@/stores/auth'
 
 const { toggleSidebar } = useSidebarStore()
 const sidebarStore = useSidebarStore()
 const route = useRoute()
+
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -27,12 +29,14 @@ const route = useRoute()
             class="hidden dark:block"
             alt="Logo"
             width="180"
+            v-if="!authStore.isAdmin"
           />
           <img
             src="@/assets/images/logo/Zengarden-light.png"
             class="dark:hidden"
             alt="Logo"
             width="180"
+            v-if="!authStore.isAdmin"
           />
         </router-link>
 
@@ -96,18 +100,21 @@ const route = useRoute()
           <img src="@/assets/images/logo/logo-icon.svg" alt="Logo" />
         </router-link>
       </div>
-      <div class="hidden sm:block">
+      <div class="hidden sm:block" v-if="!authStore.isAdmin">
         <ul class="flex gap-18 text-xl font-medium text-[#262626] dark:text-gray-300 ml-6">
-          <li class="navbar dark:text-white"
-          :class="{ 'underline-active': route.path === '/' }">
+          <li class="navbar dark:text-white" :class="{ 'underline-active': route.path === '/' }">
             <router-link to="/">Dashboard</router-link>
           </li>
-          <li class="navbar dark:text-white"
-          :class="{ 'underline-active': route.path === '/tests' }">
+          <li
+            class="navbar dark:text-white"
+            :class="{ 'underline-active': route.path === '/tests' }"
+          >
             <router-link to="/tests">Tests</router-link>
           </li>
-          <li class="navbar dark:text-white"
-          :class="{ 'underline-active': route.path === '/support' }">
+          <li
+            class="navbar dark:text-white"
+            :class="{ 'underline-active': route.path === '/support' }"
+          >
             <router-link to="/support">Support</router-link>
           </li>
         </ul>
