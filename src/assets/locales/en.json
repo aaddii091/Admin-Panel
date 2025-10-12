@@ -1,0 +1,35 @@
+{
+  "app": {
+    "title": "My Awesome App",
+    "description": "Welcome to your dashboard"
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "settings": "Settings",
+    "logout": "Log Out"
+  },
+  "dashboard": {
+    "welcome": "Welcome, {name}!",
+    "subtitle": "Here's an overview of your activity",
+    "stats": "Your Statistics"
+  },
+  "login": {
+    "email": "Email Address",
+    "password": "Password",
+    "login_button": "Log In",
+    "forgot_password": "Forgot Password?"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalid_email": "Please enter a valid email address",
+    "server": "Something went wrong. Please try again later."
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete"
+  }
+}

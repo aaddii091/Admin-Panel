@@ -1,0 +1,18 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+
+  ],
+  "compilerOptions": {
+    // ... existing options ...
+    "module": "ESNext",  // Add or update this line
+    // ... existing options ...
+  },
+  "moduleResolution": "node"
+}

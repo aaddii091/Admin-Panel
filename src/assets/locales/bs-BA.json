@@ -1,0 +1,35 @@
+{
+  "dashboard": {
+    "welcome": "Dobrodošao, {name}!",
+    "subtitle": "Ovdje je pregled vaših aktivnosti",
+    "stats": "Vaša statistika"
+  },
+  "app": {
+    "title": "Moja Super Aplikacija",
+    "description": "Dobrodošli na kontrolnu tablu"
+  },
+  "navbar": {
+    "home": "Početna",
+    "about": "O nama",
+    "contact": "Kontakt",
+    "settings": "Postavke",
+    "logout": "Odjava"
+  },
+  "login": {
+    "email": "Email adresa",
+    "password": "Lozinka",
+    "login_button": "Prijava",
+    "forgot_password": "Zaboravljena lozinka?"
+  },
+  "errors": {
+    "required": "Ovo polje je obavezno",
+    "invalid_email": "Molimo unesite validnu email adresu",
+    "server": "Došlo je do greške. Pokušajte ponovo kasnije."
+  },
+  "actions": {
+    "save": "Sačuvaj",
+    "cancel": "Otkaži",
+    "edit": "Uredi",
+    "delete": "Obriši"
+  }
+}
