@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[578px] h-[416px] rounded-[6px] border-0 flex flex-col drop-shadow-xs mt-10 mb-14 bg-[#F5F5F5]"
+    class="min-w-[478px] h-[416px] rounded-[6px] border-0 flex flex-col drop-shadow-xs mt-10 mb-14 bg-[#F5F5F5]"
   >
     <!-- Top stroke bar :class="stroke"-->
     <div class="h-[6px] w-full rounded-t-[6px]" :class="stroke"></div>
@@ -10,7 +10,6 @@
       class="flex flex-col w-full h-[88px] justify-between items-start px-6 py-4 gap-y-2 bg-[#E5E5E5]"
     >
       <div class="text-[#262626] text-[20px] font-bold">{{ label }}</div>
-      <div class="text-[14px] text-[#262626] font-normal">{{ labelDescription }}</div>
     </div>
 
     <!-- Body Section -->
@@ -123,16 +122,7 @@
             <button
               type="button"
               :disabled="loading"
-              class="buttonTestCard w-[78px] h-[38px] cursor-pointer rounded-full border border-primary border-[0.15vw] text-[16px] font-medium text-primary transition hover:bg-white hover:bg-opacity-50 hover:bg-opacity-90 disabled:opacity-50 flex items-center justify-center"
-            >
-              {{ loading ? 'Signing in...' : 'Learn More' }}
-            </button>
-          </div>
-
-          <div class="flex">
-            <button
-              type="button"
-              :disabled="loading"
+              @click="startQuiz(props._id, props.type)"
               class="buttonTestCard w-[78px] h-[38px] cursor-pointer rounded-full border border-primary bg-primary text-[16px] font-normal text-white transition hover:bg-opacity-90 disabled:opacity-50 flex items-center justify-center"
             >
               {{ loading ? 'Signing in...' : props.actionButton }}
@@ -193,35 +183,38 @@
             <span class="indicator"></span>
           </div>
         </div> -->
-        <!-- <div class="buttons">
+      <!-- <div class="buttons">
           <button id="prev" disabled>Prev</button>
           <button id="next">Next</button>
         </div> -->
       <!-- </div> -->
-       <div class="stepper-wrapper text-[#404040] text-[16px] font-medium">
-      <div class="stepper-item completed">
-        <div class="step-counter active">1</div>
-        <div class="step-name">Take Test</div>
-      </div>
-      <div class="stepper-item completed">
-        <div class="step-counter">2</div>
-        <div class="step-name">Report Generation</div>
-      </div>
-      <div class="stepper-item">
-        <div class="step-counter">3</div>
-        <div class="step-name">Report Available</div>
-      </div>
-      <!-- <div class="stepper-item">
+      <div class="stepper-wrapper text-[#404040] text-[16px] font-medium">
+        <div class="stepper-item completed">
+          <div class="step-counter active">1</div>
+          <div class="step-name">Take Test</div>
+        </div>
+        <div class="stepper-item completed">
+          <div class="step-counter">2</div>
+          <div class="step-name">Report Generation</div>
+        </div>
+        <div class="stepper-item">
+          <div class="step-counter">3</div>
+          <div class="step-name">Report Available</div>
+        </div>
+        <!-- <div class="stepper-item">
         <div class="step-counter">4</div>
         <div class="step-name">Forth</div>
       </div> -->
-    </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 defineOptions({
   name: 'TestCard'
@@ -236,10 +229,12 @@ const props = defineProps({
   description: String,
   stroke: String,
   actionButton: String,
+  _id: String,
+  type: String
   // activeStep: {
   // type: Number,
   // default: 1
-// }
+  // }
 })
 
 // Format count to always show as 2 digits (e.g., 03, 07, 10)
@@ -266,39 +261,47 @@ const formattedDate = computed(() => {
 })
 
 //DOM Elements
-const circles = document.querySelectorAll(".circles"),
-progressBar = document.querySelector(".indicator"),
-buttons = document.querySelectorAll("button");
+const circles = document.querySelectorAll('.circles'),
+  progressBar = document.querySelector('.indicator'),
+  buttons = document.querySelectorAll('button')
 
-let currentStep = 1;
+let currentStep = 1
 
 // function that updates the current step and updates the DOM
 const updateSteps = (e) => {
   //update current step based on the button clicked
-  currentStep = e.target.id === "next" ? ++currentStep : --currentStep; 
+  currentStep = e.target.id === 'next' ? ++currentStep : --currentStep
 
-//loop through all circles and remove "active" class based on their index and current step
+  //loop through all circles and remove "active" class based on their index and current step
   circles.forEach((circle, index) => {
-    circle.classList[`${index < currentStep ? "add" : "remove"}`]("active");
-});
+    circle.classList[`${index < currentStep ? 'add' : 'remove'}`]('active')
+  })
 
   //update progress basr width based on current step
-  progressBar.style.width = `${((currentStep - 1) / (circles.length -  1))}` //100%}%
+  progressBar.style.width = `${(currentStep - 1) / (circles.length - 1)}` //100%}%
 
   //check if the current step is last step or first step and disable corresponding buttons
-  if(currentStep == circles.length){
-    buttons[1].disabled = true;
-   } else if(currentStep === 1){
-    buttons[0].disabled = true;
-   }else{
-    buttons.forEach ((button) => (button.disabled = false));
-   }
+  if (currentStep == circles.length) {
+    buttons[1].disabled = true
+  } else if (currentStep === 1) {
+    buttons[0].disabled = true
+  } else {
+    buttons.forEach((button) => (button.disabled = false))
+  }
 }
 
 //Add click event listeners to all buttons
-buttons.forEach(button => {
-  button.addEventListener("click", updateSteps);
-});
+buttons.forEach((button) => {
+  button.addEventListener('click', updateSteps)
+})
+
+const startQuiz = (quizId, type) => {
+  if (type === 'poll') {
+    router.push(`/mcq/${quizId}`)
+  } else if (type === 'poll PF') {
+    router.push(`/poll-pf/${quizId}`)
+  }
+}
 </script>
 
 <style scoped>
@@ -306,7 +309,7 @@ buttons.forEach(button => {
   width: 136px;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -316,7 +319,7 @@ buttons.forEach(button => {
   /* background-color: grey; */
 }
 
-.container .steps{
+.container .steps {
   display: flex;
   width: 100%;
   align-items: center;
@@ -340,12 +343,12 @@ buttons.forEach(button => {
   transition-delay: 0s;
 }
 
-.steps .circle.active{
+.steps .circle.active {
   transition-delay: 100ms;
   border-color: #4070f4;
   color: #4070f4;
 }
-.steps .progress-bar{
+.steps .progress-bar {
   position: absolute;
   height: 4px;
   width: 100%;
@@ -353,7 +356,7 @@ buttons.forEach(button => {
   z-index: -1;
 }
 
-.progress-bar .indicator{
+.progress-bar .indicator {
   position: absolute;
   height: 100%;
   width: 0%;
@@ -379,11 +382,11 @@ buttons.forEach(button => {
   transition: all 200ms linear;
 }
 
-.buttons button:active{
+.buttons button:active {
   transform: scale(0.97);
 }
 
-.buttons button:disabled{
+.buttons button:disabled {
   background: #87a5f8;
   cursor: not-allowed;
 }
@@ -439,7 +442,7 @@ buttons.forEach(button => {
 
 .stepper-item::before {
   position: absolute;
-  content: "";
+  content: '';
   border-bottom: 2px solid #ccc;
   width: 100%;
   top: 12px;
@@ -449,7 +452,7 @@ buttons.forEach(button => {
 
 .stepper-item::after {
   position: absolute;
-  content: "";
+  content: '';
   border-bottom: 2px solid #ccc;
   width: 100%;
   top: 12px;
@@ -466,7 +469,7 @@ buttons.forEach(button => {
   width: 28px;
   height: 28px;
   border-radius: 100%;
-  border: 3px solid #E5E7EB;
+  border: 3px solid #e5e7eb;
   background: #ffffff;
   margin-bottom: 6px;
 }
@@ -477,14 +480,14 @@ buttons.forEach(button => {
 
 .stepper-item.completed .step-counter {
   color: #ffffff;
-  background-color: #6366F1;
-  border: 3px solid #6366F1;
+  background-color: #6366f1;
+  border: 3px solid #6366f1;
 }
 
 .stepper-item.completed::after {
   position: absolute;
-  content: "";
-  border-bottom: 3px solid #6366F1;
+  content: '';
+  border-bottom: 3px solid #6366f1;
   width: 100%;
   top: 12px;
   left: 50%;

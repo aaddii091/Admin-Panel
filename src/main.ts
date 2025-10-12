@@ -6,6 +6,7 @@ import 'flatpickr/dist/flatpickr.min.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import VueApexCharts from 'vue3-apexcharts'
+import { AVPlugin } from "vue-audio-visual";
 
 import App from './App.vue';
 import router from './router'
@@ -20,6 +21,7 @@ const iniApp = () => {
   app.use(router)
   app.use(i18n)
   app.use(VueApexCharts)
+  app.use(AVPlugin);
 
   app.config.globalProperties.$swal = Swal
 

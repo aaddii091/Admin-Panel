@@ -135,8 +135,8 @@ const menuGroups = computed(() => [
                     </clipPath>
                   </defs>
                 </svg>`,
-        label: 'Archive',
-        route: '/archive'
+        label: 'AI',
+        route: '/voice-assistant'
       }
     ]
   },

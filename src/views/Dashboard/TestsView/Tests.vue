@@ -32,17 +32,20 @@
         </li>
       </ul>
 
-      <div class="flex ml-24 mr-24 gap-x-30">
+      <div
+        class="flex ml-12 mr-12 gap-x-10 w-full max-w-[1300px] overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100"
+      >
         <TestCard
           v-for="(pkg, index) in packages"
           :key="index"
-          :label="pkg?.testName || 'Untitled Test'"
+          :label="pkg?.title || 'Untitled Test'"
           :stroke="'bg-[#3C50E0]'"
           :assignedBy="pkg?.assignedBy || 'Unknown Assigner'"
-          :labelDescription="pkg?.description || 'No description available'"
           :estimatedMinutes="pkg?.estimatedMinutes || 'N/A'"
           :assignedDate="pkg?.assignedDate || 'Not assigned'"
           actionButton="Take Test"
+          :_id="pkg._id"
+          :type="pkg.type"
         />
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import VoiceAssistant from '@/views/AI/voiceAssistant.vue'
 import SigninView from '@/components/Authentication/SigninView.vue'
 import Error from '@/views/Pages/404PageView.vue'
 import SignupView from '@/components/Authentication/SignupView.vue'
@@ -164,6 +165,15 @@ const routes = [
     component: SupportTicket,
     meta: {
       title: 'Support Raise a Ticket',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/voice-assistant',
+    name: 'voiceAssistant',
+    component: VoiceAssistant,
+    meta: {
+      title: 'Voice Assistant',
       requiresAuth: true
     }
   }
